@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/05/苹果内购常见问题以及注意事项/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/05/05/苹果内购常见问题以及注意事项/" itemprop="url">苹果内购常见问题及注意事项</a></h1>
         
 
         <div class="post-meta">
@@ -332,8 +332,7 @@
       
         
           
-            <p>##苹果内购常见问题及注意事项</p>
-<hr>
+            <hr>
 <p>关于iOS内购的问题具体可以参考这篇文章<a href="http://www.jianshu.com/p/298a01961ba7" target="_blank" rel="noopener">here</a>.</p>
 <p><strong>注意事项</strong></p>
 <p>如果您在实现和测试iOS应用内购的时候遇到问题，可以逐一对照下面列出的条目，并且逐一进行检查。相信大家可以排除大部分的错误.</p>
@@ -380,6 +379,7 @@
 </li>
 </ul>
 <hr>
+<p>tags:<br> -iOS内购<br>categories:<br>-iOS技术点</p>
 
           
         
@@ -447,7 +447,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/05/QQ分享的APPID转换十六进制的方法/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/05/05/QQ分享的APPID转换十六进制的方法/" itemprop="url">友盟集成QQ分享的APPID转换十六进制的方法</a></h1>
         
 
         <div class="post-meta">
@@ -499,14 +499,15 @@
       
         
           
-            <p>##友盟集成QQ分享的APPID转换十六进制的方法</p>
-<ul>
+            <ul>
 <li><p>设置xcode的url scheme格式为“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ41EE2B54”。生成十六进制方法：echo ‘ibase=10;obase=16;您的腾讯QQ互联应用Id’|bc。并在QQ互联后台的URL schema中填入此字符串保持一致。</p>
 </li>
 <li><p>单独使用QQ授权功能，需要额外设置URL Scheme的格式为<strong>tencent+腾讯QQ互联应用appId</strong>，例如<strong>tencent1106127700</strong></p>
 </li>
 </ul>
 <p><strong>例如:</strong>1106127700为QQ的AppID，打开终端，输入echo’ibase=10;obase=16;1106127700’|bc<br>得到41EE2B54 即为转换后的我们需要的十六进制<br><img src="http://a2.qpic.cn/psb?/V13asiEi341Zq8/QG2zO57VHYsVRQfU*vImhfftil6UjCBFgRfeKX00BNE!/c/dEUBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=cgSKAwAAAAADF80!&amp;vuin=1318310056&amp;tm=1525510800&amp;sce=60-2-2&amp;rf=newphoto&amp;t=5" alt="转化"></p>
+<p>tags:<br> -iOS分享</p>
+<p>categories:<br>-iOS技术点</p>
 
           
         
@@ -574,7 +575,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/05/支付宝问题解决/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/05/05/支付宝问题解决/" itemprop="url">支付宝支付后回调不到APP中的问题</a></h1>
         
 
         <div class="post-meta">
@@ -626,8 +627,10 @@
       
         
           
-            <p>##支付宝支付后回调不到APP中的问题<br>之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。<br>其实这个问题是很简单的一个问题，具体的解决办法就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">	NSLog(@&quot;%@\n%@\nURLhost%@&quot; ,url,sourceApplication,[url host]);</span><br><span class="line">// 这里只是简单地假设 url 形式为 taobao://item.taobao.com/item.htm?id=12345678</span><br><span class="line">// 在 host 等于 item.taobao.com 时，说明一个宝贝详情的 url，</span><br><span class="line">BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];</span><br><span class="line">if (result == FALSE) &#123;</span><br><span class="line">    return [[PayApi sharedApi] handleOpenURL:url];</span><br><span class="line">&#125;</span><br><span class="line">return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+            <p>之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。<br>其实这个问题是很简单的一个问题，具体的解决办法就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">	NSLog(@&quot;%@\n%@\nURLhost%@&quot; ,url,sourceApplication,[url host]);</span><br><span class="line">// 这里只是简单地假设 url 形式为 taobao://item.taobao.com/item.htm?id=12345678</span><br><span class="line">// 在 host 等于 item.taobao.com 时，说明一个宝贝详情的 url，</span><br><span class="line">BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];</span><br><span class="line">if (result == FALSE) &#123;</span><br><span class="line">    return [[PayApi sharedApi] handleOpenURL:url];</span><br><span class="line">&#125;</span><br><span class="line">return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>所以如果你也，遇到这个问题了，可以查看这个方法中有没有写入这个方法，如果这个方法已经写了，可以检查是否设置是否在Plist文件中的URL Scheme 是否添加了支付宝设置的Scheme.</p>
+<p>tags:<br> -iOS支付</p>
+<p>categories:<br>-iOS技术点</p>
 
           
         
@@ -695,7 +698,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/05/Swift中的关键字/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/05/05/Swift中的关键字/" itemprop="url">Swift中的关键字</a></h1>
         
 
         <div class="post-meta">
@@ -747,7 +750,7 @@
       
         
           
-            <p>##Swift中的关键字<br>我们在使用Swift写程序的时候，其中的关键字是我们经常遇到的，每个关键字也有其特定的用法，我们需要清除的知道每个关键字的用法，才能写出更优良的代码。下面总结了一部分关键字，供需要是查询.</p>
+            <p>我们在使用Swift写程序的时候，其中的关键字是我们经常遇到的，每个关键字也有其特定的用法，我们需要清除的知道每个关键字的用法，才能写出更优良的代码。下面总结了一部分关键字，供需要是查询.</p>
 <ul>
 <li>override</li>
 </ul>
@@ -795,6 +798,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open访问级别修饰的关键字 可以被任何人使用，包括override和继承</span><br></pre></td></tr></table></figure>
 <p><strong>访问控制从高到底的权限控制顺序如下</strong></p>
 <p>  <strong>open &gt;  public  &gt;  internal  &gt; fileprivate &gt; private</strong></p>
+<p>tags:<br> -iOS Swift</p>
+<p>categories:<br>-iOS技术点</p>
 <hr>
 
           
