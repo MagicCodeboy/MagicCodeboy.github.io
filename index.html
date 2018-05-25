@@ -251,6 +251,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/iOS粒子效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/25/iOS粒子效果/" itemprop="url">iOS使用粒子实现简单的雪花效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T20:47:54+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,227 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h2><p>我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路：</p>
+<h2 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2.介绍"></a>2.介绍</h2><ul>
+<li>第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图小时在屏幕中的时候，放到我们的复用池中，可以供再次使用，这样循环执行，就可以实现我们的雪花效果。</li>
+</ul>
+<p>但是这个的代码量会多一点，感兴趣的同学可以尝试一下，下面我们来重点介绍一下iOS给我们提供的粒子效果CAEmitterLayer，它是Layer的子类，使用它来实现的性能也会更好一点。</p>
+<p>这里我们重点的介绍一下它的各个属性，只要掌握好了属性，我们就能更好的使用它。</p>
+<p>##3.参数</p>
+<p><strong>1.发射器的形状</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> /* A string defining the type of emission shape used. Current options are:</span><br><span class="line"> * `point&apos; (the default), `line&apos;, `rectangle&apos;, `circle&apos;, `cuboid&apos; and</span><br><span class="line"> * `sphere&apos;. */ </span><br><span class="line">//kCAEmitterLayerPoint 点的形状，粒子从一个点发出</span><br><span class="line">//kCAEmitterLayerLine 线的形状，粒子从一条线发出</span><br><span class="line">//kCAEmitterLayerRectangle 矩形形状，粒子从一个矩形中发出</span><br><span class="line">//kCAEmitterLayerCuboid 立方体形状，会影响z平面的效果</span><br><span class="line">//kCAEmitterLayerCircle 圆形，粒子会在圆形范围发射</span><br><span class="line">//kCAEmitterLayerSphere 球形</span><br><span class="line">@property(copy) NSString *emitterShape;</span><br></pre></td></tr></table></figure>
+<p><strong>2.发射器的发射模式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//kCAEmitterLayerPoints 从发射器中发出</span><br><span class="line">//kCAEmitterLayerOutline 从发射器边缘发出</span><br><span class="line">//kCAEmitterLayerSurface 从发射器表面发出</span><br><span class="line">//kCAEmitterLayerVolumen 从发射器中点发出</span><br><span class="line">@property(copy) NSString *emitterMode;</span><br></pre></td></tr></table></figure>
+<p><strong>3.发射器的尺寸大小</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGSize emitterSize;</span><br></pre></td></tr></table></figure>
+<p><strong>4.发射器的平面的中心位置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGPoint emitterPosition;</span><br></pre></td></tr></table></figure>
+<p><strong>5.发射器在Z平面的位置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emitterZPosition;</span><br></pre></td></tr></table></figure>
+<p>我们实现粒子效果，一定是要用到CAEmitterCell这个类的，这个是一个发射单元。设置他的属性，我们就可以控制大部分的效果。</p>
+<p><strong>1.创建发射单元</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)emitterCell;</span><br></pre></td></tr></table></figure>
+<p><strong>2.粒子的创建速率</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float birthRate;</span><br></pre></td></tr></table></figure>
+<p><strong>3.粒子的生存时间</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetime;</span><br></pre></td></tr></table></figure>
+<p><strong>4.粒子的生存时间容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetimeRange;</span><br></pre></td></tr></table></figure>
+<p><strong>5.粒子在xy平面上的发射角度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLongitude;</span><br></pre></td></tr></table></figure>
+<p><strong>6.粒子在z轴方向的发射角度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLatitude;</span><br></pre></td></tr></table></figure>
+<p><strong>7.粒子发射角度的容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionRange;</span><br></pre></td></tr></table></figure>
+<p><strong>8.粒子的速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocity;</span><br></pre></td></tr></table></figure>
+<p><strong>9.粒子的速度容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocityRange;</span><br></pre></td></tr></table></figure>
+<p><strong>10.粒子的x.y.z方向的加速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat xAcceleration;</span><br><span class="line">@property CGFloat yAcceleration;</span><br><span class="line">@property CGFloat zAcceleration;</span><br></pre></td></tr></table></figure>
+<p><strong>11.粒子的缩放大小，缩放容差和缩放速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat scale;</span><br><span class="line">@property CGFloat scaleRange;</span><br><span class="line">@property CGFloat scaleSpeed;</span><br></pre></td></tr></table></figure>
+<p><strong>12.粒子的旋转度与旋转容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
+<p><strong>13.粒子的旋转度与旋转容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
+<p><strong>14.粒子的颜色 默认透明的白色</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGColorRef color;</span><br></pre></td></tr></table></figure>
+<p><strong>15.粒子在rgb三个色相上的容差和透明度的容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redRange;</span><br><span class="line">@property float greenRange;</span><br><span class="line">@property float blueRange;</span><br><span class="line">@property float alphaRange;</span><br></pre></td></tr></table></figure>
+<p><strong>16.粒子在RGB三个色相上的变化速度和透明度的变化速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redSpeed;</span><br><span class="line">@property float greenSpeed;</span><br><span class="line">@property float blueSpeed;</span><br><span class="line">@property float alphaSpeed;</span><br></pre></td></tr></table></figure>
+<p><strong>17.渲染粒子，可以设置为一个CGImage的对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(strong) id contents;</span><br></pre></td></tr></table></figure>
+<p><strong>18.渲染的范围</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGRect contentsRect;</span><br></pre></td></tr></table></figure>
+<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h2><p><img src="http://art1.photozou.jp/bin/photo/255920750/org.bin?size=1024" alt="实现"></p>
+<p>这里我将使用经常使用的金币的效果和雪花的效果都封装在一个view中了，我们需要使用的时候只需要调用相应的方法即可，也可以修改其中的参数，达到自己需求的效果。</p>
+<p>在Swift项目中调用,因为最开始做的时候是在OC的项目中用到的，所以这里在Swift中调用的时候需要在桥接文件中添加头文件，具体的可以看<br><a href="https://github.com/MagicCodeboy/LEDDemo" target="_blank" rel="noopener">Demo</a> </p>
+<ul>
+<li><p>在Swift项目中的调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">snowView = SnowView.init(frame: self.view.bounds)</span><br><span class="line">snowView?.show(UIImage.init(named: &quot;1&quot;), in: self.view)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在OC项目中的调用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[_snowView showImage:image InView:_showSnowImageView];</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的点是，因为之前实现的时候，为了方便的移除，所以将它放在一个创建好的view的layer层上，所以我们展示的时候，需要创建一个专属的图层用来展示这个效果，避免移除了layer层的时候影响到我们项目中其他的图层，在这个demo中我将移除的代码注释掉了，写这篇文章简单的总结一下，方便下次使用的时候查阅，欢迎各位同学大大指导。</p>
+<p>一个假装努力的👨‍💻‍。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/19/KVO实现原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1809,7 +2048,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1831,7 +2070,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

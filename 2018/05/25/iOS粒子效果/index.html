@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh_Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="String_we_ask_for" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS粒子效果," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.引言我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路： 2.介绍 第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图">
+<meta name="keywords" content="iOS粒子效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS使用粒子实现简单的雪花效果">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/iOS粒子效果/index.html">
+<meta property="og:site_name" content="Shanhu&#39;Blog">
+<meta property="og:description" content="1.引言我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路： 2.介绍 第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图">
+<meta property="og:locale" content="zh_Hans">
+<meta property="og:image" content="http://art1.photozou.jp/bin/photo/255920750/org.bin?size=1024">
+<meta property="og:updated_time" content="2018-05-25T12:47:54.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS使用粒子实现简单的雪花效果">
+<meta name="twitter:description" content="1.引言我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路： 2.介绍 第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图">
+<meta name="twitter:image" content="http://art1.photozou.jp/bin/photo/255920750/org.bin?size=1024">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/iOS粒子效果/"/>
+
+
+
+
+
+  <title>iOS使用粒子实现简单的雪花效果 | Shanhu'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shanhu'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天道酬勤 自强不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/iOS粒子效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS使用粒子实现简单的雪花效果</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T20:47:54+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,227 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h2><p>我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路：</p>
+<h2 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2.介绍"></a>2.介绍</h2><ul>
+<li>第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图小时在屏幕中的时候，放到我们的复用池中，可以供再次使用，这样循环执行，就可以实现我们的雪花效果。</li>
+</ul>
+<p>但是这个的代码量会多一点，感兴趣的同学可以尝试一下，下面我们来重点介绍一下iOS给我们提供的粒子效果CAEmitterLayer，它是Layer的子类，使用它来实现的性能也会更好一点。</p>
+<p>这里我们重点的介绍一下它的各个属性，只要掌握好了属性，我们就能更好的使用它。</p>
+<p>##3.参数</p>
+<p><strong>1.发射器的形状</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> /* A string defining the type of emission shape used. Current options are:</span><br><span class="line"> * `point&apos; (the default), `line&apos;, `rectangle&apos;, `circle&apos;, `cuboid&apos; and</span><br><span class="line"> * `sphere&apos;. */ </span><br><span class="line">//kCAEmitterLayerPoint 点的形状，粒子从一个点发出</span><br><span class="line">//kCAEmitterLayerLine 线的形状，粒子从一条线发出</span><br><span class="line">//kCAEmitterLayerRectangle 矩形形状，粒子从一个矩形中发出</span><br><span class="line">//kCAEmitterLayerCuboid 立方体形状，会影响z平面的效果</span><br><span class="line">//kCAEmitterLayerCircle 圆形，粒子会在圆形范围发射</span><br><span class="line">//kCAEmitterLayerSphere 球形</span><br><span class="line">@property(copy) NSString *emitterShape;</span><br></pre></td></tr></table></figure>
+<p><strong>2.发射器的发射模式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//kCAEmitterLayerPoints 从发射器中发出</span><br><span class="line">//kCAEmitterLayerOutline 从发射器边缘发出</span><br><span class="line">//kCAEmitterLayerSurface 从发射器表面发出</span><br><span class="line">//kCAEmitterLayerVolumen 从发射器中点发出</span><br><span class="line">@property(copy) NSString *emitterMode;</span><br></pre></td></tr></table></figure>
+<p><strong>3.发射器的尺寸大小</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGSize emitterSize;</span><br></pre></td></tr></table></figure>
+<p><strong>4.发射器的平面的中心位置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGPoint emitterPosition;</span><br></pre></td></tr></table></figure>
+<p><strong>5.发射器在Z平面的位置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emitterZPosition;</span><br></pre></td></tr></table></figure>
+<p>我们实现粒子效果，一定是要用到CAEmitterCell这个类的，这个是一个发射单元。设置他的属性，我们就可以控制大部分的效果。</p>
+<p><strong>1.创建发射单元</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)emitterCell;</span><br></pre></td></tr></table></figure>
+<p><strong>2.粒子的创建速率</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float birthRate;</span><br></pre></td></tr></table></figure>
+<p><strong>3.粒子的生存时间</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetime;</span><br></pre></td></tr></table></figure>
+<p><strong>4.粒子的生存时间容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetimeRange;</span><br></pre></td></tr></table></figure>
+<p><strong>5.粒子在xy平面上的发射角度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLongitude;</span><br></pre></td></tr></table></figure>
+<p><strong>6.粒子在z轴方向的发射角度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLatitude;</span><br></pre></td></tr></table></figure>
+<p><strong>7.粒子发射角度的容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionRange;</span><br></pre></td></tr></table></figure>
+<p><strong>8.粒子的速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocity;</span><br></pre></td></tr></table></figure>
+<p><strong>9.粒子的速度容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocityRange;</span><br></pre></td></tr></table></figure>
+<p><strong>10.粒子的x.y.z方向的加速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat xAcceleration;</span><br><span class="line">@property CGFloat yAcceleration;</span><br><span class="line">@property CGFloat zAcceleration;</span><br></pre></td></tr></table></figure>
+<p><strong>11.粒子的缩放大小，缩放容差和缩放速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat scale;</span><br><span class="line">@property CGFloat scaleRange;</span><br><span class="line">@property CGFloat scaleSpeed;</span><br></pre></td></tr></table></figure>
+<p><strong>12.粒子的旋转度与旋转容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
+<p><strong>13.粒子的旋转度与旋转容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
+<p><strong>14.粒子的颜色 默认透明的白色</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGColorRef color;</span><br></pre></td></tr></table></figure>
+<p><strong>15.粒子在rgb三个色相上的容差和透明度的容差</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redRange;</span><br><span class="line">@property float greenRange;</span><br><span class="line">@property float blueRange;</span><br><span class="line">@property float alphaRange;</span><br></pre></td></tr></table></figure>
+<p><strong>16.粒子在RGB三个色相上的变化速度和透明度的变化速度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redSpeed;</span><br><span class="line">@property float greenSpeed;</span><br><span class="line">@property float blueSpeed;</span><br><span class="line">@property float alphaSpeed;</span><br></pre></td></tr></table></figure>
+<p><strong>17.渲染粒子，可以设置为一个CGImage的对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(strong) id contents;</span><br></pre></td></tr></table></figure>
+<p><strong>18.渲染的范围</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGRect contentsRect;</span><br></pre></td></tr></table></figure>
+<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h2><p><img src="http://art1.photozou.jp/bin/photo/255920750/org.bin?size=1024" alt="实现"></p>
+<p>这里我将使用经常使用的金币的效果和雪花的效果都封装在一个view中了，我们需要使用的时候只需要调用相应的方法即可，也可以修改其中的参数，达到自己需求的效果。</p>
+<p>在Swift项目中调用,因为最开始做的时候是在OC的项目中用到的，所以这里在Swift中调用的时候需要在桥接文件中添加头文件，具体的可以看<br><a href="https://github.com/MagicCodeboy/LEDDemo" target="_blank" rel="noopener">Demo</a> </p>
+<ul>
+<li><p>在Swift项目中的调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">snowView = SnowView.init(frame: self.view.bounds)</span><br><span class="line">snowView?.show(UIImage.init(named: &quot;1&quot;), in: self.view)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在OC项目中的调用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[_snowView showImage:image InView:_showSnowImageView];</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的点是，因为之前实现的时候，为了方便的移除，所以将它放在一个创建好的view的layer层上，所以我们展示的时候，需要创建一个专属的图层用来展示这个效果，避免移除了layer层的时候影响到我们项目中其他的图层，在这个demo中我将移除的代码注释掉了，写这篇文章简单的总结一下，方便下次使用的时候查阅，欢迎各位同学大大指导。</p>
+<p>一个假装努力的👨‍💻‍。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS粒子效果/" rel="tag"># iOS粒子效果</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/19/KVO实现原理/" rel="next" title="KVO的内部实现原理">
+                <i class="fa fa-chevron-left"></i> KVO的内部实现原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shanhu Lv</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MagicCodeboy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18668460187@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.itmotui.com/" title="莫颓的博客" target="_blank">莫颓的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引言"><span class="nav-number">1.</span> <span class="nav-text">1.引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-介绍"><span class="nav-number">2.</span> <span class="nav-text">2.介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-使用"><span class="nav-number">3.</span> <span class="nav-text">4.使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shanhu Lv</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
