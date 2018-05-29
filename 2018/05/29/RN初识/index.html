@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="iOS底层实现机制," />
+  <meta name="keywords" content="React Native基础," />
 
 
 
@@ -81,22 +81,18 @@
 
 
 
-<meta name="description" content="1.KVO是什么？ KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。 2.我们怎么使用KVO？  我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,">
-<meta name="keywords" content="iOS底层实现机制">
+<meta name="description" content="React Native 简介 React Native是什么？（一下简称RN）  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领">
+<meta name="keywords" content="React Native基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KVO的内部实现原理">
-<meta property="og:url" content="http://yoursite.com/2018/05/19/KVO实现原理/index.html">
+<meta property="og:title" content="React Native初见">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/RN初识/index.html">
 <meta property="og:site_name" content="Shanhu&#39;Blog">
-<meta property="og:description" content="1.KVO是什么？ KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。 2.我们怎么使用KVO？  我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,">
+<meta property="og:description" content="React Native 简介 React Native是什么？（一下简称RN）  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领">
 <meta property="og:locale" content="zh_Hans">
-<meta property="og:image" content="http://art1.photozou.jp/bin/photo/255812819/624.v1526718494.bin">
-<meta property="og:image" content="http://art5.photozou.jp/bin/photo/255812933/624.v1526718817.bin">
-<meta property="og:image" content="http://art5.photozou.jp/bin/photo/255814259/org.bin?size=1024">
-<meta property="og:updated_time" content="2018-05-25T12:51:43.858Z">
+<meta property="og:updated_time" content="2018-05-29T15:14:50.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KVO的内部实现原理">
-<meta name="twitter:description" content="1.KVO是什么？ KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。 2.我们怎么使用KVO？  我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,">
-<meta name="twitter:image" content="http://art1.photozou.jp/bin/photo/255812819/624.v1526718494.bin">
+<meta name="twitter:title" content="React Native初见">
+<meta name="twitter:description" content="React Native 简介 React Native是什么？（一下简称RN）  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领">
 
 
 
@@ -126,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/19/KVO实现原理/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/RN初识/"/>
 
 
 
 
 
-  <title>KVO的内部实现原理 | Shanhu'Blog</title>
+  <title>React Native初见 | Shanhu'Blog</title>
   
 
 
@@ -259,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/19/KVO实现原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/RN初识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shanhu Lv">
@@ -276,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">KVO的内部实现原理</h1>
+          <h1 class="post-title" itemprop="name headline">React Native初见</h1>
         
 
         <div class="post-meta">
@@ -288,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T22:49:20+08:00">
-                2018-05-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T23:14:50+08:00">
+                2018-05-29
               </time>
             
 
@@ -311,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
                   </a>
                 </span>
 
@@ -342,7 +338,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  845 字
+                  811 字
                 </span>
               
 
@@ -379,30 +375,28 @@
       
 
       
-        <p><strong>1.KVO是什么？</strong></p>
-<p>KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。</p>
-<p><strong>2.我们怎么使用KVO？</strong></p>
-<p><img src="http://art1.photozou.jp/bin/photo/255812819/624.v1526718494.bin" alt=""></p>
-<p>我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,提示我们监测的值发生了改变，这个就是最简单的KVO的应用。</p>
-<p><img src="http://art5.photozou.jp/bin/photo/255812933/624.v1526718817.bin" alt=""></p>
-<p>在我们实际开发项目的过程中，可能用到的要比这个复杂的多，这个时候我们可以使用RAC来进行监测，Swift的也有相应的大神贡献的库，使用起来简直不要太爽。当然这里使用KVO的时候，不要忘了在我们不需要监测的时候，移除监测者。</p>
-<p><strong>3.KVO 的实现原理</strong></p>
-<p>经过了上面的两步，我们也已经最KVO的概念和基本的应用有了基础的了解了，那么下面就到了我们今天要讨论的重点了，这个KVO使用起来这么的方便，那他底层到底是怎么实现的呢。</p>
-<ul>
-<li><p>其实这个是通过我们的强大的Runtime（运行时）来进行实现的。当你第一次观察某个对象时，系统就会在<strong>运行时动态的</strong>创建一个<strong>该类的派生类</strong>,在这个派生类中重写基类中任何被观察属性的setter方法，派生类在被重写的setter方法内实现真正的<strong>通知机制</strong>。</p>
-</li>
-<li><p>在我们的例子中，我们创建的类是Person类，那么将会生成的派生类类名为<strong>NSKVONotifying_Person</strong>，每一个类对象中都有一个isa指针指向当前类，当一个类对象第一次被观察的时候，系统会将isa指针指向动态生成的派生类，从而在给被监控属性赋值的时候执行的是派生类的setter方法。</p>
-</li>
-<li><p>键值观察通知依赖NSObject的两个方法：<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong> ;<br>在一个被观察的属性发生改变之前，<strong>willChangeValueForKey</strong>方法一定会被调用，这个时候回记录改变之前的的旧值，当这个值发生改变之后会调用<strong>didChangevlueForKey</strong>方法，记录新的值，然后<strong>observeValueForKey:ofObject:change:context:</strong>方法也会被调用。</p>
-</li>
-<li><p>在KVO的这个实现机制中苹果还在内部重写了Class方法，让我们误认为我们使用的还是当前的类，隐藏生成的派生类。最后盗一张图，详细展示一下KVO实现（侵必删！！！）</p>
+        <h2 id="React-Native-简介"><a href="#React-Native-简介" class="headerlink" title="React Native 简介"></a>React Native 简介</h2><ul>
+<li><p>React Native是什么？（一下简称RN）<br>  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领域。 RN使你能够在JavaScript和React的基础上获得完全一致的开发体验。</p>
+<p>  Native指的就是原生的APP，也就是用原生开发方式开发出来的应用.<br>  React是一个用于构建用户界面的js库，React是声明式的，高效率的，并兼具灵活性，其中用于构建用户界面的js库有很多，如angular，vue，jQuery，ext等，都可以称为用户构建用户界面的js库。但是React与它们又有所不同，下面我们来分别介绍一下React的这几个特性：</p>
+<p>  <strong>1.声明式：声明式是由JSX语法来表现的</strong></p>
+<p>  JSX是使XML可以嵌入JavaScript的语法，可以更加直观的描述UI，JSX是JavaScript对象，可以理解为createElement的语法糖。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Text, View &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class Greeting extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Text&gt;Hello &#123;this.props.name&#125;!&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default class LotsOfGreetings extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Rexxar&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Jaina&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Valeera&apos; /&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://art5.photozou.jp/bin/photo/255814259/org.bin?size=1024" alt=""></p>
-<p><strong>4.手动实现KVO监测</strong></p>
-<p>自动触发的场景就是我们上面实现的，在注册KVO之前设置一个初始的值，注册之后，当我们设置了不同的值，这个监测就会被触发。</p>
-<p>手动触发KVO的监测就是我们实现上面的两个方法的时候，我们就手动触发了KVO的监测<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong>在这里就不再实现了，大家可以尝试一下，毕竟实践出真知嘛0.0。或者大家也可以看👇的这片文章</p>
-<p><a href="http://tech.glowing.com/cn/implement-kvo/" target="_blank" rel="noopener">链接</a>。</p>
+<pre><code>这里的声明式指的就是上面代码中用大括号括起来的部分{this.props.name}，这里类似于angular中的数据绑定，声明了UI中的表现与js中数据的关系。我们可以吧任意合法的JavaScript表达式通过括号嵌入到JSX语句中，括号的意思是括号内部为一个JS变量或者表达式，需要执行后取值。
+
+**2.高效率：高效率是由虚拟的DOM节点来实现的**
+
+虚拟DOM技术指的是JavaScript Object模拟DOM树，计算变更，减少重绘，提升效率的一种技术实现。
+
+**3.灵活性**
+
+这个是一个很广的范围，主要有安装的灵活性和编写代码的灵活性等，其实就是components即**组件化**
+
+RN通过components来进行组件化。他把UI分割成独立，可重用的部件。React有它自己的组件化方式，就是所有模块都继承自React.Components,这个要比angular的modules更加的轻量级，结构也更加的简单
+</code></pre><p>介绍完了他的特点，下面我们来总结一下：</p>
+<p>React通过虚拟的DOM实现了对UI层的解耦，然后将浏览器的DOM树替换成Native的UI模块，使React在移动端进行渲染，最后采用Native的核心API完成React与Native的通信，由于采用Native原生UI作为展现层，所以RN具有可以媲美原生应用的优秀用户体验和性能优势。RN是基于React技术编写Native应用的一门技术，他继承了React简明、高效、灵活的特点，又具有Native优秀的用户体验。</p>
+<p>RN采用JS编码，编写的应用具有跨平台，可以热更新的优势。    </p>
 
       
     </div>
@@ -420,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS底层实现机制/" rel="tag"># iOS底层实现机制</a>
+            <a href="/tags/React-Native基础/" rel="tag"># React Native基础</a>
           
         </div>
       
@@ -433,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/16/iOS小知识点/" rel="next" title="小知识点总结">
-                <i class="fa fa-chevron-left"></i> 小知识点总结
+              <a href="/2018/05/25/iOS粒子效果/" rel="next" title="iOS使用粒子实现简单的雪花效果">
+                <i class="fa fa-chevron-left"></i> iOS使用粒子实现简单的雪花效果
               </a>
             
           </div>
@@ -442,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/25/iOS粒子效果/" rel="prev" title="iOS使用粒子实现简单的雪花效果">
-                iOS使用粒子实现简单的雪花效果 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Native-简介"><span class="nav-number">1.</span> <span class="nav-text">React Native 简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
