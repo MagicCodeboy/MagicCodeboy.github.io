@@ -965,7 +965,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  962 字
+                  1,059 字
                 </span>
               
 
@@ -981,7 +981,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -1012,6 +1012,9 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 <p>这里需要注意的是 这里的Cancel方法并不会立即停止当前正在执行的任务，而只是标记了正在执行的任务为取消的状态，我们需要在执行动画的方法中判断当前的是否是取消状态，然后如果是，退出这次的执行，动画中的方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ([NSThread currentThread].isCancelled) &#123;</span><br><span class="line">            return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>5.直播项目中基本的配置问题</strong><br>在做一个直播项目的时候，一般都会使用第三方的SDK，现在基本上所有的大厂都会这个SDK，我们使用的是金山的SDK。一般都要按照开发文档进行直播的参数配置，也是影响用户体验的一个很重要的因素，我们需要设置特定的码率，视频的分辨率、视频的编码器和音频的编码率等等参数，关于视频的编解码的问题，在iOS8.0以后，基本都会选择视频的硬编码，这里还有一个参数是视频的起始编码率，视频的编码率越高，视频的显示的效果就会越好，其他的参数配置也要按照SDK推荐的值来设置，这样至少初步的配置的直播的效果会稍微好一点。</p>
 <p>在直播中还有一个很重要的问题就是关于直播的首屏秒开的问题，一个直播打开的时间越短，用户的体验就会更优，我们解决这个方法主要是要用了CDN加速，但是效果不是很理想，如果有哪位大神有很好的方法，希望不吝赐教。其实直播的东西可以用一片完整的文章来记录了，因为其中涉及到的知识点是很多的，这个有机会，在另外完整的整理一下，这里先简单的记录一下吧。</p>
+<p><strong>6.Mac安装软件 提示软件已损坏，放入废纸篓解决办法</strong></p>
+<p>当我们安装从社交软件等途径获取到的软件时，经常会遇到提示软件已经损坏，请放入废纸篓，这个时候我们只需要打开终端，执行一段命令行，就可以完美的解决这个问题</p>
+<p>sudo spctl –master-disable。</p>
 
           
         
