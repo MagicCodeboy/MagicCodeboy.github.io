@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="iOS支付宝," />
+  <meta name="keywords" content="内存管理," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。其实这个问题是很简单的一个问题，具体的解决办法就是12345678910-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSStri">
-<meta name="keywords" content="iOS支付宝">
+<meta name="description" content="iOS中的内存管理内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。 首先我们来讨论一下内存中的分区： 1.内存中分为五大区域 在这里我们只做简单的介绍 栈区：存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。 堆区： 存储OC的对象，手">
+<meta name="keywords" content="内存管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="支付宝支付后回调不到APP中的问题">
-<meta property="og:url" content="http://yoursite.com/2018/05/05/支付宝问题解决/index.html">
+<meta property="og:title" content="iOS 中的内存管理">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/iOS内存管理/index.html">
 <meta property="og:site_name" content="Shanhu&#39;Blog">
-<meta property="og:description" content="之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。其实这个问题是很简单的一个问题，具体的解决办法就是12345678910-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSStri">
+<meta property="og:description" content="iOS中的内存管理内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。 首先我们来讨论一下内存中的分区： 1.内存中分为五大区域 在这里我们只做简单的介绍 栈区：存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。 堆区： 存储OC的对象，手">
 <meta property="og:locale" content="zh_Hans">
-<meta property="og:updated_time" content="2018-05-05T14:57:36.104Z">
+<meta property="og:updated_time" content="2018-06-12T12:30:40.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="支付宝支付后回调不到APP中的问题">
-<meta name="twitter:description" content="之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。其实这个问题是很简单的一个问题，具体的解决办法就是12345678910-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSStri">
+<meta name="twitter:title" content="iOS 中的内存管理">
+<meta name="twitter:description" content="iOS中的内存管理内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。 首先我们来讨论一下内存中的分区： 1.内存中分为五大区域 在这里我们只做简单的介绍 栈区：存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。 堆区： 存储OC的对象，手">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/05/支付宝问题解决/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/iOS内存管理/"/>
 
 
 
 
 
-  <title>支付宝支付后回调不到APP中的问题 | Shanhu'Blog</title>
+  <title>iOS 中的内存管理 | Shanhu'Blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/支付宝问题解决/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/iOS内存管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shanhu Lv">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">支付宝支付后回调不到APP中的问题</h1>
+          <h1 class="post-title" itemprop="name headline">iOS 中的内存管理</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T21:39:59+08:00">
-                2018-05-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T20:30:40+08:00">
+                2018-06-12
               </time>
             
 
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  243 字
+                  1,298 字
                 </span>
               
 
@@ -354,7 +354,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -375,8 +375,47 @@
       
 
       
-        <p>之前在写关于支付宝支付的时候没有遇到这个问题，可能是时间太久，所以漏掉了这一步骤，这次又遇到了这个问题，所以在这里记录一下，以免下次再入坑。<br>其实这个问题是很简单的一个问题，具体的解决办法就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">	NSLog(@&quot;%@\n%@\nURLhost%@&quot; ,url,sourceApplication,[url host]);</span><br><span class="line">// 这里只是简单地假设 url 形式为 taobao://item.taobao.com/item.htm?id=12345678</span><br><span class="line">// 在 host 等于 item.taobao.com 时，说明一个宝贝详情的 url，</span><br><span class="line">BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];</span><br><span class="line">if (result == FALSE) &#123;</span><br><span class="line">    return [[PayApi sharedApi] handleOpenURL:url];</span><br><span class="line">&#125;</span><br><span class="line">return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>所以如果你也，遇到这个问题了，可以查看这个方法中有没有写入这个方法，如果这个方法已经写了，可以检查是否设置是否在Plist文件中的URL Scheme 是否添加了支付宝设置的Scheme.</p>
+        <h2 id="iOS中的内存管理"><a href="#iOS中的内存管理" class="headerlink" title="iOS中的内存管理"></a>iOS中的内存管理</h2><p>内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。</p>
+<p>首先我们来讨论一下内存中的分区：</p>
+<p><strong>1.内存中分为五大区域</strong></p>
+<p>在这里我们只做简单的介绍</p>
+<p><strong>栈区：</strong>存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。</p>
+<p><strong>堆区：</strong> 存储OC的对象，手动申请的字节空间，需要自己释放</p>
+<p><strong>BSS段（Block Started by Symbol）：</strong>未初始化的全局变量和静态变量，一旦初始化就会从BSS段中回收掉，转存到数据段中</p>
+<p><strong>数据段：</strong> 存储已经初始化的全局变量和静态变量，以及常量数据，直到程序结束时才会被立即收回。数据段属于静态内存分配。</p>
+<p><strong>代码段：</strong> 通常是指用来存放程序执行代码的一块内存区域，这部分区域的大小在程序运行前就已经确定了，并且内存区域通常属于只读。在代码段中，也有可能包含一些只读的常量数据。</p>
+<p>除了堆区，其他区域中存储的数据，都是由系统自动释放的。堆区中存放的OC的对象，是不会自动释放的，如果不主动释放，那么将在程序结束的时候释放。</p>
+<p><strong>内存的管理原则</strong></p>
+<p>就是我们常说的引用计数的问题，OC的对象都继承于NSObject，该对象有一个属性，叫做retainCount,也就是我们说的引用计数器，类型为unsigned long，占据八个字节，每一个对象负责维护对象所引用的计数值，当一个新的引用指向对象，那么这个对象的引用计数会增加1，当我们新创建一个对象的时候这个对象的引用计数器的值默认为1，当这个对象被少一次引用的时候这个对象的引用计数值减1，当这个对象的引用计数值为0的时候就说明了这个对象没有被使用，这个时候系统会自动回收掉此对象。</p>
+<p><strong>内存管理的方式：</strong></p>
+<p><strong>1.MRC:</strong> Manual Reference Counting 手动引用计数器，需要我们手动管理对象引用计数的值。</p>
+<p><strong>2.ARC：</strong> Automatic Reference Counting 自动引用计数，系统自动的改变对象引用计数的值（iOS5之后），ARC是基于MRC的</p>
+<p><strong>这里我们重点讨论一下ARC：</strong></p>
+<p>ARC是automatic reference counting 自动引用计数，在程序编译时自动加入retain/release。 在对象被创建时retaincount + 1,在对象被release时count -1 ，当count=0时，对象销毁。程序中加入autoreleasepool对象会由系统自动加上autorelease方法，如果该对象引用计数为0，则销毁。ARC是为了解决MRC手动管理内存存在的一些问题而诞生的。</p>
+<p>MRC下内存管理的缺点：</p>
+<ul>
+<li>释放一个堆内存时，首先要确定指向这个堆空间的指针都被release了。（要避免提前释放）</li>
+<li>释放指针指向的堆空间，首先要确定哪些指向同一个堆，这些指针只能释放一次。（避免释放多次，造成内存泄漏）</li>
+<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁来进行释放。</li>
+<li>多线程操作时，不确定那个线程最后使用完毕。</li>
+</ul>
+<p>但是ARC下也可能会出现内存泄漏的情况，比如如下的情况：</p>
+<ul>
+<li>block的循环引用，可以将引用的一方变成weak，来避免循环引用。</li>
+<li>NSTimer 在使用NSTimer addTarget时，为了防止target被释放而导致的程序异常，timer会持有target，这个也是一处内存泄漏的隐患。</li>
+<li>非OBJC对象 ARC是自动检测objc对象的，如果不是objc对象就无能为力了，C语言使用malloc开辟，free释放 c++使用new开辟，delete释放，但是在ARC下，不会添加非objc对象释放语句，如果没有去释放，也会造成内存泄漏。</li>
+</ul>
+<p>每一个工程中都有一个main.m文件</p>
+<hr>
+<p>int main(int argc, char * argv[]) {</p>
+<p>  @autoreleasepool {</p>
+<p>  return  UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate  class]));</p>
+<p> }</p>
+<p>}</p>
+<hr>
+<p>autoreleasepool是用来做autorelease变量释放的，autorealease不会马上释放，当他到了最近的pool release时会检查retain count是不是为0，为0就会释放。</p>
+<p><strong>自动释放池的底层实现：</strong></p>
+<p>自动释放池以栈的形式实现： 当你创建一个新的自动释放池时，他将被添加到栈顶，当一个对象收到发送autorelease消息时，他被添加到当前线程的处于栈顶的自动释放池中，当自动释放池被回收时，他们从栈中被删除，并且会给池子里所有的对象都会做一次release操作。</p>
 
       
     </div>
@@ -394,7 +433,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS支付宝/" rel="tag"># iOS支付宝</a>
+            <a href="/tags/内存管理/" rel="tag"># 内存管理</a>
           
         </div>
       
@@ -407,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/05/Swift中的关键字/" rel="next" title="Swift中的关键字">
-                <i class="fa fa-chevron-left"></i> Swift中的关键字
+              <a href="/2018/05/31/关于cocoapods的简单使用/" rel="next" title="cocoapods安装">
+                <i class="fa fa-chevron-left"></i> cocoapods安装
               </a>
             
           </div>
@@ -416,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/05/QQ分享的APPID转换十六进制的方法/" rel="prev" title="友盟集成QQ分享的APPID转换十六进制的方法">
-                友盟集成QQ分享的APPID转换十六进制的方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS中的内存管理"><span class="nav-number">1.</span> <span class="nav-text">iOS中的内存管理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

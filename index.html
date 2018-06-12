@@ -251,6 +251,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/iOS内存管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/iOS内存管理/" itemprop="url">iOS 中的内存管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T20:30:40+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,298 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="iOS中的内存管理"><a href="#iOS中的内存管理" class="headerlink" title="iOS中的内存管理"></a>iOS中的内存管理</h2><p>内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。</p>
+<p>首先我们来讨论一下内存中的分区：</p>
+<p><strong>1.内存中分为五大区域</strong></p>
+<p>在这里我们只做简单的介绍</p>
+<p><strong>栈区：</strong>存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。</p>
+<p><strong>堆区：</strong> 存储OC的对象，手动申请的字节空间，需要自己释放</p>
+<p><strong>BSS段（Block Started by Symbol）：</strong>未初始化的全局变量和静态变量，一旦初始化就会从BSS段中回收掉，转存到数据段中</p>
+<p><strong>数据段：</strong> 存储已经初始化的全局变量和静态变量，以及常量数据，直到程序结束时才会被立即收回。数据段属于静态内存分配。</p>
+<p><strong>代码段：</strong> 通常是指用来存放程序执行代码的一块内存区域，这部分区域的大小在程序运行前就已经确定了，并且内存区域通常属于只读。在代码段中，也有可能包含一些只读的常量数据。</p>
+<p>除了堆区，其他区域中存储的数据，都是由系统自动释放的。堆区中存放的OC的对象，是不会自动释放的，如果不主动释放，那么将在程序结束的时候释放。</p>
+<p><strong>内存的管理原则</strong></p>
+<p>就是我们常说的引用计数的问题，OC的对象都继承于NSObject，该对象有一个属性，叫做retainCount,也就是我们说的引用计数器，类型为unsigned long，占据八个字节，每一个对象负责维护对象所引用的计数值，当一个新的引用指向对象，那么这个对象的引用计数会增加1，当我们新创建一个对象的时候这个对象的引用计数器的值默认为1，当这个对象被少一次引用的时候这个对象的引用计数值减1，当这个对象的引用计数值为0的时候就说明了这个对象没有被使用，这个时候系统会自动回收掉此对象。</p>
+<p><strong>内存管理的方式：</strong></p>
+<p><strong>1.MRC:</strong> Manual Reference Counting 手动引用计数器，需要我们手动管理对象引用计数的值。</p>
+<p><strong>2.ARC：</strong> Automatic Reference Counting 自动引用计数，系统自动的改变对象引用计数的值（iOS5之后），ARC是基于MRC的</p>
+<p><strong>这里我们重点讨论一下ARC：</strong></p>
+<p>ARC是automatic reference counting 自动引用计数，在程序编译时自动加入retain/release。 在对象被创建时retaincount + 1,在对象被release时count -1 ，当count=0时，对象销毁。程序中加入autoreleasepool对象会由系统自动加上autorelease方法，如果该对象引用计数为0，则销毁。ARC是为了解决MRC手动管理内存存在的一些问题而诞生的。</p>
+<p>MRC下内存管理的缺点：</p>
+<ul>
+<li>释放一个堆内存时，首先要确定指向这个堆空间的指针都被release了。（要避免提前释放）</li>
+<li>释放指针指向的堆空间，首先要确定哪些指向同一个堆，这些指针只能释放一次。（避免释放多次，造成内存泄漏）</li>
+<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁来进行释放。</li>
+<li>多线程操作时，不确定那个线程最后使用完毕。</li>
+</ul>
+<p>但是ARC下也可能会出现内存泄漏的情况，比如如下的情况：</p>
+<ul>
+<li>block的循环引用，可以将引用的一方变成weak，来避免循环引用。</li>
+<li>NSTimer 在使用NSTimer addTarget时，为了防止target被释放而导致的程序异常，timer会持有target，这个也是一处内存泄漏的隐患。</li>
+<li>非OBJC对象 ARC是自动检测objc对象的，如果不是objc对象就无能为力了，C语言使用malloc开辟，free释放 c++使用new开辟，delete释放，但是在ARC下，不会添加非objc对象释放语句，如果没有去释放，也会造成内存泄漏。</li>
+</ul>
+<p>每一个工程中都有一个main.m文件</p>
+<hr>
+<p>int main(int argc, char * argv[]) {</p>
+<p>  @autoreleasepool {</p>
+<p>  return  UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate  class]));</p>
+<p> }</p>
+<p>}</p>
+<hr>
+<p>autoreleasepool是用来做autorelease变量释放的，autorealease不会马上释放，当他到了最近的pool release时会检查retain count是不是为0，为0就会释放。</p>
+<p><strong>自动释放池的底层实现：</strong></p>
+<p>自动释放池以栈的形式实现： 当你创建一个新的自动释放池时，他将被添加到栈顶，当一个对象收到发送autorelease消息时，他被添加到当前线程的处于栈顶的自动释放池中，当自动释放池被回收时，他们从栈中被删除，并且会给池子里所有的对象都会做一次release操作。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/关于cocoapods的简单使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2001,227 +2214,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/Swift中的关键字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/05/Swift中的关键字/" itemprop="url">Swift中的关键字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T21:39:59+08:00">
-                2018-05-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  717 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我们在使用Swift写程序的时候，其中的关键字是我们经常遇到的，每个关键字也有其特定的用法，我们需要清除的知道每个关键字的用法，才能写出更优良的代码。下面总结了一部分关键字，供需要是查询.</p>
-<ul>
-<li>override</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">重写父类的方法 子类继承父类的方法的时候要在方法的前面加上这个关键字  </span><br><span class="line">方法的实现会在父类的  方法中查找有没有这个方法的实现 如果没有  会报错</span><br></pre></td></tr></table></figure>
-<ul>
-<li>final</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在类（class）前加上这个参数的时候  表示这个类不能够被继承</span><br></pre></td></tr></table></figure>
-<ul>
-<li>mutating</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mutating 关键字用来标记一个会修改 结构体 的方法   </span><br><span class="line">在 类中 不需要标记任何方法 因为类中的方法通常可以修改类属性</span><br></pre></td></tr></table></figure>
-<ul>
-<li>extension </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（扩展）用来为现有的类型添加功能 例如新的方法和计算属性</span><br></pre></td></tr></table></figure>
-<ul>
-<li>defer</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用defer代码块来表示在函数返回前 函数中最后执行的代码 </span><br><span class="line">无论函数时候会抛出错误 这段代码都会执行</span><br><span class="line">使用defer 可以把函数调用之初就要执行的代码和函数调用结束时</span><br><span class="line">调用的扫尾代码写在一起  虽然这两者执行的时机截然不同</span><br></pre></td></tr></table></figure>
-<ul>
-<li>typealias</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用来定义一个类型别名  可以给现有的类型起一个更有意义的名字   </span><br><span class="line">typealias theNewInt =Int</span><br></pre></td></tr></table></figure>
-<p>###访问控制<br>swift3.0以前有三种访问控制关键字 分别是 <strong>private、internal、public</strong>。3.0以后又在原来的基础上增加了两种访问控制的关键字 分别是<strong>fileprivate、open</strong>。</p>
-<ul>
-<li>private</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private访问级别所修饰的属性或者方法只能在当前的类中访问</span><br></pre></td></tr></table></figure>
-<ul>
-<li>fileprivate</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileprivate访问级别所修饰的属性或者方法在当前的Swift源文件里可以访问</span><br></pre></td></tr></table></figure>
-<ul>
-<li>internal</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">internal 为默认的访问级别，可以默认不写。  internal访问级别</span><br><span class="line">所修饰的属性或者方法在源文件所在的整个模块都可以访问。如果是框架</span><br><span class="line">或者库代码，则在整个框架内部都将可以访问 框架由外部代码所引用时，</span><br><span class="line">则不可以访问，如果是App代码 在整个App代码 也是在整个App内部都</span><br><span class="line">可以访问</span><br></pre></td></tr></table></figure>
-<ul>
-<li>public </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public访问级别修饰的关键字可以被任何人访问。但是在其他module(模</span><br><span class="line">块)中不可以被override和继承，而在module内部可以被override和继</span><br><span class="line">承</span><br></pre></td></tr></table></figure>
-<ul>
-<li>open</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open访问级别修饰的关键字 可以被任何人使用，包括override和继承</span><br></pre></td></tr></table></figure>
-<p><strong>访问控制从高到底的权限控制顺序如下</strong></p>
-<p>  <strong>open &gt;  public  &gt;  internal  &gt; fileprivate &gt; private</strong></p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2272,7 +2264,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2294,7 +2286,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

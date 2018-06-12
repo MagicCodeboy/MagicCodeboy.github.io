@@ -251,6 +251,227 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/Swift中的关键字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/05/Swift中的关键字/" itemprop="url">Swift中的关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T21:39:59+08:00">
+                2018-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  717 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们在使用Swift写程序的时候，其中的关键字是我们经常遇到的，每个关键字也有其特定的用法，我们需要清除的知道每个关键字的用法，才能写出更优良的代码。下面总结了一部分关键字，供需要是查询.</p>
+<ul>
+<li>override</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">重写父类的方法 子类继承父类的方法的时候要在方法的前面加上这个关键字  </span><br><span class="line">方法的实现会在父类的  方法中查找有没有这个方法的实现 如果没有  会报错</span><br></pre></td></tr></table></figure>
+<ul>
+<li>final</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在类（class）前加上这个参数的时候  表示这个类不能够被继承</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mutating</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mutating 关键字用来标记一个会修改 结构体 的方法   </span><br><span class="line">在 类中 不需要标记任何方法 因为类中的方法通常可以修改类属性</span><br></pre></td></tr></table></figure>
+<ul>
+<li>extension </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（扩展）用来为现有的类型添加功能 例如新的方法和计算属性</span><br></pre></td></tr></table></figure>
+<ul>
+<li>defer</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用defer代码块来表示在函数返回前 函数中最后执行的代码 </span><br><span class="line">无论函数时候会抛出错误 这段代码都会执行</span><br><span class="line">使用defer 可以把函数调用之初就要执行的代码和函数调用结束时</span><br><span class="line">调用的扫尾代码写在一起  虽然这两者执行的时机截然不同</span><br></pre></td></tr></table></figure>
+<ul>
+<li>typealias</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用来定义一个类型别名  可以给现有的类型起一个更有意义的名字   </span><br><span class="line">typealias theNewInt =Int</span><br></pre></td></tr></table></figure>
+<p>###访问控制<br>swift3.0以前有三种访问控制关键字 分别是 <strong>private、internal、public</strong>。3.0以后又在原来的基础上增加了两种访问控制的关键字 分别是<strong>fileprivate、open</strong>。</p>
+<ul>
+<li>private</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private访问级别所修饰的属性或者方法只能在当前的类中访问</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fileprivate</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileprivate访问级别所修饰的属性或者方法在当前的Swift源文件里可以访问</span><br></pre></td></tr></table></figure>
+<ul>
+<li>internal</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">internal 为默认的访问级别，可以默认不写。  internal访问级别</span><br><span class="line">所修饰的属性或者方法在源文件所在的整个模块都可以访问。如果是框架</span><br><span class="line">或者库代码，则在整个框架内部都将可以访问 框架由外部代码所引用时，</span><br><span class="line">则不可以访问，如果是App代码 在整个App代码 也是在整个App内部都</span><br><span class="line">可以访问</span><br></pre></td></tr></table></figure>
+<ul>
+<li>public </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public访问级别修饰的关键字可以被任何人访问。但是在其他module(模</span><br><span class="line">块)中不可以被override和继承，而在module内部可以被override和继</span><br><span class="line">承</span><br></pre></td></tr></table></figure>
+<ul>
+<li>open</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open访问级别修饰的关键字 可以被任何人使用，包括override和继承</span><br></pre></td></tr></table></figure>
+<p><strong>访问控制从高到底的权限控制顺序如下</strong></p>
+<p>  <strong>open &gt;  public  &gt;  internal  &gt; fileprivate &gt; private</strong></p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/苹果Edit the number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -461,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -483,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
