@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh_Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="String_we_ask_for" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS三方支付," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近一个项目要做的是国际化版本的，其中有商城的功能，所以需要接入PayPal支付，接入的时候发现流程还是很简单的，这里做一下简单的记录。 首先这里是PayPal的iOS SDK的地址 开始接入 这里我们略过在开发者网站申请的流程，直接使用cocoapods命令行导入了到项目中。在开发者中心需要获取到CLIENT_ID_FOR_PRODUCTION和CLIENT_ID_FOR_SANDBOX,这两个">
+<meta name="keywords" content="iOS三方支付">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS项目中接入PayPal支付">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/iOS项目中接入PayPal支付/index.html">
+<meta property="og:site_name" content="Shanhu&#39;Blog">
+<meta property="og:description" content="最近一个项目要做的是国际化版本的，其中有商城的功能，所以需要接入PayPal支付，接入的时候发现流程还是很简单的，这里做一下简单的记录。 首先这里是PayPal的iOS SDK的地址 开始接入 这里我们略过在开发者网站申请的流程，直接使用cocoapods命令行导入了到项目中。在开发者中心需要获取到CLIENT_ID_FOR_PRODUCTION和CLIENT_ID_FOR_SANDBOX,这两个">
+<meta property="og:locale" content="zh_Hans">
+<meta property="og:updated_time" content="2018-07-04T12:51:23.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS项目中接入PayPal支付">
+<meta name="twitter:description" content="最近一个项目要做的是国际化版本的，其中有商城的功能，所以需要接入PayPal支付，接入的时候发现流程还是很简单的，这里做一下简单的记录。 首先这里是PayPal的iOS SDK的地址 开始接入 这里我们略过在开发者网站申请的流程，直接使用cocoapods命令行导入了到项目中。在开发者中心需要获取到CLIENT_ID_FOR_PRODUCTION和CLIENT_ID_FOR_SANDBOX,这两个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/04/iOS项目中接入PayPal支付/"/>
+
+
+
+
+
+  <title>iOS项目中接入PayPal支付 | Shanhu'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shanhu'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天道酬勤 自强不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/iOS项目中接入PayPal支付/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS项目中接入PayPal支付</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T20:47:19+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,324 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近一个项目要做的是国际化版本的，其中有商城的功能，所以需要接入PayPal支付，接入的时候发现流程还是很简单的，这里做一下简单的记录。</p>
+<p><a href="https://github.com/paypal/PayPal-iOS-SDK" target="_blank" rel="noopener">首先这里是PayPal的iOS SDK的地址</a></p>
+<p><strong>开始接入</strong></p>
+<p>这里我们略过在开发者网站申请的流程，直接使用cocoapods命令行导入了到项目中。在开发者中心需要获取到<strong>CLIENT_ID_FOR_PRODUCTION</strong>和<strong>CLIENT_ID_FOR_SANDBOX</strong>,这两个参数是我们上线和沙盒测试的时候需要用到的两个参数。并且使用这个client ID 来找到你的APP。</p>
+<p>1.导入SDK</p>
+<p>我使用的cocoapods管理第三方库的 所以命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, &apos;8.0&apos;</span><br><span class="line">pod &apos;PayPal-iOS-SDK&apos;</span><br></pre></td></tr></table></figure>
+<p>导入到项目中后 我们要在AppDelegate中配置简单的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  [PayPalMobile initializeWithClientIdsForEnvironments:@&#123;PayPalEnvironmentProduction : @&quot;YOUR_CLIENT_ID_FOR_PRODUCTION&quot;,</span><br><span class="line">                                                         PayPalEnvironmentSandbox : @&quot;YOUR_CLIENT_ID_FOR_SANDBOX&quot;&#125;];</span><br><span class="line">  // ...</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后需要我们在需要接入支付的页面导入相关的类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// SomeViewController.h</span><br><span class="line">#import &quot;PayPalMobile.h&quot;</span><br><span class="line"></span><br><span class="line">@interface SomeViewController : UIViewController&lt;PayPalPaymentDelegate&gt;</span><br><span class="line">// ...</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>并且创建一个具体的配置的参数的对象，设置支付的类型，展示的语言，和信用卡、商户名称等配置参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// SomeViewController.m</span><br><span class="line"></span><br><span class="line">@interface SomeViewController ()</span><br><span class="line">// ...</span><br><span class="line">@property (nonatomic, strong, readwrite) PayPalConfiguration *paypalCOnfiguration;</span><br><span class="line">// ...</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation SomeViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)aDecoder &#123;</span><br><span class="line">  self = [super initWithCoder:aDecoder];</span><br><span class="line">  if (self) &#123;</span><br><span class="line">    _paypalCOnfiguration = [[PayPalConfiguration alloc] init];</span><br><span class="line">    _paypalCOnfiguration.merchantName = @&quot;山东蓝翔挖掘机学院&quot;;//公司名称</span><br><span class="line">    _paypalCOnfiguration.acceptCreditCards = NO;//不支持信用卡</span><br><span class="line">    _paypalCOnfiguration.merchantPrivacyPolicyURL = [NSURL URLWithString:@&quot;https://www.paypal.com/webapps/mpp/ua/privacy-full&quot;];</span><br><span class="line">    _paypalCOnfiguration.merchantUserAgreementURL = [NSURL URLWithString:@&quot;https://www.paypal.com/webapps/mpp/ua/useragreement-full&quot;];</span><br><span class="line">    _paypalCOnfiguration.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;</span><br><span class="line">    _paypalCOnfiguration.languageOrLocale = [NSString getPreferredLanguage];</span><br><span class="line">  &#125;</span><br><span class="line">  return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是我获取当前系统的语言的代码，即上面的<strong>[NSString getPreferredLanguage]</strong>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**  *得到本机现在用的语言  * en:英文  zh-Hans:简体中文   zh-Hant:繁体中文    ja:日本  ......  */</span><br><span class="line">+ (NSString*)getPreferredLanguage &#123;</span><br><span class="line">    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];</span><br><span class="line">    NSArray* languages = [defs objectForKey:@&quot;AppleLanguages&quot;];</span><br><span class="line">    NSString* preferredLang = [languages objectAtIndex:0];</span><br><span class="line">    NSLog(@&quot;Preferred Language:%@&quot;, preferredLang);</span><br><span class="line">    return preferredLang;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置支付的环境，这里PayPal提供了三种的环境，分别是<strong>PayPalEnvironmentProduction</strong>、<strong>PayPalEnvironmentSandbox</strong>、<strong>PayPalEnvironmentNoNetwork</strong><br>在项目上线的时候必须设置为第一种环境的，我们在测试的时候可以设置为下面的两种方式，第二种方式就是沙盒环境下，第三种在我看来就是随便支付就可以成功的环境，我也使用这种方式进行了测试，跟第二种方式没有感觉出什么明显的区别，若哪位大大有了解的欢迎指点迷津。</p>
+<p>这里需要在页面出来的时候设置这个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">  [super viewWillAppear:animated];</span><br><span class="line"></span><br><span class="line">  // Start out working with the test environment! When you are ready, switch to PayPalEnvironmentProduction.</span><br><span class="line">  [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentNoNetwork];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来就是我们支付的方法了 从我们服务器获取需要传入的参数，金额，商品描述，货币的币种代码，交易类型，这里还有一个预留字段是custom 可以将我们需要的参数传入，具体的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//amount:金额</span><br><span class="line">//currencyCode:获取单位 比如：USD</span><br><span class="line">//shortDescription:商品标题 简短描述</span><br><span class="line">- (void)PayPalWithAmount:(NSString *)amount theOrderString:(NSString *)orderString currencyCode:(NSString *)currencyCode shortDescription:(NSString *)shortDescription &#123;</span><br><span class="line">    PayPalPayment *payment = [[PayPalPayment alloc] init];</span><br><span class="line">    payment.amount = [[NSDecimalNumber alloc] initWithString:amount];</span><br><span class="line">    payment.currencyCode = currencyCode;</span><br><span class="line">    payment.shortDescription = @&quot;购买商品购买商品购买商品&quot;;</span><br><span class="line">    payment.custom = orderString;//订单号</span><br><span class="line">    payment.items = nil;  // if not including multiple items, then leave payment.items as nil</span><br><span class="line">    payment.paymentDetails = nil; // if not including payment details, then leave payment.paymentDetails as nil</span><br><span class="line">    payment.intent = PayPalPaymentIntentSale;</span><br><span class="line">    if (!payment.processable) &#123;</span><br><span class="line">        NSLog(@&quot;-------------&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:self.paypalCOnfiguration delegate:self];</span><br><span class="line">    </span><br><span class="line">    [self presentViewController:paymentViewController animated:YES completion:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要在代理方法中检测来处理我们需要进行的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - PayPalPaymentDelegate methods</span><br><span class="line"></span><br><span class="line">- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment &#123;</span><br><span class="line">    [self verifyCompletedPayment:completedPayment];</span><br><span class="line">    [self dismissViewControllerAnimated:YES completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController &#123;</span><br><span class="line">    NSLog(@&quot;支付有错误 稍后重试&quot;);</span><br><span class="line">    [self dismissViewControllerAnimated:YES completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)verifyCompletedPayment:(PayPalPayment *)completedPayment &#123;</span><br><span class="line">    // Send the entire confirmation dictionary</span><br><span class="line">    NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation options:0 error:nil];</span><br><span class="line">    NSLog(@&quot;=================%@&quot;,completedPayment.confirmation);</span><br><span class="line">    NSLog(@&quot;---------------------------------&quot;);</span><br><span class="line">    NSLog(@&quot;==================%@&quot;,confirmation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>支付成功后，PayPal会返回给我们的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;client&quot;:&#123;</span><br><span class="line">    &quot;environment&quot;:&quot;sandbox&quot;,</span><br><span class="line">    &quot;paypal_sdk_version&quot;:&quot;2.0.0&quot;,</span><br><span class="line">    &quot;platform&quot;:&quot;iOS&quot;,</span><br><span class="line">    &quot;product_name&quot;:&quot;PayPal iOS SDK;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;response&quot;:&#123;</span><br><span class="line">    &quot;create_time&quot;:&quot;2014-02-12T22:29:49Z&quot;,</span><br><span class="line">    &quot;id&quot;:&quot;PAY-564191241M8701234KL57LXI&quot;,</span><br><span class="line">    &quot;intent&quot;:&quot;sale&quot;,</span><br><span class="line">    &quot;state&quot;:&quot;approved&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;response_type&quot;:&quot;payment&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要在获取到参数后 调用服务端的接口，校验我们的订单。一般都需要我们传入”id”:”PAY-564191241M8701234KL57LXI”,这个参数即可。</p>
+<p>下面是<a href="https://github.com/paypal/PayPal-iOS-SDK/blob/master/docs/single_payment.md" target="_blank" rel="noopener">官方的文档</a>,大家也可以参考。</p>
+<p><strong>遇到的问题</strong></p>
+<p>这个SDK接入的过程中还是比较简单的，目前遇到的问题就是因为项目中设置了透明的导航条，而且PayPal的控制器又是直接封装好的，供我们直接调用的，所以在跳转过去后PayPal控制器内的界面的坐标会从最上方开始，就会挡住一部分UI界面。设置的透明的导航条会影响到UI界面的坐标，这里我们的解决方法就是在跳转完成后设置<strong>paymentViewController.navigationBar.translucent = NO;</strong>，这样就可以解决这个问题。</p>
+<p>这次的接入的流程，大致就是这样的，如有分享的不对的地方，欢迎各位大大的指正。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS三方支付/" rel="tag"># iOS三方支付</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/iOS内存管理/" rel="next" title="iOS 中的内存管理">
+                <i class="fa fa-chevron-left"></i> iOS 中的内存管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shanhu Lv</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MagicCodeboy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18668460187@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.itmotui.com/" title="莫颓的博客" target="_blank">莫颓的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shanhu Lv</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
