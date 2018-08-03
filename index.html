@@ -251,6 +251,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/03/iOS控制器循环滚动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/iOS控制器循环滚动/" itemprop="url">iOS控制器循环滚动</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T21:58:22+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS-开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS 开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,322 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####简介</p>
+<p>关于无限循环滚动，我们经常用到的头部的各种各样的轮播图的，今天Boss提了一个要求，要求我们项目中的几个控制器也可以实现滑动的时候的无限滚动。下面来介绍一下，从思考到实现的过程，以希望下次可以更好更快的解决这类问题。</p>
+<p>####实现</p>
+<p>本来这个页面是在一个scrollview上添加子控制器的view来实现滑动切换控制器的，所以想要在尽量不改动当前界面的逻辑处理的基础上快速的实现这个需求。</p>
+<p><strong>思考方法：</strong><br>首先找出滑动的方向，然后根据滑动的方向判断当前是第一个还是最后一个的页面，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">if (self.mainscrollView.contentOffset.x &gt; lastContentOffset) &#123;</span><br><span class="line">     //向右</span><br><span class="line">     if (p == self.titleArray.count - 1) &#123;</span><br><span class="line">         [self.mainscrollView setContentOffset:CGPointMake(0, 0) animated:YES];</span><br><span class="line">     &#125;</span><br><span class="line"> &#125; else if (self.mainscrollView.contentOffset.x == lastContentOffset) &#123;</span><br><span class="line"> </span><br><span class="line">     if (lastContentOffset == 0) &#123;</span><br><span class="line"> </span><br><span class="line">     &#125; else &#123;</span><br><span class="line"> </span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> &#125; else &#123;</span><br><span class="line">     //向左</span><br><span class="line">     if (p == 0) &#123;</span><br><span class="line">         [self.mainscrollView setContentOffset:CGPointMake(self.titleArray.count * SCREEN_WIDTH, 0) animated:YES];</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>发现这个方法实现不了，主要的问题有</p>
+<ul>
+<li>当我们处于第一个界面或者是最后一个界面的时候，获取到的lastContentOffset是跟我们滑动完成后的偏移量是一样的，这个时候我们无法准确的判断当前到底是应该执行向右还是向左的方法。</li>
+<li>因为scrollview的偏移量contentOffset不可能小于零，或者是超过你设置的最大的那个contentSize的最大的边界的值，即使你设置了可以回弹也是没有用处。</li>
+</ul>
+<p>所以这个方法是不可行的，只能换一种思路来实现这个需求了。</p>
+<p><strong>实现方法</strong></p>
+<p>因为常常使用到轮播图，所以就思考能不能用类似实现轮播图的方法来实现这个需求，但是轮播图跟本应用使用控制器来实现的这种存在诸多的限制的情况。但是有一种实现轮播图的思路可以借鉴一下，<strong>就是在我们的自控制器的前后各加一个空白的控制器，通过改变scrollview的便宜量来实现我们需要的效果</strong>，整个控制器的代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)</span><br><span class="line">#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)</span><br><span class="line">//导航条高度 64或者84</span><br><span class="line">#define  NAVBARSTATUSBARHEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height+44)</span><br><span class="line"></span><br><span class="line">#import &quot;ViewController.h&quot;</span><br><span class="line"></span><br><span class="line">#import &quot;OneViewController.h&quot;</span><br><span class="line">#import &quot;TwoViewController.h&quot;</span><br><span class="line">#import &quot;ThreeViewController.h&quot;</span><br><span class="line"></span><br><span class="line">@interface ViewController ()&lt;UIScrollViewDelegate&gt;</span><br><span class="line">@property (nonatomic, strong) NSMutableArray *theVcArray;</span><br><span class="line">@property ( nonatomic, strong) UIScrollView *mainscrollView;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line">- (NSMutableArray *)theVcArray &#123;</span><br><span class="line">    if (_theVcArray == nil) &#123;</span><br><span class="line">        _theVcArray = [NSMutableArray array];</span><br><span class="line">    &#125;</span><br><span class="line">    return _theVcArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self setUpSubviews];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setUpSubviews &#123;</span><br><span class="line">    </span><br><span class="line">    UIViewController *tempOneVc = [[UIViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">    OneViewController *oneVc = [[OneViewController alloc] init];</span><br><span class="line">    TwoViewController *twoVc = [[TwoViewController alloc] init];</span><br><span class="line">    ThreeViewController *threeVc = [[ThreeViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">    UIViewController *tempLastVc = [[UIViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">     [self.theVcArray addObjectsFromArray:@[tempOneVc,oneVc,twoVc,threeVc,tempLastVc]];</span><br><span class="line">    </span><br><span class="line">    _mainscrollView = [[UIScrollView alloc] init];</span><br><span class="line">    _mainscrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARSTATUSBARHEIGHT);</span><br><span class="line">    _mainscrollView.contentSize = CGSizeMake(self.theVcArray.count*SCREEN_WIDTH,SCREEN_HEIGHT - NAVBARSTATUSBARHEIGHT);</span><br><span class="line">    _mainscrollView.backgroundColor = [UIColor clearColor];</span><br><span class="line">    _mainscrollView.showsVerticalScrollIndicator = NO;</span><br><span class="line">    _mainscrollView.showsHorizontalScrollIndicator = NO;</span><br><span class="line">    _mainscrollView.delegate = self;</span><br><span class="line">    _mainscrollView.bounces = NO;</span><br><span class="line">    _mainscrollView.scrollEnabled = YES;</span><br><span class="line">    _mainscrollView.userInteractionEnabled = YES;</span><br><span class="line">    _mainscrollView.pagingEnabled = YES;</span><br><span class="line">    _mainscrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);</span><br><span class="line">    [self.view addSubview:_mainscrollView];</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; self.theVcArray.count; i++) &#123;</span><br><span class="line">        UIViewController *theViewController = (UIViewController *)self.theVcArray[i];</span><br><span class="line">        theViewController.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, self.mainscrollView.frame.size.height);</span><br><span class="line">        [self.mainscrollView addSubview:theViewController.view];</span><br><span class="line">        [self addChildViewController:theViewController];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    self.mainscrollView.contentOffset = CGPointMake(SCREEN_WIDTH, 0);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView &#123;</span><br><span class="line">    if (scrollView == self.mainscrollView)</span><br><span class="line">    &#123;</span><br><span class="line">        NSLog(@&quot;theContentOffset.x%f&quot;,self.mainscrollView.contentOffset.x);</span><br><span class="line">        NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">        if (p == 0) &#123;</span><br><span class="line">            [self.mainscrollView setContentOffset:CGPointMake((self.theVcArray.count - 2) * SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">        &#125; else if (p == self.theVcArray.count - 1) &#123;</span><br><span class="line">            [self.mainscrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">        &#125;</span><br><span class="line">        NSLog(@&quot;当前是第%ld页&quot;,p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中one，two,threeViewController是我自定义的三个控制器。因为Github自己的账号出了一点小问题，还没有解决好，暂时不放demo的地址了，解决了之后可以再放上demo的地址。</p>
+<p>主要的代码就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.theVcArray addObjectsFromArray:@[tempOneVc,oneVc,twoVc,threeVc,tempLastVc]];</span><br></pre></td></tr></table></figure>
+<p>这里在我的需要的控制器前后各加了一个临时的空白控制器，然后在滚动的结束之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">      if (p == 0) &#123;</span><br><span class="line">          [self.mainscrollView setContentOffset:CGPointMake((self.theVcArray.count - 2) * SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">      &#125; else if (p == self.theVcArray.count - 1) &#123;</span><br><span class="line">          [self.mainscrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<p>判断当前的页面  执行偏移量的更改的方法。 至此，boss的这个需求可以得到解决，但是也还是有优化的地方的</p>
+<ul>
+<li>当我们切换控制器到临界的控制器的时候 再向后滑动的过程中，后面的页面因为是空白的，不能像我们有数据的界面那样，在滑动的过程中就可以看到下个界面之前的数据。（这个想到一个解决办法 就是截取一个我们第一个和最后一个有数据的页面的图，放在我们添加的空白的页面上，做一个假象，只是想到这个，还没有实现，有兴趣的同学可以尝试一下）。</li>
+</ul>
+<p>文章仅记录此次遇到的问题，如有不对或者是不合理的地方，欢迎各位大大指正。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/iOS项目中接入PayPal支付/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2062,185 +2258,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/QQ分享的APPID转换十六进制的方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/05/QQ分享的APPID转换十六进制的方法/" itemprop="url">友盟集成QQ分享的APPID转换十六进制的方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T21:40:01+08:00">
-                2018-05-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  143 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>设置xcode的url scheme格式为“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ41EE2B54”。生成十六进制方法：echo ‘ibase=10;obase=16;您的腾讯QQ互联应用Id’|bc。并在QQ互联后台的URL schema中填入此字符串保持一致。</p>
-</li>
-<li><p>单独使用QQ授权功能，需要额外设置URL Scheme的格式为<strong>tencent+腾讯QQ互联应用appId</strong>，例如<strong>tencent1106127700</strong></p>
-</li>
-</ul>
-<p><strong>例如:</strong>1106127700为QQ的AppID，打开终端，输入echo’ibase=10;obase=16;1106127700’|bc<br>得到41EE2B54 即为转换后的我们需要的十六进制<br><img src="http://art5.photozou.jp/pub/855/3227855/photo/255575674_624.v1525572562.png" alt="转化"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2291,7 +2308,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2302,7 +2319,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2313,7 +2330,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

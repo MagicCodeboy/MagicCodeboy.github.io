@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh_Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="String_we_ask_for" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS 控制器循环滚动," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="####简介 关于无限循环滚动，我们经常用到的头部的各种各样的轮播图的，今天Boss提了一个要求，要求我们项目中的几个控制器也可以实现滑动的时候的无限滚动。下面来介绍一下，从思考到实现的过程，以希望下次可以更好更快的解决这类问题。 ####实现 本来这个页面是在一个scrollview上添加子控制器的view来实现滑动切换控制器的，所以想要在尽量不改动当前界面的逻辑处理的基础上快速的实现这个需求。">
+<meta name="keywords" content="iOS 控制器循环滚动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS控制器循环滚动">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/iOS控制器循环滚动/index.html">
+<meta property="og:site_name" content="Shanhu&#39;Blog">
+<meta property="og:description" content="####简介 关于无限循环滚动，我们经常用到的头部的各种各样的轮播图的，今天Boss提了一个要求，要求我们项目中的几个控制器也可以实现滑动的时候的无限滚动。下面来介绍一下，从思考到实现的过程，以希望下次可以更好更快的解决这类问题。 ####实现 本来这个页面是在一个scrollview上添加子控制器的view来实现滑动切换控制器的，所以想要在尽量不改动当前界面的逻辑处理的基础上快速的实现这个需求。">
+<meta property="og:locale" content="zh_Hans">
+<meta property="og:updated_time" content="2018-08-03T13:58:22.225Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS控制器循环滚动">
+<meta name="twitter:description" content="####简介 关于无限循环滚动，我们经常用到的头部的各种各样的轮播图的，今天Boss提了一个要求，要求我们项目中的几个控制器也可以实现滑动的时候的无限滚动。下面来介绍一下，从思考到实现的过程，以希望下次可以更好更快的解决这类问题。 ####实现 本来这个页面是在一个scrollview上添加子控制器的view来实现滑动切换控制器的，所以想要在尽量不改动当前界面的逻辑处理的基础上快速的实现这个需求。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/03/iOS控制器循环滚动/"/>
+
+
+
+
+
+  <title>iOS控制器循环滚动 | Shanhu'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shanhu'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天道酬勤 自强不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/03/iOS控制器循环滚动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS控制器循环滚动</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T21:58:22+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS-开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS 开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,322 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>####简介</p>
+<p>关于无限循环滚动，我们经常用到的头部的各种各样的轮播图的，今天Boss提了一个要求，要求我们项目中的几个控制器也可以实现滑动的时候的无限滚动。下面来介绍一下，从思考到实现的过程，以希望下次可以更好更快的解决这类问题。</p>
+<p>####实现</p>
+<p>本来这个页面是在一个scrollview上添加子控制器的view来实现滑动切换控制器的，所以想要在尽量不改动当前界面的逻辑处理的基础上快速的实现这个需求。</p>
+<p><strong>思考方法：</strong><br>首先找出滑动的方向，然后根据滑动的方向判断当前是第一个还是最后一个的页面，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">if (self.mainscrollView.contentOffset.x &gt; lastContentOffset) &#123;</span><br><span class="line">     //向右</span><br><span class="line">     if (p == self.titleArray.count - 1) &#123;</span><br><span class="line">         [self.mainscrollView setContentOffset:CGPointMake(0, 0) animated:YES];</span><br><span class="line">     &#125;</span><br><span class="line"> &#125; else if (self.mainscrollView.contentOffset.x == lastContentOffset) &#123;</span><br><span class="line"> </span><br><span class="line">     if (lastContentOffset == 0) &#123;</span><br><span class="line"> </span><br><span class="line">     &#125; else &#123;</span><br><span class="line"> </span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> &#125; else &#123;</span><br><span class="line">     //向左</span><br><span class="line">     if (p == 0) &#123;</span><br><span class="line">         [self.mainscrollView setContentOffset:CGPointMake(self.titleArray.count * SCREEN_WIDTH, 0) animated:YES];</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>发现这个方法实现不了，主要的问题有</p>
+<ul>
+<li>当我们处于第一个界面或者是最后一个界面的时候，获取到的lastContentOffset是跟我们滑动完成后的偏移量是一样的，这个时候我们无法准确的判断当前到底是应该执行向右还是向左的方法。</li>
+<li>因为scrollview的偏移量contentOffset不可能小于零，或者是超过你设置的最大的那个contentSize的最大的边界的值，即使你设置了可以回弹也是没有用处。</li>
+</ul>
+<p>所以这个方法是不可行的，只能换一种思路来实现这个需求了。</p>
+<p><strong>实现方法</strong></p>
+<p>因为常常使用到轮播图，所以就思考能不能用类似实现轮播图的方法来实现这个需求，但是轮播图跟本应用使用控制器来实现的这种存在诸多的限制的情况。但是有一种实现轮播图的思路可以借鉴一下，<strong>就是在我们的自控制器的前后各加一个空白的控制器，通过改变scrollview的便宜量来实现我们需要的效果</strong>，整个控制器的代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)</span><br><span class="line">#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)</span><br><span class="line">//导航条高度 64或者84</span><br><span class="line">#define  NAVBARSTATUSBARHEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height+44)</span><br><span class="line"></span><br><span class="line">#import &quot;ViewController.h&quot;</span><br><span class="line"></span><br><span class="line">#import &quot;OneViewController.h&quot;</span><br><span class="line">#import &quot;TwoViewController.h&quot;</span><br><span class="line">#import &quot;ThreeViewController.h&quot;</span><br><span class="line"></span><br><span class="line">@interface ViewController ()&lt;UIScrollViewDelegate&gt;</span><br><span class="line">@property (nonatomic, strong) NSMutableArray *theVcArray;</span><br><span class="line">@property ( nonatomic, strong) UIScrollView *mainscrollView;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line">- (NSMutableArray *)theVcArray &#123;</span><br><span class="line">    if (_theVcArray == nil) &#123;</span><br><span class="line">        _theVcArray = [NSMutableArray array];</span><br><span class="line">    &#125;</span><br><span class="line">    return _theVcArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self setUpSubviews];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setUpSubviews &#123;</span><br><span class="line">    </span><br><span class="line">    UIViewController *tempOneVc = [[UIViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">    OneViewController *oneVc = [[OneViewController alloc] init];</span><br><span class="line">    TwoViewController *twoVc = [[TwoViewController alloc] init];</span><br><span class="line">    ThreeViewController *threeVc = [[ThreeViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">    UIViewController *tempLastVc = [[UIViewController alloc] init];</span><br><span class="line">    </span><br><span class="line">     [self.theVcArray addObjectsFromArray:@[tempOneVc,oneVc,twoVc,threeVc,tempLastVc]];</span><br><span class="line">    </span><br><span class="line">    _mainscrollView = [[UIScrollView alloc] init];</span><br><span class="line">    _mainscrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBARSTATUSBARHEIGHT);</span><br><span class="line">    _mainscrollView.contentSize = CGSizeMake(self.theVcArray.count*SCREEN_WIDTH,SCREEN_HEIGHT - NAVBARSTATUSBARHEIGHT);</span><br><span class="line">    _mainscrollView.backgroundColor = [UIColor clearColor];</span><br><span class="line">    _mainscrollView.showsVerticalScrollIndicator = NO;</span><br><span class="line">    _mainscrollView.showsHorizontalScrollIndicator = NO;</span><br><span class="line">    _mainscrollView.delegate = self;</span><br><span class="line">    _mainscrollView.bounces = NO;</span><br><span class="line">    _mainscrollView.scrollEnabled = YES;</span><br><span class="line">    _mainscrollView.userInteractionEnabled = YES;</span><br><span class="line">    _mainscrollView.pagingEnabled = YES;</span><br><span class="line">    _mainscrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);</span><br><span class="line">    [self.view addSubview:_mainscrollView];</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; self.theVcArray.count; i++) &#123;</span><br><span class="line">        UIViewController *theViewController = (UIViewController *)self.theVcArray[i];</span><br><span class="line">        theViewController.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, self.mainscrollView.frame.size.height);</span><br><span class="line">        [self.mainscrollView addSubview:theViewController.view];</span><br><span class="line">        [self addChildViewController:theViewController];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    self.mainscrollView.contentOffset = CGPointMake(SCREEN_WIDTH, 0);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView &#123;</span><br><span class="line">    if (scrollView == self.mainscrollView)</span><br><span class="line">    &#123;</span><br><span class="line">        NSLog(@&quot;theContentOffset.x%f&quot;,self.mainscrollView.contentOffset.x);</span><br><span class="line">        NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">        if (p == 0) &#123;</span><br><span class="line">            [self.mainscrollView setContentOffset:CGPointMake((self.theVcArray.count - 2) * SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">        &#125; else if (p == self.theVcArray.count - 1) &#123;</span><br><span class="line">            [self.mainscrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">        &#125;</span><br><span class="line">        NSLog(@&quot;当前是第%ld页&quot;,p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中one，two,threeViewController是我自定义的三个控制器。因为Github自己的账号出了一点小问题，还没有解决好，暂时不放demo的地址了，解决了之后可以再放上demo的地址。</p>
+<p>主要的代码就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.theVcArray addObjectsFromArray:@[tempOneVc,oneVc,twoVc,threeVc,tempLastVc]];</span><br></pre></td></tr></table></figure>
+<p>这里在我的需要的控制器前后各加了一个临时的空白控制器，然后在滚动的结束之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSInteger p = self.mainscrollView.contentOffset.x/SCREEN_WIDTH;</span><br><span class="line">      if (p == 0) &#123;</span><br><span class="line">          [self.mainscrollView setContentOffset:CGPointMake((self.theVcArray.count - 2) * SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">      &#125; else if (p == self.theVcArray.count - 1) &#123;</span><br><span class="line">          [self.mainscrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:NO];</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<p>判断当前的页面  执行偏移量的更改的方法。 至此，boss的这个需求可以得到解决，但是也还是有优化的地方的</p>
+<ul>
+<li>当我们切换控制器到临界的控制器的时候 再向后滑动的过程中，后面的页面因为是空白的，不能像我们有数据的界面那样，在滑动的过程中就可以看到下个界面之前的数据。（这个想到一个解决办法 就是截取一个我们第一个和最后一个有数据的页面的图，放在我们添加的空白的页面上，做一个假象，只是想到这个，还没有实现，有兴趣的同学可以尝试一下）。</li>
+</ul>
+<p>文章仅记录此次遇到的问题，如有不对或者是不合理的地方，欢迎各位大大指正。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-控制器循环滚动/" rel="tag"># iOS 控制器循环滚动</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/04/iOS项目中接入PayPal支付/" rel="next" title="iOS项目中接入PayPal支付">
+                <i class="fa fa-chevron-left"></i> iOS项目中接入PayPal支付
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzgzMC8xNDM2MQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shanhu Lv</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MagicCodeboy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18668460187@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.itmotui.com/" title="莫颓的博客" target="_blank">莫颓的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shanhu Lv</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
