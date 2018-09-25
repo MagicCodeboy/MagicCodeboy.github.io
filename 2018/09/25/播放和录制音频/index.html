@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Mac OS X 一直都有一个NSSpeechSynthesizer类，使用这个类可以很方便的在Cocoa应用程序中添加“文本到语音的功能”，简单的播放一句语音“hello world”  可以由一段简单的代码来实现: 123AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];    AVSpeechUtter">
+<meta name="description" content="AV Foundation最开始是一个仅针对音频的框架，在iOS3.0中，增加了音频录制的功能，现在我们通过学习AVAudioPlayer和AVAudioRecoder类来实现应用程序中添加音频播放和音频录制的功能。 #####理解和使用音频会话 音频会话简单的理解就是可以在我们使用音乐播放的过程中，收到电话通知，这时候就需要有一个管理的处理来将音乐播放停止，开始播放来电铃声。 所有的iOS应用程">
 <meta name="keywords" content="AVFoundation初探">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 音视频 文本到语音简介">
-<meta property="og:url" content="http://yoursite.com/2018/08/09/iOS 音视频 文本到语音简介/index.html">
+<meta property="og:title" content="iOS 播放和录制音频">
+<meta property="og:url" content="http://yoursite.com/2018/09/25/播放和录制音频/index.html">
 <meta property="og:site_name" content="Shanhu&#39;Blog">
-<meta property="og:description" content="Mac OS X 一直都有一个NSSpeechSynthesizer类，使用这个类可以很方便的在Cocoa应用程序中添加“文本到语音的功能”，简单的播放一句语音“hello world”  可以由一段简单的代码来实现: 123AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];    AVSpeechUtter">
+<meta property="og:description" content="AV Foundation最开始是一个仅针对音频的框架，在iOS3.0中，增加了音频录制的功能，现在我们通过学习AVAudioPlayer和AVAudioRecoder类来实现应用程序中添加音频播放和音频录制的功能。 #####理解和使用音频会话 音频会话简单的理解就是可以在我们使用音乐播放的过程中，收到电话通知，这时候就需要有一个管理的处理来将音乐播放停止，开始播放来电铃声。 所有的iOS应用程">
 <meta property="og:locale" content="zh_Hans">
-<meta property="og:updated_time" content="2018-08-09T14:35:13.284Z">
+<meta property="og:updated_time" content="2018-09-25T12:50:19.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 音视频 文本到语音简介">
-<meta name="twitter:description" content="Mac OS X 一直都有一个NSSpeechSynthesizer类，使用这个类可以很方便的在Cocoa应用程序中添加“文本到语音的功能”，简单的播放一句语音“hello world”  可以由一段简单的代码来实现: 123AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];    AVSpeechUtter">
+<meta name="twitter:title" content="iOS 播放和录制音频">
+<meta name="twitter:description" content="AV Foundation最开始是一个仅针对音频的框架，在iOS3.0中，增加了音频录制的功能，现在我们通过学习AVAudioPlayer和AVAudioRecoder类来实现应用程序中添加音频播放和音频录制的功能。 #####理解和使用音频会话 音频会话简单的理解就是可以在我们使用音乐播放的过程中，收到电话通知，这时候就需要有一个管理的处理来将音乐播放停止，开始播放来电铃声。 所有的iOS应用程">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/09/iOS 音视频 文本到语音简介/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/25/播放和录制音频/"/>
 
 
 
 
 
-  <title>iOS 音视频 文本到语音简介 | Shanhu'Blog</title>
+  <title>iOS 播放和录制音频 | Shanhu'Blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/iOS 音视频 文本到语音简介/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/播放和录制音频/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shanhu Lv">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS 音视频 文本到语音简介</h1>
+          <h1 class="post-title" itemprop="name headline">iOS 播放和录制音频</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T22:35:13+08:00">
-                2018-08-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T20:47:24+08:00">
+                2018-09-25
               </time>
             
 
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  314 字
+                  863 字
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -380,15 +380,31 @@
       
 
       
-        <p>Mac OS X 一直都有一个NSSpeechSynthesizer类，使用这个类可以很方便的在Cocoa应用程序中添加“文本到语音的功能”，简单的播放一句语音“hello world”  可以由一段简单的代码来实现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];</span><br><span class="line">    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:@&quot;hello world&quot;];</span><br><span class="line">    [synthesizer speakUtterance:utterance];</span><br></pre></td></tr></table></figure>
-<p>这段代码使用默认的声音读出“hello world”,其中语音的内容都是通过AVSpeechUtterance 这个类的实例来设置的，我们还可以设置他的其他的属性来达到我们预期的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_voices = @[[AVSpeechSynthesisVoice voiceWithLanguage:@&quot;en-US&quot;],</span><br><span class="line">                    [AVSpeechSynthesisVoice voiceWithLanguage:@&quot;en-GB&quot;]];</span><br><span class="line">utterance.voice = self.voices[1];</span><br><span class="line">utterance.rate = 0.5f;</span><br><span class="line">utterance.pitchMultiplier = 0.8f;</span><br><span class="line">utterance.postUtteranceDelay = 0.1f;</span><br></pre></td></tr></table></figure>
-<p>其中设置的voices是我们设置的一个声音，1就是美式英语，2就是英式英语；</p>
-<p>设置rate确定我们要播放语音内容的速率为0.5f;</p>
-<p>设置pitchMultiplier指定在播放特定语句的时候改变声音的音调，他的允许值一般在0.5（低音调）到2.0（高音调）之间。</p>
-<p>postUtteranceDelay这个值是设置让语音合成器在播放下一句之前有段时间的暂停。</p>
-<p>本系列文章仅作为读书记录，以便查阅，欢迎交流。</p>
+        <p>AV Foundation最开始是一个仅针对音频的框架，在iOS3.0中，增加了音频录制的功能，现在我们通过学习AVAudioPlayer和AVAudioRecoder类来实现应用程序中添加音频播放和音频录制的功能。</p>
+<p>#####理解和使用音频会话</p>
+<p>音频会话简单的理解就是可以在我们使用音乐播放的过程中，收到电话通知，这时候就需要有一个管理的处理来将音乐播放停止，开始播放来电铃声。</p>
+<p>所有的iOS应用程序都具有音频会话，无论其是否使用。AVFoundation定义了七种分类来描述应用程序锁使用的音频行为</p>
+<ul>
+<li>Ambient        游戏、效率应用程序</li>
+<li>Solo Ambient   游戏、效率应用程序</li>
+<li>Playback       音频和视频播放器</li>
+<li>Record         录音机、音频捕捉</li>
+<li>Play and Record  VoIP、语音聊天</li>
+<li>Audio Processing  离线会话和处理</li>
+<li>Multi-Route     使用外部硬件的高级A/V应用程序</li>
+</ul>
+<p>其中，来实现播放音频的方法很简单，将本地要播放的文件放入我们的项目中，新建一个播放器就可以轻松实现音频的播放的功能了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSURL *musicUrl = [[NSBundle mainBundle] URLForResource:@&quot;像我这样的人&quot; withExtension:@&quot;mp3&quot;];</span><br><span class="line">    self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicUrl error:nil];</span><br><span class="line">    if (self.musicPlayer) &#123;</span><br><span class="line">        [self.musicPlayer prepareToPlay];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我们也可以自己修改音乐播放器的音量，这个是独立于系统的音量，还有一个需要我们注意的就是当音频被打断的时候的处理，我们需要监听线路的变化，并作出相应的处理。相关的方法是AVAudioSessionRoute…相关的类，这里大家可以自行查询。</p>
+<p>#####使用AVAudioRecorder⏺音频</p>
+<p>下面我们看一下如何来录制音频，首先我们还是需要导入#import &lt;AVFoundation/AVFoundation.h&gt;框架，录制的代码很简单,主要使用到的类是AVAudioRecorder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir = NSTemporaryDirectory();</span><br><span class="line">       NSString *filePath = [tmpDir stringByAppendingPathComponent:@&quot;memo.caf&quot;];</span><br><span class="line">       NSURL *fileURL = [NSURL fileURLWithPath:filePath];</span><br><span class="line"></span><br><span class="line">       NSDictionary *settings = @&#123;</span><br><span class="line">                                  AVFormatIDKey : @(kAudioFormatAppleIMA4),</span><br><span class="line">                                  AVSampleRateKey : @44100.0f,</span><br><span class="line">                                  AVNumberOfChannelsKey : @1,</span><br><span class="line">                                  AVEncoderBitDepthHintKey : @16,</span><br><span class="line">                                  AVEncoderAudioQualityKey : @(AVAudioQualityMedium)</span><br><span class="line">                                  &#125;;</span><br><span class="line"></span><br><span class="line">       NSError *error;</span><br><span class="line">       self.recorder = [[AVAudioRecorder alloc] initWithURL:fileURL settings:settings error:&amp;error];</span><br><span class="line">       if (self.recorder) &#123;</span><br><span class="line">           self.recorder.delegate = self;</span><br><span class="line">           self.recorder.meteringEnabled = YES;</span><br><span class="line">           [self.recorder prepareToRecord];</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           NSLog(@&quot;Error: %@&quot;, [error localizedDescription]);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>AVFormatIDKey</strong>键定义了写入内容的音频格式，这里我们设置支持的格式是kAudioFormatAppleIMA4，这种格式的压缩格式会显著缩小文件，还能保证高质量的音频内容</li>
+<li><strong>AVSampleRateKey</strong>键定义了录音器的采样率。采样率定义了对输入的模拟音频信号每一秒内的采样率。使用低的采样率，回导致粗粒度、AM广播累心给的录制效果，不过文件会比较小，使用高的采样率文件就会较大。</li>
+<li><strong>AVNumberOfChannelsKey</strong>键用来定义记录音频通道内的通道数，指定默认值1意味着使用单声道录制，设置为2意味着立体声录制，如果不是使用外部硬件进行录制，通常使用单声道录制。当我们停止录音的时候，可以调用saveRecordingWithName:completionHandler:方法，这个方法通过唯一文件名将tmp目录中的录制文件复制到Documents目录，如果复制操作成功，会调用完成块，传递会一个新的包含名字和录制音频URL。</li>
+</ul>
+<p>这里就简单记录下播放音频和录制音频的方法，方便查询。</p>
 
       
     </div>
@@ -419,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/03/iOS控制器循环滚动/" rel="next" title="iOS控制器循环滚动">
-                <i class="fa fa-chevron-left"></i> iOS控制器循环滚动
+              <a href="/2018/08/09/iOS 音视频 文本到语音简介/" rel="next" title="iOS 音视频 文本到语音简介">
+                <i class="fa fa-chevron-left"></i> iOS 音视频 文本到语音简介
               </a>
             
           </div>
@@ -428,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/25/播放和录制音频/" rel="prev" title="iOS 播放和录制音频">
-                iOS 播放和录制音频 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
