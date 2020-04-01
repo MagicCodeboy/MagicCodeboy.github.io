@@ -251,6 +251,264 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/hrperlink/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/01/hrperlink/" itemprop="url">超链接</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T23:52:16+08:00">
+                2020-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  905 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###超链接</p>
+<p>每一个网页都有一个唯一的地址，称为统一资源定位符（URL），然而，在网页中创建内部链接时，一般不会指定链接文档的完整URL，而是指定一个相对当前文档或者站点根文件夹的相对路径。这其中又分为绝对路径和相对路径。它们各有优缺点；</p>
+<blockquote>
+<p>绝对路径</p>
+</blockquote>
+<p>绝对路径是包括完整服务器规范在内的完全路径，不管源文件在什么位置都可以准确的找到，除非是目标文档的位置发生变化，否则链接不会失败。</p>
+<p>优点：它同链接的源端点无关，只要网站的地址不变，无论文档在站点中如何移动，都可以正确实现跳转，如果希望链接同站点上的其他内容，就必须使用绝对路径。<br>缺点：这种方式的链接不利于测试，必须在Internet服务器端对链接进行测试，采用绝对路径也不利于站点的移植。</p>
+<blockquote>
+<p>相对路径</p>
+</blockquote>
+<p>相对路径可以表述源端点同目标端点之间的相互位置，它同源端点的位置密切相关。</p>
+<p>如果连接中源端点和目标端点位于同一个目录下，则在链接路径中只需要指明目标端点的文档名称就可以。</p>
+<p>如果链接中源端点和目标端点不在同一个目录下，则需要将目录的相对关系表示出来就可以了。</p>
+<p>如果链接指向的文档位于当前目录的子级目录中，可以直接输入目录名称和子目录名称。</p>
+<p>如果链接指向的文档没有位于当前目录的子级目录中，可以利用…符号来表示当前位置的父级目录，多个…符号可以表示更高级的父级目录。</p>
+<p>优点： 如果站点的结构和文档的位置不变，那么链接就不会出错，可以将整个网站移植到另一个地址的网站中，而且不需要修改文档中的链接路径。</p>
+<blockquote>
+<p>内部链接</p>
+</blockquote>
+<p>内部链接是指链接的对象是在同一个网站中的资源，与自身网站页面有关的链接被称为内部链接。</p>
+<p>代码格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;a href=&quot;链接的地址&quot; target=&quot;链接目标窗口的打开方式&quot; name=&quot;锚点的名称&quot;&gt;链接地址&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>这里链接的目标窗口的打开方式的值有四种，分别是</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-self</td>
+<td style="text-align:center">在当前页面中打开链接</td>
+</tr>
+<tr>
+<td>-blank</td>
+<td style="text-align:center">在一个全新的空白窗口中打开链接</td>
+</tr>
+<tr>
+<td>-top</td>
+<td style="text-align:center">在顶层框架中打开链接，也可以说是在根框架中打开链接</td>
+</tr>
+<tr>
+<td>-parent</td>
+<td style="text-align:center">在当前框架的上一层打开链接</td>
+</tr>
+</tbody>
+</table>
+<p>设置name属性设置为锚点的名称，可以在点击后跳转到当前页面上设置的锚点位置，锚点的名称在一个网页中不能重复。需要用#号以及锚点的名称作为href属性值</p>
+<p>链接到其他页面中的锚点可以设置href=”链接的文件地址#锚点名称“</p>
+<blockquote>
+<p>外部链接</p>
+</blockquote>
+<p>外部链接也有多种方式，可以设置：</p>
+<table>
+<thead>
+<tr>
+<th>链接类型</th>
+<th style="text-align:center">实现方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部网站</td>
+<td style="text-align:center">href=”http://“</td>
+</tr>
+<tr>
+<td>E-mail</td>
+<td style="text-align:center">href=”mailto:邮件地址”</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td style="text-align:center">href=”<a href="ftp://ftp地址&quot;" target="_blank" rel="noopener">ftp://ftp地址&quot;</a></td>
+</tr>
+<tr>
+<td>Telnet</td>
+<td style="text-align:center">href=”telnet://地址”</td>
+</tr>
+<tr>
+<td>下载文件</td>
+<td style="text-align:center">href=”文件地址”</td>
+</tr>
+</tbody>
+</table>
+<p>自学后整理基础知识，方便查阅，有任何不对的地方，还望指导，感谢。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/HTMLdetail/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2071,202 +2329,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/19/KVO实现原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/19/KVO实现原理/" itemprop="url">KVO的内部实现原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T22:49:20+08:00">
-                2018-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  845 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>1.KVO是什么？</strong></p>
-<p>KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。</p>
-<p><strong>2.我们怎么使用KVO？</strong></p>
-<p><img src="http://art1.photozou.jp/bin/photo/255812819/624.v1526718494.bin" alt=""></p>
-<p>我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,提示我们监测的值发生了改变，这个就是最简单的KVO的应用。</p>
-<p><img src="http://art5.photozou.jp/bin/photo/255812933/624.v1526718817.bin" alt=""></p>
-<p>在我们实际开发项目的过程中，可能用到的要比这个复杂的多，这个时候我们可以使用RAC来进行监测，Swift的也有相应的大神贡献的库，使用起来简直不要太爽。当然这里使用KVO的时候，不要忘了在我们不需要监测的时候，移除监测者。</p>
-<p><strong>3.KVO 的实现原理</strong></p>
-<p>经过了上面的两步，我们也已经最KVO的概念和基本的应用有了基础的了解了，那么下面就到了我们今天要讨论的重点了，这个KVO使用起来这么的方便，那他底层到底是怎么实现的呢。</p>
-<ul>
-<li><p>其实这个是通过我们的强大的Runtime（运行时）来进行实现的。当你第一次观察某个对象时，系统就会在<strong>运行时动态的</strong>创建一个<strong>该类的派生类</strong>,在这个派生类中重写基类中任何被观察属性的setter方法，派生类在被重写的setter方法内实现真正的<strong>通知机制</strong>。</p>
-</li>
-<li><p>在我们的例子中，我们创建的类是Person类，那么将会生成的派生类类名为<strong>NSKVONotifying_Person</strong>，每一个类对象中都有一个isa指针指向当前类，当一个类对象第一次被观察的时候，系统会将isa指针指向动态生成的派生类，从而在给被监控属性赋值的时候执行的是派生类的setter方法。</p>
-</li>
-<li><p>键值观察通知依赖NSObject的两个方法：<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong> ;<br>在一个被观察的属性发生改变之前，<strong>willChangeValueForKey</strong>方法一定会被调用，这个时候回记录改变之前的的旧值，当这个值发生改变之后会调用<strong>didChangevlueForKey</strong>方法，记录新的值，然后<strong>observeValueForKey:ofObject:change:context:</strong>方法也会被调用。</p>
-</li>
-<li><p>在KVO的这个实现机制中苹果还在内部重写了Class方法，让我们误认为我们使用的还是当前的类，隐藏生成的派生类。最后盗一张图，详细展示一下KVO实现（侵必删！！！）</p>
-</li>
-</ul>
-<p><img src="http://art5.photozou.jp/bin/photo/255814259/org.bin?size=1024" alt=""></p>
-<p><strong>4.手动实现KVO监测</strong></p>
-<p>自动触发的场景就是我们上面实现的，在注册KVO之前设置一个初始的值，注册之后，当我们设置了不同的值，这个监测就会被触发。</p>
-<p>手动触发KVO的监测就是我们实现上面的两个方法的时候，我们就手动触发了KVO的监测<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong>在这里就不再实现了，大家可以尝试一下，毕竟实践出真知嘛0.0。或者大家也可以看👇的这片文章</p>
-<p><a href="http://tech.glowing.com/cn/implement-kvo/" target="_blank" rel="noopener">链接</a>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2317,7 +2379,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2339,7 +2401,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

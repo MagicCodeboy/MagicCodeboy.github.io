@@ -251,6 +251,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/19/KVO实现原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/19/KVO实现原理/" itemprop="url">KVO的内部实现原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T22:49:20+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  845 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.KVO是什么？</strong></p>
+<p>KVO，就是Key-Value Observing的简称(键值观察),是iOS设计模式中的一种，当我们设置了观察某个对象的某个属性，当这个属性发生改变的时候，这个对象会收到通知，然后执行进一步的操作。</p>
+<p><strong>2.我们怎么使用KVO？</strong></p>
+<p><img src="http://art1.photozou.jp/bin/photo/255812819/624.v1526718494.bin" alt=""></p>
+<p>我们创建了一个Person类，在这个类中有一个name的属性，我们设置监测这个值的改变，当我们点击屏幕的时候，就改变name的值，我们看到打印的内容,提示我们监测的值发生了改变，这个就是最简单的KVO的应用。</p>
+<p><img src="http://art5.photozou.jp/bin/photo/255812933/624.v1526718817.bin" alt=""></p>
+<p>在我们实际开发项目的过程中，可能用到的要比这个复杂的多，这个时候我们可以使用RAC来进行监测，Swift的也有相应的大神贡献的库，使用起来简直不要太爽。当然这里使用KVO的时候，不要忘了在我们不需要监测的时候，移除监测者。</p>
+<p><strong>3.KVO 的实现原理</strong></p>
+<p>经过了上面的两步，我们也已经最KVO的概念和基本的应用有了基础的了解了，那么下面就到了我们今天要讨论的重点了，这个KVO使用起来这么的方便，那他底层到底是怎么实现的呢。</p>
+<ul>
+<li><p>其实这个是通过我们的强大的Runtime（运行时）来进行实现的。当你第一次观察某个对象时，系统就会在<strong>运行时动态的</strong>创建一个<strong>该类的派生类</strong>,在这个派生类中重写基类中任何被观察属性的setter方法，派生类在被重写的setter方法内实现真正的<strong>通知机制</strong>。</p>
+</li>
+<li><p>在我们的例子中，我们创建的类是Person类，那么将会生成的派生类类名为<strong>NSKVONotifying_Person</strong>，每一个类对象中都有一个isa指针指向当前类，当一个类对象第一次被观察的时候，系统会将isa指针指向动态生成的派生类，从而在给被监控属性赋值的时候执行的是派生类的setter方法。</p>
+</li>
+<li><p>键值观察通知依赖NSObject的两个方法：<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong> ;<br>在一个被观察的属性发生改变之前，<strong>willChangeValueForKey</strong>方法一定会被调用，这个时候回记录改变之前的的旧值，当这个值发生改变之后会调用<strong>didChangevlueForKey</strong>方法，记录新的值，然后<strong>observeValueForKey:ofObject:change:context:</strong>方法也会被调用。</p>
+</li>
+<li><p>在KVO的这个实现机制中苹果还在内部重写了Class方法，让我们误认为我们使用的还是当前的类，隐藏生成的派生类。最后盗一张图，详细展示一下KVO实现（侵必删！！！）</p>
+</li>
+</ul>
+<p><img src="http://art5.photozou.jp/bin/photo/255814259/org.bin?size=1024" alt=""></p>
+<p><strong>4.手动实现KVO监测</strong></p>
+<p>自动触发的场景就是我们上面实现的，在注册KVO之前设置一个初始的值，注册之后，当我们设置了不同的值，这个监测就会被触发。</p>
+<p>手动触发KVO的监测就是我们实现上面的两个方法的时候，我们就手动触发了KVO的监测<strong>willChangeValueForKey:</strong>和<strong>didChangevlueForKey:</strong>在这里就不再实现了，大家可以尝试一下，毕竟实践出真知嘛0.0。或者大家也可以看👇的这片文章</p>
+<p><a href="http://tech.glowing.com/cn/implement-kvo/" target="_blank" rel="noopener">链接</a>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/iOS小知识点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1620,7 +1816,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1642,7 +1838,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
