@@ -251,6 +251,348 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/图像、列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/02/图像、列表/" itemprop="url">HTML中的图像、列表定义和属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-02T00:19:06+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,597 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#图像</p>
+<blockquote>
+<p>图像</p>
+</blockquote>
+<p>图像是网页中不可或缺的元素，合理的使用图像可以为网页增色不少。网页中图像的格式有三种，分别是：GIF、JPEG和PNG。目前支持的最好的是GIF和JPEG，大多数浏览器都可以查看它们。由于PNG文件居右较大的灵活性并且文件较小，所以他对于几乎任何类型的网页图形都是最适合的，但是早期的浏览器只能部分支持PNG图像的显示，所以建议使用GIF或者JPEG格式，以满足更多人的需求。</p>
+<p>GIF格式是图像交换格式，文件最多可以使用256种颜色，最大的优点就是可以制作动态图像，可以将数张静态文件作为动画帧串联起来，转换成一个动画文件。另外一个优点就是可以将图像以交错的方式在网页中呈现，交错显示就是当图像尚未下载完成时，浏览器会先以马赛克的形式将图像慢慢显示，让浏览者可以大致猜出下载图形的雏形。</p>
+<p>JPEG是一种图像压缩格式，是用于摄影或者连续色调图像的高级格式，这是因为JPEG文件可以包含数百万中颜色。它专门用于不含大色块的图像，有一定的失真度，但是在正常的损失下分辨不出JPEG和GIF图像的区别，JPEG文件大小只有GIF文件的1/4，不支持透明图和动态图，但能够保留全真的色调板格式。如果图像要全彩模式才能表现效果的话，JPEG就是最佳的选择。</p>
+<p>PNG图像格式是一种非破坏性的网页图像文件格式，它提供了将图像以最小的方式压缩却不造成图像失真的技术，他不仅具备了GIF图像格式的大部分优点，而且还支持48位的色彩，更快的交错显示，跨平台的图像亮度控制，更多层的透明度设置。</p>
+<p>插入图像的标记只有一个，就是img标记。</p>
+<p>他的相关属性如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">定义</th>
+<th style="text-align:right">值设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">src</td>
+<td style="text-align:right">图像的源文件</td>
+<td style="text-align:right">img src=”图像文件的地址”</td>
+</tr>
+<tr>
+<td style="text-align:right">alt</td>
+<td style="text-align:right">提示文字</td>
+<td style="text-align:right">img alt=”提示文字的内容”</td>
+</tr>
+<tr>
+<td style="text-align:right">width,height</td>
+<td style="text-align:right">高度和宽度</td>
+<td style="text-align:right">img width=”宽度” height=”高度”</td>
+</tr>
+<tr>
+<td style="text-align:right">border</td>
+<td style="text-align:right">边框</td>
+<td style="text-align:right">img border=”宽度”</td>
+</tr>
+<tr>
+<td style="text-align:right">vspace</td>
+<td style="text-align:right">垂直间距</td>
+<td style="text-align:right">img vspace=”垂直间距”</td>
+</tr>
+<tr>
+<td style="text-align:right">hspace</td>
+<td style="text-align:right">水平间距</td>
+<td style="text-align:right">img hspace=”垂直间距”</td>
+</tr>
+<tr>
+<td style="text-align:right">align</td>
+<td style="text-align:right">排列方式</td>
+<td style="text-align:right">left、center、right</td>
+</tr>
+<tr>
+<td style="text-align:right">dynsrc</td>
+<td style="text-align:right">设定avi文件的播放</td>
+<td style="text-align:right">img dynsrc=””;</td>
+</tr>
+<tr>
+<td style="text-align:right">loop</td>
+<td style="text-align:right">设定avi文件循环播放次数</td>
+<td style="text-align:right">img loop=”次数”;</td>
+</tr>
+<tr>
+<td style="text-align:right">loopdelay</td>
+<td style="text-align:right">设定avi文件循环播放延迟</td>
+<td style="text-align:right">img loopdelay=”时间”;</td>
+</tr>
+<tr>
+<td style="text-align:right">start</td>
+<td style="text-align:right">设定avi文件播放方式</td>
+<td style="text-align:right">img start=”方式”;</td>
+</tr>
+<tr>
+<td style="text-align:right">lowsrc</td>
+<td style="text-align:right">设定低分辨率图片</td>
+<td style="text-align:right">img lowsrc=”图像文件地址”;</td>
+</tr>
+<tr>
+<td style="text-align:right">usemap</td>
+<td style="text-align:right">映像地图</td>
+<td style="text-align:right">映像图像的名称</td>
+</tr>
+</tbody>
+</table>
+<p>其中usemap可以设置图像的热区链接，一个图片中可以设置多个热点区域，每一个热点区域都可以链接到不同的网页，让不同的区域进行超链接，就是映射地图。代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;图像地址&quot; usemap=&quot;#Map&quot;&gt;</span><br><span class="line">要先定义映射图像的名称，然后再引用这个映射图像。在&lt;area&gt;标记中定义了热区的位置，其中shape用来定义热区形状，coords参数用来设置区域坐标，对于不同的形状，coords设置的方式也不同。</span><br><span class="line">&lt;map name=&quot;Map&quot;&gt;</span><br><span class="line">&lt;coords shape=&quot;热区形状&quot; coords=&quot;热区坐标&quot; href=&quot;链接地址&quot;&gt;</span><br><span class="line">&lt;/map&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>图像的超链接</p>
+</blockquote>
+<p>我们也可以将img标记放在a标记之间来设置图像的超链接。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;链接地址&quot;&gt;&lt;img src=&quot;图像文件的地址&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>关于图像的内容，暂时就这么多，后续在补充。</p>
+<p>#列表</p>
+<p>HTML中有三种列表，分别是无序列表、有序列表和定义列表。无序列表的所有列表项之间没有先后顺序之分；有序列表项目是有先后顺序之分的；定义列表是一组带有特殊含义的列表，一个列表项目里包含<strong>条件</strong>和<strong>说明</strong>两部分。</p>
+<blockquote>
+<p>有序列表ol</p>
+</blockquote>
+<p>有序列表中将每一个元素按数字或者字母顺序标号，以元素ol开始和结束，然后再每一个列表元素前用li标识。可以使用type来设置序号的类型，type类型仅仅适合于有序和无序列表，并不适于目录列表、自定义项和菜单列表。start可以设置有序列表的数字从几开始，默认是1。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=”序号类型“ start=&quot;1&quot;&gt;</span><br><span class="line">	&lt;li&gt;有序列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;有序列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;有序列表项&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无序列表ul</p>
+</blockquote>
+<p>无序列表除了不适用数字和字母以外，其他的和有序列表类似，不依据顺序来表示重要的程度。也可以使用type来时无序列表的类型。代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul type=&quot;序号类型&quot;&gt;</span><br><span class="line">	&lt;li&gt;无序列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;无序列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;无序列表项&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>有序列表序号类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">类型值</th>
+<th style="text-align:right">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">l</td>
+<td style="text-align:right">数字1、2、3、4</td>
+</tr>
+<tr>
+<td style="text-align:right">a</td>
+<td style="text-align:right">小写英文字母a、b、c、d</td>
+</tr>
+<tr>
+<td style="text-align:right">A</td>
+<td style="text-align:right">大写英文字母A、B、C、D</td>
+</tr>
+<tr>
+<td style="text-align:right">i</td>
+<td style="text-align:right">小写罗马数字i、ii、iii、iv</td>
+</tr>
+<tr>
+<td style="text-align:right">I</td>
+<td style="text-align:right">大写罗马数字I、II、III、IV</td>
+</tr>
+</tbody>
+</table>
+<p><strong>无序列表序号类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">类型值</th>
+<th style="text-align:right">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">disc</td>
+<td style="text-align:right">默认值，黑色的实心圆点项目符号</td>
+</tr>
+<tr>
+<td style="text-align:right">circle</td>
+<td style="text-align:right">空心圆环项目符号</td>
+</tr>
+<tr>
+<td style="text-align:right">square</td>
+<td style="text-align:right">正方形的项目符号</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>定义列表dl</p>
+</blockquote>
+<p>定义列表由两部分组成：<strong>定义条件</strong>和<strong>定义描述</strong>。定义列表的全称是definition list。dt标记用来指定需要解释的名词，英文全称是definition term；dd标记是具体的解释，英文全称是definition description.代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">	&lt;dt&gt;定义条件&lt;/dt&gt;</span><br><span class="line">	&lt;dd&gt;定义描述&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>菜单列表menu</p>
+</blockquote>
+<p>菜单列表主要是用于设计单列的菜单列表。菜单列表在浏览器中的显示效果和无序列表是相同的，因为他的功能也可以使用无序列表来实现。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;menu&gt;</span><br><span class="line">	&lt;li&gt;菜单列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;菜单列表项&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;菜单列表项&lt;/li&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/hrperlink/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2090,245 +2432,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/iOS粒子效果/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/25/iOS粒子效果/" itemprop="url">iOS使用粒子实现简单的雪花效果</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T20:47:54+08:00">
-                2018-05-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1,227 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h2><p>我们在项目中可能需要实现有些比较酷炫的效果，比如说，雪花效果，火焰等等，今天讨论的是使用粒子效果 来实现雪花效果，这个也是之前项目中用到的，其中有两个思路。这里简单的介绍一下第一个思路：</p>
-<h2 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2.介绍"></a>2.介绍</h2><ul>
-<li>第一种实现的思路是在屏幕的上方首先创建足够用的雪花的imageview（屏幕上方这个空间就相当于一个复用池），设置每个的标记，然后随机找出一定的imageView，从屏幕顶端开始下落，当这个视图小时在屏幕中的时候，放到我们的复用池中，可以供再次使用，这样循环执行，就可以实现我们的雪花效果。</li>
-</ul>
-<p>但是这个的代码量会多一点，感兴趣的同学可以尝试一下，下面我们来重点介绍一下iOS给我们提供的粒子效果CAEmitterLayer，它是Layer的子类，使用它来实现的性能也会更好一点。</p>
-<p>这里我们重点的介绍一下它的各个属性，只要掌握好了属性，我们就能更好的使用它。</p>
-<p>##3.参数</p>
-<p><strong>1.发射器的形状</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> /* A string defining the type of emission shape used. Current options are:</span><br><span class="line"> * `point&apos; (the default), `line&apos;, `rectangle&apos;, `circle&apos;, `cuboid&apos; and</span><br><span class="line"> * `sphere&apos;. */ </span><br><span class="line">//kCAEmitterLayerPoint 点的形状，粒子从一个点发出</span><br><span class="line">//kCAEmitterLayerLine 线的形状，粒子从一条线发出</span><br><span class="line">//kCAEmitterLayerRectangle 矩形形状，粒子从一个矩形中发出</span><br><span class="line">//kCAEmitterLayerCuboid 立方体形状，会影响z平面的效果</span><br><span class="line">//kCAEmitterLayerCircle 圆形，粒子会在圆形范围发射</span><br><span class="line">//kCAEmitterLayerSphere 球形</span><br><span class="line">@property(copy) NSString *emitterShape;</span><br></pre></td></tr></table></figure>
-<p><strong>2.发射器的发射模式</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//kCAEmitterLayerPoints 从发射器中发出</span><br><span class="line">//kCAEmitterLayerOutline 从发射器边缘发出</span><br><span class="line">//kCAEmitterLayerSurface 从发射器表面发出</span><br><span class="line">//kCAEmitterLayerVolumen 从发射器中点发出</span><br><span class="line">@property(copy) NSString *emitterMode;</span><br></pre></td></tr></table></figure>
-<p><strong>3.发射器的尺寸大小</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGSize emitterSize;</span><br></pre></td></tr></table></figure>
-<p><strong>4.发射器的平面的中心位置</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGPoint emitterPosition;</span><br></pre></td></tr></table></figure>
-<p><strong>5.发射器在Z平面的位置</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emitterZPosition;</span><br></pre></td></tr></table></figure>
-<p>我们实现粒子效果，一定是要用到CAEmitterCell这个类的，这个是一个发射单元。设置他的属性，我们就可以控制大部分的效果。</p>
-<p><strong>1.创建发射单元</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)emitterCell;</span><br></pre></td></tr></table></figure>
-<p><strong>2.粒子的创建速率</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float birthRate;</span><br></pre></td></tr></table></figure>
-<p><strong>3.粒子的生存时间</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetime;</span><br></pre></td></tr></table></figure>
-<p><strong>4.粒子的生存时间容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property float lifetimeRange;</span><br></pre></td></tr></table></figure>
-<p><strong>5.粒子在xy平面上的发射角度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLongitude;</span><br></pre></td></tr></table></figure>
-<p><strong>6.粒子在z轴方向的发射角度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionLatitude;</span><br></pre></td></tr></table></figure>
-<p><strong>7.粒子发射角度的容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat emissionRange;</span><br></pre></td></tr></table></figure>
-<p><strong>8.粒子的速度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocity;</span><br></pre></td></tr></table></figure>
-<p><strong>9.粒子的速度容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat velocityRange;</span><br></pre></td></tr></table></figure>
-<p><strong>10.粒子的x.y.z方向的加速度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat xAcceleration;</span><br><span class="line">@property CGFloat yAcceleration;</span><br><span class="line">@property CGFloat zAcceleration;</span><br></pre></td></tr></table></figure>
-<p><strong>11.粒子的缩放大小，缩放容差和缩放速度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat scale;</span><br><span class="line">@property CGFloat scaleRange;</span><br><span class="line">@property CGFloat scaleSpeed;</span><br></pre></td></tr></table></figure>
-<p><strong>12.粒子的旋转度与旋转容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
-<p><strong>13.粒子的旋转度与旋转容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property CGFloat spin;</span><br><span class="line">@property CGFloat spinRange;</span><br></pre></td></tr></table></figure>
-<p><strong>14.粒子的颜色 默认透明的白色</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGColorRef color;</span><br></pre></td></tr></table></figure>
-<p><strong>15.粒子在rgb三个色相上的容差和透明度的容差</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redRange;</span><br><span class="line">@property float greenRange;</span><br><span class="line">@property float blueRange;</span><br><span class="line">@property float alphaRange;</span><br></pre></td></tr></table></figure>
-<p><strong>16.粒子在RGB三个色相上的变化速度和透明度的变化速度</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property float redSpeed;</span><br><span class="line">@property float greenSpeed;</span><br><span class="line">@property float blueSpeed;</span><br><span class="line">@property float alphaSpeed;</span><br></pre></td></tr></table></figure>
-<p><strong>17.渲染粒子，可以设置为一个CGImage的对象</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(strong) id contents;</span><br></pre></td></tr></table></figure>
-<p><strong>18.渲染的范围</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property CGRect contentsRect;</span><br></pre></td></tr></table></figure>
-<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h2><p><img src="http://art1.photozou.jp/bin/photo/255920750/org.bin?size=1024" alt="实现"></p>
-<p>这里我将使用经常使用的金币的效果和雪花的效果都封装在一个view中了，我们需要使用的时候只需要调用相应的方法即可，也可以修改其中的参数，达到自己需求的效果。</p>
-<p>在Swift项目中调用,因为最开始做的时候是在OC的项目中用到的，所以这里在Swift中调用的时候需要在桥接文件中添加头文件，具体的可以看<br><a href="https://github.com/MagicCodeboy/LEDDemo" target="_blank" rel="noopener">Demo</a> </p>
-<ul>
-<li><p>在Swift项目中的调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">snowView = SnowView.init(frame: self.view.bounds)</span><br><span class="line">snowView?.show(UIImage.init(named: &quot;1&quot;), in: self.view)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在OC项目中的调用</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[_snowView showImage:image InView:_showSnowImageView];</span><br></pre></td></tr></table></figure>
-<p>这里需要注意的点是，因为之前实现的时候，为了方便的移除，所以将它放在一个创建好的view的layer层上，所以我们展示的时候，需要创建一个专属的图层用来展示这个效果，避免移除了layer层的时候影响到我们项目中其他的图层，在这个demo中我将移除的代码注释掉了，写这篇文章简单的总结一下，方便下次使用的时候查阅，欢迎各位同学大大指导。</p>
-<p>一个假装努力的👨‍💻‍。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2379,7 +2482,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
