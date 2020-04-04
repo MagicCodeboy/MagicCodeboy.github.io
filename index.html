@@ -251,6 +251,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/HTML中的表格、表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/02/HTML中的表格、表单/" itemprop="url">HTML中的表格、表单定义和属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-02T23:30:34+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,833 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#表格</p>
+<blockquote>
+<p>表格</p>
+</blockquote>
+<p>表格是网页制作中使用的最多的工具之一。在制作网页时，使用表格可以更清晰的排列数据，但在实际制作过程中，表格更多的用于网页的布局定位。很多网页都是以表格布局的，这是因为表格在文本和图像的位置控制方面都有很强的功能。</p>
+<p>表格由<strong>行</strong>、<strong>列</strong>和<strong>单元格</strong>三部分组成，一般通过3个标记来创建，分别是表格标记<strong>table</strong>、行标记<strong>br</strong>和单元格标记<strong>td</strong>。表格的各种属性都要放在<strong>table</strong>元素之间。</p>
+<p><strong>创建表格</strong></p>
+<p>表格有许多的属性来供我们选择，合理的使用表格的各种属性可以更好的设计我们想要的表格效果。</p>
+<p><strong>caption表格标题</strong></p>
+<p>我们可以使用<strong>caption</strong>来设置标题单元格，表格的标题单元格一般位于整个表格的第1行，一个table表格只能含有一个表格标题。</p>
+<p><strong>表头th</strong></p>
+<p>表格的表头th是td单元格的一种变体，实质上仍然是一种单元格。它一般位于第一行和第一列，用来标明这一行或列的内容类别，一般情况下，浏览器会以粗体和居中的样式显示th元素中的内容。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">	&lt;caption&gt;表格的标题&lt;/caption&gt;</span><br><span class="line">	&lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">	&lt;th&gt;性别&lt;/th&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;张三&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;男&lt;/td&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;小丽&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;女&lt;/td&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>表格的基本属性</strong></p>
+<p>同列表一样，表格也有自己的基本属性，我们可以通过设置这些基本属性来达到我们想要的效果。我们也可以使用相关属性来设置行列的样式。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">width</td>
+<td style="text-align:right">表格宽度</td>
+</tr>
+<tr>
+<td style="text-align:right">height</td>
+<td style="text-align:right">表格高度</td>
+</tr>
+<tr>
+<td style="text-align:right">align</td>
+<td style="text-align:right">表格的对齐方式值一般有三种，left、right、center.这个是设置整个表格在浏览器中的对齐方式，如果要设置行、列的对齐方式，需要在行或者列单元格内另外定义。在tr标记中用用来控制当前行的水平对齐方式</td>
+</tr>
+<tr>
+<td style="text-align:right">border</td>
+<td style="text-align:right">表格的边框，只有设置border的值不为0，才能在网页中显示出表格的边框</td>
+</tr>
+<tr>
+<td style="text-align:right">bordercolor</td>
+<td style="text-align:right">表格的边框颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">cellspacing</td>
+<td style="text-align:right">内框宽度，用于设置表格内部每个单元格之间的间距</td>
+</tr>
+<tr>
+<td style="text-align:right">cellpadding</td>
+<td style="text-align:right">表格内文字与边框间距，设置单元格边框与单元格里的内容之间的间距</td>
+</tr>
+<tr>
+<td style="text-align:right">bgcolor</td>
+<td style="text-align:right">表格的背景颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">background</td>
+<td style="text-align:right">表格的背景图像</td>
+</tr>
+<tr>
+<td style="text-align:right">valign</td>
+<td style="text-align:right">在tr标记中用来控制表格当前行的垂直对齐方式，属性值有三种，分别是top、middle、bottom.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>单元格属性</strong></p>
+<p>单元格的宽高属性设置也是通过width和height属性来设置的，它也有特别的属性来设置单元格的属性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">colspan</td>
+<td style="text-align:right">水平跨度，可以设置两个或者多个相邻的单元格组合成一个单元格。</td>
+</tr>
+<tr>
+<td style="text-align:right">rowspan</td>
+<td style="text-align:right">垂直跨度，与上面的水平跨度对应，可以设置单元格在垂直方向上跨行的个数。</td>
+</tr>
+<tr>
+<td style="text-align:right">align</td>
+<td style="text-align:right">对齐方式，属性值left、right、center</td>
+</tr>
+<tr>
+<td style="text-align:right">valign</td>
+<td style="text-align:right">单元格的垂直对齐方式，属性值是top、middle、bottom</td>
+</tr>
+<tr>
+<td style="text-align:right">bordercolorlight</td>
+<td style="text-align:right">单元格的亮边框，就是单元格边框的向光的部分，可以设置单元格亮边框的颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">bordercolordark</td>
+<td style="text-align:right">单元格的暗边框，就是单元格边框背光的部分，可以设置单元格暗边框的颜色</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表格的结构</strong></p>
+<p>也有一些标记是用来表示表格的结构的，包括表首标记<strong>thead</strong>、表主体标记<strong>tboty</strong>和表尾标记<strong>tfoot</strong>,用于整体规划表格的行列属性，使用这些标记可以对表格的一行或者多行单元格属性进行统一的修改，从而省去了逐一修改单元格属性的麻烦。</p>
+<blockquote>
+<p>表单</p>
+</blockquote>
+<p>表单主要用来收集客户端提供的相关信息，使网页具有交互功能。在制作网页的过程中，常常需要使用表单，如会员注册、网上调查和搜索等。访问者可以使用如文本域、列表框、复选框以及单选按钮之类的对表单对象输入信息，然后单击某个按钮提交这些信息。表单的标记是form，在form标记中可以设置表单的基本属性，包括表单的名称、处理程序和传送方法等。一般情况下，表单的处理程序action和传送方法method是必不可少的参数。表单的处理程序是表单要提交的地址，也就是表单中收集到的资料要传递的程序地址。这一地址是绝对地址，也可以是相对地址，还可以是一些其他形式的地址。</p>
+<p>表单的属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">name</td>
+<td style="text-align:right">给表单命名，不是表单的必要属性，为了防止表单提交到后台处理程序时出现混乱，一般需要给表单命名</td>
+</tr>
+<tr>
+<td style="text-align:right">method</td>
+<td style="text-align:right">指定数据提交到服务器的时候使用哪种HTTP提交方法，可取值get、post。get：表单数据被传送到action属性指定的URL，然后这个新的URL被送到处理程序上。post：表单数据被包含在列表主体中，然后被送到处理程序上</td>
+</tr>
+<tr>
+<td style="text-align:right">enctype</td>
+<td style="text-align:right">设置表单信息提交的编码方式。可取值分别是：application/x-www-form-urlencoded:默认的编码方式  multipart/form-data:MIME编码，上传文件的表单必须选择此项</td>
+</tr>
+<tr>
+<td style="text-align:right">target</td>
+<td style="text-align:right">用来指定目标窗口的打开方式，表单的目标窗口往往用来显示表单的返回信息。取值分别为_blank、_parent、_self和_top</td>
+</tr>
+</tbody>
+</table>
+<p><strong>插入表单对象</strong></p>
+<p>网页中的表单是由许多不同的表单元素组成的，这些表单元素包括文字字段、单选按钮、复选框、菜单和列表以及按钮。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;index.html&quot;&gt;</span><br><span class="line">	&lt;input name=&quot;name&quot; type=&quot;text&quot; value=&quot;默认值&quot; size=&quot;15&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">type</td>
+<td style="text-align:right">用来指定插入哪种表单元素，可选的类型有文字字段text；密码域password；单选按钮audio 可以设置是否选中checked；复选框checkbox 可以设置是否选中checked；普通按钮button 可以设置点击事件onclcik；提交按钮submit；重置按钮reset；图像域image 可以设置src指定图像路径；隐藏域hidden；文件与file；菜单和列表通过select和option标记来实现；文本域标记textarea，设置多行文本，可以通过cols标记来设置列数，使用rows来设置行数；</td>
+</tr>
+<tr>
+<td style="text-align:right">name</td>
+<td style="text-align:right">文字字段的名称，用于和页面中其他控件加以区别。名称由英文或数字以及下划线组成，担有大小写之分</td>
+</tr>
+<tr>
+<td style="text-align:right">value</td>
+<td style="text-align:right">用来定义文本框的默认值</td>
+</tr>
+<tr>
+<td style="text-align:right">size</td>
+<td style="text-align:right">确定文本框在页面中显示的长度，以字符为单位</td>
+</tr>
+<tr>
+<td style="text-align:right">maxlength</td>
+<td style="text-align:right">用来设置文本框中最多可以输入的字符数</td>
+</tr>
+</tbody>
+</table>
+<p>表格和表单的基本属性基本就这些内容，学习的新的知识的话再来补充。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/图像、列表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2238,200 +2581,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/RN初识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/29/RN初识/" itemprop="url">React Native初见</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T23:14:50+08:00">
-                2018-05-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  811 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="React-Native-简介"><a href="#React-Native-简介" class="headerlink" title="React Native 简介"></a>React Native 简介</h2><ul>
-<li><p>React Native是什么？（一下简称RN）<br>  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领域。 RN使你能够在JavaScript和React的基础上获得完全一致的开发体验。</p>
-<p>  Native指的就是原生的APP，也就是用原生开发方式开发出来的应用.<br>  React是一个用于构建用户界面的js库，React是声明式的，高效率的，并兼具灵活性，其中用于构建用户界面的js库有很多，如angular，vue，jQuery，ext等，都可以称为用户构建用户界面的js库。但是React与它们又有所不同，下面我们来分别介绍一下React的这几个特性：</p>
-<p>  <strong>1.声明式：声明式是由JSX语法来表现的</strong></p>
-<p>  JSX是使XML可以嵌入JavaScript的语法，可以更加直观的描述UI，JSX是JavaScript对象，可以理解为createElement的语法糖。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Text, View &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class Greeting extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Text&gt;Hello &#123;this.props.name&#125;!&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default class LotsOfGreetings extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Rexxar&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Jaina&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Valeera&apos; /&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<pre><code>这里的声明式指的就是上面代码中用大括号括起来的部分{this.props.name}，这里类似于angular中的数据绑定，声明了UI中的表现与js中数据的关系。我们可以吧任意合法的JavaScript表达式通过括号嵌入到JSX语句中，括号的意思是括号内部为一个JS变量或者表达式，需要执行后取值。
-
-**2.高效率：高效率是由虚拟的DOM节点来实现的**
-
-虚拟DOM技术指的是JavaScript Object模拟DOM树，计算变更，减少重绘，提升效率的一种技术实现。
-
-**3.灵活性**
-
-这个是一个很广的范围，主要有安装的灵活性和编写代码的灵活性等，其实就是components即**组件化**
-
-RN通过components来进行组件化。他把UI分割成独立，可重用的部件。React有它自己的组件化方式，就是所有模块都继承自React.Components,这个要比angular的modules更加的轻量级，结构也更加的简单
-</code></pre><p>介绍完了他的特点，下面我们来总结一下：</p>
-<p>React通过虚拟的DOM实现了对UI层的解耦，然后将浏览器的DOM树替换成Native的UI模块，使React在移动端进行渲染，最后采用Native的核心API完成React与Native的通信，由于采用Native原生UI作为展现层，所以RN具有可以媲美原生应用的优秀用户体验和性能优势。RN是基于React技术编写Native应用的一门技术，他继承了React简明、高效、灵活的特点，又具有Native优秀的用户体验。</p>
-<p>RN采用JS编码，编写的应用具有跨平台，可以热更新的优势。    </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2482,7 +2631,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

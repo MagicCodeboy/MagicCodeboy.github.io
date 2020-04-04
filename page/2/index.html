@@ -251,6 +251,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/RN初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/29/RN初识/" itemprop="url">React Native初见</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T23:14:50+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  811 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="React-Native-简介"><a href="#React-Native-简介" class="headerlink" title="React Native 简介"></a>React Native 简介</h2><ul>
+<li><p>React Native是什么？（一下简称RN）<br>  RN是Facebook在2015年4月开源的跨平台的移动应用开发框架，是Facebook早先开源的JS框架React在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用JavaScript语言，类似HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员很容易进入到移动应用开发领域。 RN使你能够在JavaScript和React的基础上获得完全一致的开发体验。</p>
+<p>  Native指的就是原生的APP，也就是用原生开发方式开发出来的应用.<br>  React是一个用于构建用户界面的js库，React是声明式的，高效率的，并兼具灵活性，其中用于构建用户界面的js库有很多，如angular，vue，jQuery，ext等，都可以称为用户构建用户界面的js库。但是React与它们又有所不同，下面我们来分别介绍一下React的这几个特性：</p>
+<p>  <strong>1.声明式：声明式是由JSX语法来表现的</strong></p>
+<p>  JSX是使XML可以嵌入JavaScript的语法，可以更加直观的描述UI，JSX是JavaScript对象，可以理解为createElement的语法糖。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; Text, View &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class Greeting extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Text&gt;Hello &#123;this.props.name&#125;!&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default class LotsOfGreetings extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Rexxar&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Jaina&apos; /&gt;</span><br><span class="line">        &lt;Greeting name=&apos;Valeera&apos; /&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>这里的声明式指的就是上面代码中用大括号括起来的部分{this.props.name}，这里类似于angular中的数据绑定，声明了UI中的表现与js中数据的关系。我们可以吧任意合法的JavaScript表达式通过括号嵌入到JSX语句中，括号的意思是括号内部为一个JS变量或者表达式，需要执行后取值。
+
+**2.高效率：高效率是由虚拟的DOM节点来实现的**
+
+虚拟DOM技术指的是JavaScript Object模拟DOM树，计算变更，减少重绘，提升效率的一种技术实现。
+
+**3.灵活性**
+
+这个是一个很广的范围，主要有安装的灵活性和编写代码的灵活性等，其实就是components即**组件化**
+
+RN通过components来进行组件化。他把UI分割成独立，可重用的部件。React有它自己的组件化方式，就是所有模块都继承自React.Components,这个要比angular的modules更加的轻量级，结构也更加的简单
+</code></pre><p>介绍完了他的特点，下面我们来总结一下：</p>
+<p>React通过虚拟的DOM实现了对UI层的解耦，然后将浏览器的DOM树替换成Native的UI模块，使React在移动端进行渲染，最后采用Native的核心API完成React与Native的通信，由于采用Native原生UI作为展现层，所以RN具有可以媲美原生应用的优秀用户体验和性能优势。RN是基于React技术编写Native应用的一门技术，他继承了React简明、高效、灵活的特点，又具有Native优秀的用户体验。</p>
+<p>RN采用JS编码，编写的应用具有跨平台，可以热更新的优势。    </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/iOS粒子效果/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2055,7 +2249,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
