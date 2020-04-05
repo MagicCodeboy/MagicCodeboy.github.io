@@ -251,6 +251,536 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/HTML5中的语法以及标记变化和结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/05/HTML5中的语法以及标记变化和结构/" itemprop="url">HTML5中的语法以及标记变化和结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-05T16:13:21+08:00">
+                2020-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,413 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>HTML5基础语法</p>
+</blockquote>
+<p>HTML5是2010年正式推出的，在新的HTML5语法规则中，部分JavaScript代码将被HTML5的新属性所替代，部分Div布局代码也将被HTML5变为更加语义化的结构标签，这使得网站前端的代码变的更加精炼、简介和清晰，代码所表达的意思也更加一目了然。HTML语法是在SGML语言的基础上建立起来的，但是SGML语法非常复杂，要开发能够解析SGML语法的程序也很不容易，所以很多浏览器都不包含SGML的分析器。虽然HTML基本遵从SGML的语法，但是对于HTML的执行在各个浏览器之间并没有统一的标准。</p>
+<p>HTML5提供了高效的数据管理、绘制、视频和音频工具，促进了网页和移动设备的跨浏览器应用的开发。HTML5拥有强大的灵活性，支持开发非常精彩的交互式网站。还引入了新的标签和增强性的功能，其中包括了表单控制、API、多媒体、数据库支持和显著提升的处理速度等。</p>
+<p>HTML5取消了HTML4.01中的一部分被css取代的标记，提供了新的元素和属性，语言更加精简，解析的规则更加详细。部分元素对于搜索引擎更加友好，对于小屏幕的设置和视障人士也更有帮助。HTML5采用了最新的表单输入对象，还引入了微数据。</p>
+<p><strong>HTML5语法的三个要点</strong></p>
+<p><em>1.可以省略标签的元素</em></p>
+<p>不允许写结束符的标签：</p>
+<p>area、base、br、col、command、embed、hr、img、input、keygen、link、meta、param、source、track、wbr</p>
+<p>可以省略结束标签：</p>
+<p>li、dt、dd、p、rt、rp、optgroup、option、colgroup、thead、tbody、tfoot、tr、td、th</p>
+<p>可以省略整个标签：</p>
+<p>HTML、head、body、colgroup、tbody 虽然这些元素都可以省略，但实际上却是隐形存在的。例如body标签可以省略，但在DOM树上他是存在的，可以使用document.body来访问到。</p>
+<p><em>2.取得boolean值的属性</em></p>
+<p>取得Boolean的属性，例如disabled和readonly等，通过默认属性来表达值为true，在属性值为true时，可以将属性值设置为属性名称本身，也可以将值设置为空字符串。</p>
+<p><em>3.省略属性的引用符</em></p>
+<p>在HTML4中设置属性值时，可以使用双引号或者单引号来引用。</p>
+<p>在HTML5中，只要属性不包含”空格“、”&lt;“、”&gt;”、”‘“、”””、“、”、“=”等字符，都可以省略属性的引用符。</p>
+<p><strong>HTML5中新增的元素和废除的元素</strong></p>
+<p>HTML5增加了新的结构元素来表达最常用的结构。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">结构元素</th>
+<th style="text-align:right">作用用法介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">section:</td>
+<td style="text-align:right">可以用来表达书本的一部分或者一章，或者一章内的一节</td>
+</tr>
+<tr>
+<td style="text-align:right">header</td>
+<td style="text-align:right">页面主体的头部，并非head元素</td>
+</tr>
+<tr>
+<td style="text-align:right">footer</td>
+<td style="text-align:right">页面的底部（页脚），可以使一封邮件签名的所在</td>
+</tr>
+<tr>
+<td style="text-align:right">nav</td>
+<td style="text-align:right">到其他页面的链接集合</td>
+</tr>
+<tr>
+<td style="text-align:right">article</td>
+<td style="text-align:right">博文、杂志、文章汇编等中的一篇文章</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">块级元素</th>
+<th style="text-align:right">作用用法介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">aside</td>
+<td style="text-align:right">定义页面内容之外的内容，比如侧边栏。可以表达注记、侧栏、摘要、插入的引用等作为补充主体的内容。</td>
+</tr>
+<tr>
+<td style="text-align:right">figure</td>
+<td style="text-align:right">定义媒介内容的分组，以及他们的标题。表示一段独立的流内容，一般表示文档主题流内容中的一个独立单元。</td>
+</tr>
+<tr>
+<td style="text-align:right">figcaption</td>
+<td style="text-align:right">媒介内容的标题说明。使用figcaption元素可以为figure元素组添加标题。</td>
+</tr>
+<tr>
+<td style="text-align:right">dialog</td>
+<td style="text-align:right">定义对话（会话）。使用dialog元素用来表达人们之间的对话。在HTML5元素中，dt元素用于表示说话者，而dd元素用来表示说话的内容。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">行内元素</th>
+<th style="text-align:right">作用用法介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">mark</td>
+<td style="text-align:right">定义有记号的文本</td>
+</tr>
+<tr>
+<td style="text-align:right">time</td>
+<td style="text-align:right">定义日期/时间</td>
+</tr>
+<tr>
+<td style="text-align:right">meter</td>
+<td style="text-align:right">定义预定义范围内的度量,可以用来展示投票结果等 meter value=“30” optimum=“1” high=“0.9” low=”1” max=”1” min=”0”</td>
+</tr>
+<tr>
+<td style="text-align:right">progress</td>
+<td style="text-align:right">定义运行中的进度</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">嵌入多媒体元素与交互性元素</th>
+<th style="text-align:right">作用用法介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">video</td>
+<td style="text-align:right">定义视频</td>
+</tr>
+<tr>
+<td style="text-align:right">audio</td>
+<td style="text-align:right">定义音频</td>
+</tr>
+<tr>
+<td style="text-align:right">embed</td>
+<td style="text-align:right">用来插入各种多媒体，格式可以使MIDI，WAV，AIFF，AU，MP3等</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">input元素</th>
+<th style="text-align:right">作用用法介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">url</td>
+<td style="text-align:right">专门用来输入url地址的文本框,如果文本框中的内容不是url地址格式，则不允许提交</td>
+</tr>
+<tr>
+<td style="text-align:right">email</td>
+<td style="text-align:right">设置这个值会在提交表单的时候自动验证输入框中的内容是否为email格式，如果不是，无法提交</td>
+</tr>
+<tr>
+<td style="text-align:right">data</td>
+<td style="text-align:right">以日历的形式来方便用户输入</td>
+</tr>
+<tr>
+<td style="text-align:right">time</td>
+<td style="text-align:right">用来输入时间的本文框，并且会对输入时间的有效性进行检查</td>
+</tr>
+<tr>
+<td style="text-align:right">datetime</td>
+<td style="text-align:right">专门用来输入本地日期和时间的文本框，也会对输入的数据进行检查</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">废除的元素</th>
+<th style="text-align:right">代替属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">acronym</td>
+<td style="text-align:right">abbr</td>
+</tr>
+<tr>
+<td style="text-align:right">dir</td>
+<td style="text-align:right">ul</td>
+</tr>
+<tr>
+<td style="text-align:right">isindex</td>
+<td style="text-align:right">使用form元素与input元素相结合的方式替代</td>
+</tr>
+<tr>
+<td style="text-align:right">listing</td>
+<td style="text-align:right">pre</td>
+</tr>
+<tr>
+<td style="text-align:right">xmp</td>
+<td style="text-align:right">code</td>
+</tr>
+<tr>
+<td style="text-align:right">nextid</td>
+<td style="text-align:right">GUIDS</td>
+</tr>
+<tr>
+<td style="text-align:right">plaintext</td>
+<td style="text-align:right">“text/plian”MIME类型替代</td>
+</tr>
+</tbody>
+</table>
+<p>更多的被废除的属性可以查看官方文档，这里就不一一列举了</p>
+<p><strong>新增的属性</strong></p>
+<p>input表单新增的属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">新增属性</th>
+<th style="text-align:right">属性定义 设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">input（type=text）、select、textarea与button 新增autofocus属性</td>
+<td style="text-align:right">指定属性的方式让元素在画面打开时自动获得焦点</td>
+</tr>
+<tr>
+<td style="text-align:right">input（type=text）、textarea指定placeholder属性</td>
+<td style="text-align:right">对用户的输入进行提示，提示用户可以输入的内容</td>
+</tr>
+<tr>
+<td style="text-align:right">input、output、select、textarea、button与fieldset指定form属性</td>
+<td style="text-align:right">声明属于哪个表单，然后将其放置在页面的任何位置，而不是表单之内</td>
+</tr>
+<tr>
+<td style="text-align:right">input（type=text）、textarea指定required属性</td>
+<td style="text-align:right">表示用户提交时进行检查，检查该元素内必定要有输入内容</td>
+</tr>
+<tr>
+<td style="text-align:right">input 标签增加新的属性 autocomplete、min、max、multiple、pattern、step</td>
+<td style="text-align:right">datalist元素与autocomplete属性配合使用，multiple属性允许上传时一次上传多个文件，pattern属性用于验证输入字段的模式、其实就是正则表达式，step属性规定输入字段的合法数字间隔 如：（step=“3”，则合法数字范围是-3、0、3、6…），step属性可以与min以及max属性配合使用，创建合法值的范围</td>
+</tr>
+<tr>
+<td style="text-align:right">input、button元素增加formaction、formenctype、formmethod、formnovalidate与formtarget属性</td>
+<td style="text-align:right">用户重载form元素的action、enctype、method、novalidate与target属性，</td>
+</tr>
+<tr>
+<td style="text-align:right">fieldset元素增加disabled属性</td>
+<td style="text-align:right">可以把他的子元素设置为disabled状态</td>
+</tr>
+<tr>
+<td style="text-align:right">input、button、form增加novalidate属性</td>
+<td style="text-align:right">可以取消提交时进行的有关检查，表单可以被无条件的提交</td>
+</tr>
+</tbody>
+</table>
+<p>链接相关的属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">新增属性</th>
+<th style="text-align:right">属性定义 设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">a、area增加media属性</td>
+<td style="text-align:right">规定目标URL是以何种类型的媒介、设备进行优化的，改属性可以接受多个值，只有在href属性存在时使用</td>
+</tr>
+<tr>
+<td style="text-align:right">area增加hreflang和rel属性</td>
+<td style="text-align:right">hreflang属性规定在被链接文档中的文本的语言，只有设置了href属性时，才使用该属性。rel属性规定当前文档与被链接文档/资源之间的关系，只有href使用时，才能使用rel属性</td>
+</tr>
+<tr>
+<td style="text-align:right">link增加size属性</td>
+<td style="text-align:right">用来规定被连接资源的尺寸，只有被链接资源是图标时（rel=”icon”）,才能使用该属性，该属性可以接受多个值，值由空格分隔</td>
+</tr>
+<tr>
+<td style="text-align:right">base元素增加target属性</td>
+<td style="text-align:right">保持与a元素的一致性</td>
+</tr>
+</tbody>
+</table>
+<p>其他的新增的属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">新增属性</th>
+<th style="text-align:right">属性定义 设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">ol增加reversed属性</td>
+<td style="text-align:right">指定列表倒序展示</td>
+</tr>
+<tr>
+<td style="text-align:right">meta增加charset属性</td>
+<td style="text-align:right">规定在外部脚本文件中使用的字符编码</td>
+</tr>
+<tr>
+<td style="text-align:right">menu增加type和label属性</td>
+<td style="text-align:right">label为菜单定义一个可见的标注，type属性让菜单可以以上下文菜单、工具条与列表菜单三种形式出现</td>
+</tr>
+<tr>
+<td style="text-align:right">style增加scoped属性</td>
+<td style="text-align:right">允许我们为文档的指定部分定义样式，而不是整个文档，如果使用scoped属性，那么所规定的样式只能应用到style元素的父元素及其子元素</td>
+</tr>
+<tr>
+<td style="text-align:right">script增加async属性</td>
+<td style="text-align:right">定义脚本是否异步执行，仅适用于外部脚本（使用src标记时）</td>
+</tr>
+<tr>
+<td style="text-align:right">HTML元素增加manifest</td>
+<td style="text-align:right">开发离线Web应用时它与API结合使用</td>
+</tr>
+<tr>
+<td style="text-align:right">iframe增加sandbox、seamless、srcdoc属性</td>
+<td style="text-align:right">用来提高页面安全性，防止不信任的网页执行某些操作</td>
+</tr>
+</tbody>
+</table>
+<p><strong>新增的主体结构元素</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">结构元素</th>
+<th style="text-align:right">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">article</td>
+<td style="text-align:right">可以包含一个独立的内容项，每一个article元素都允许有自己的标题与注脚等从属元素，并允许对自己的从属元素单独使用样式</td>
+</tr>
+<tr>
+<td style="text-align:right">section</td>
+<td style="text-align:right">用于对网站或APP中页面上的内容进行分块，一个section元素通常由<strong>内容</strong>和<strong>标题</strong>组成。</td>
+</tr>
+<tr>
+<td style="text-align:right">nav</td>
+<td style="text-align:right">在HTML中用于包裹一个导航链接组，在一个页面中可以同时存在多个nav</td>
+</tr>
+<tr>
+<td style="text-align:right">aside</td>
+<td style="text-align:right">用来表示当前页面或者文章的附属信息部分，它可以包含与当前页面或者主要内容相关的引用，有别于主要内容的部分</td>
+</tr>
+</tbody>
+</table>
+<p><strong>新增的主体结构元素</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">元素</th>
+<th style="text-align:right">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">header</td>
+<td style="text-align:right">是一种具有引导和导航作用的结构元素，通常用来放置整个页面或者页面内的一个内容区块的标题，也可以包含表格、表单或者相关的logo图片</td>
+</tr>
+<tr>
+<td style="text-align:right">hgroup</td>
+<td style="text-align:right">位于正文开头，可以在这些元素中添加h1标签，用于显示标题，hgroup元素可以将标题及其子标题进行分组的元素。</td>
+</tr>
+<tr>
+<td style="text-align:right">footer</td>
+<td style="text-align:right">通常包括其相关区块的脚注信息</td>
+</tr>
+<tr>
+<td style="text-align:right">address</td>
+<td style="text-align:right">通常位于文档的末尾，用于在文档中呈现联系信息，包括文档创建者的名字、站点链接、电子邮箱、真实地址、电话号码等</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/04/HTML中的多媒体/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2398,219 +2928,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/iOS内存管理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/12/iOS内存管理/" itemprop="url">iOS 中的内存管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T20:30:40+08:00">
-                2018-06-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1,298 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="iOS中的内存管理"><a href="#iOS中的内存管理" class="headerlink" title="iOS中的内存管理"></a>iOS中的内存管理</h2><p>内存是我们平常生活中用来存储数据的存在，软件在运行的时候会分配和使用设备的内存资源，因此需要我们在软件开发的过程中，进行合理有效的内存管理，以保证快速高效的内存分配，提升软件的优越性。</p>
-<p>首先我们来讨论一下内存中的分区：</p>
-<p><strong>1.内存中分为五大区域</strong></p>
-<p>在这里我们只做简单的介绍</p>
-<p><strong>栈区：</strong>存储局部变量的区域，当其作用域执行完毕之后，就会被系统收回，是系统自动管理的。</p>
-<p><strong>堆区：</strong> 存储OC的对象，手动申请的字节空间，需要自己释放</p>
-<p><strong>BSS段（Block Started by Symbol）：</strong>未初始化的全局变量和静态变量，一旦初始化就会从BSS段中回收掉，转存到数据段中</p>
-<p><strong>数据段：</strong> 存储已经初始化的全局变量和静态变量，以及常量数据，直到程序结束时才会被立即收回。数据段属于静态内存分配。</p>
-<p><strong>代码段：</strong> 通常是指用来存放程序执行代码的一块内存区域，这部分区域的大小在程序运行前就已经确定了，并且内存区域通常属于只读。在代码段中，也有可能包含一些只读的常量数据。</p>
-<p>除了堆区，其他区域中存储的数据，都是由系统自动释放的。堆区中存放的OC的对象，是不会自动释放的，如果不主动释放，那么将在程序结束的时候释放。</p>
-<p><strong>内存的管理原则</strong></p>
-<p>就是我们常说的引用计数的问题，OC的对象都继承于NSObject，该对象有一个属性，叫做retainCount,也就是我们说的引用计数器，类型为unsigned long，占据八个字节，每一个对象负责维护对象所引用的计数值，当一个新的引用指向对象，那么这个对象的引用计数会增加1，当我们新创建一个对象的时候这个对象的引用计数器的值默认为1，当这个对象被少一次引用的时候这个对象的引用计数值减1，当这个对象的引用计数值为0的时候就说明了这个对象没有被使用，这个时候系统会自动回收掉此对象。</p>
-<p><strong>内存管理的方式：</strong></p>
-<p><strong>1.MRC:</strong> Manual Reference Counting 手动引用计数器，需要我们手动管理对象引用计数的值。</p>
-<p><strong>2.ARC：</strong> Automatic Reference Counting 自动引用计数，系统自动的改变对象引用计数的值（iOS5之后），ARC是基于MRC的</p>
-<p><strong>这里我们重点讨论一下ARC：</strong></p>
-<p>ARC是automatic reference counting 自动引用计数，在程序编译时自动加入retain/release。 在对象被创建时retaincount + 1,在对象被release时count -1 ，当count=0时，对象销毁。程序中加入autoreleasepool对象会由系统自动加上autorelease方法，如果该对象引用计数为0，则销毁。ARC是为了解决MRC手动管理内存存在的一些问题而诞生的。</p>
-<p>MRC下内存管理的缺点：</p>
-<ul>
-<li>释放一个堆内存时，首先要确定指向这个堆空间的指针都被release了。（要避免提前释放）</li>
-<li>释放指针指向的堆空间，首先要确定哪些指向同一个堆，这些指针只能释放一次。（避免释放多次，造成内存泄漏）</li>
-<li>模块化操作时，对象可能被多个模块创建和使用，不能确定最后由谁来进行释放。</li>
-<li>多线程操作时，不确定那个线程最后使用完毕。</li>
-</ul>
-<p>但是ARC下也可能会出现内存泄漏的情况，比如如下的情况：</p>
-<ul>
-<li>block的循环引用，可以将引用的一方变成weak，来避免循环引用。</li>
-<li>NSTimer 在使用NSTimer addTarget时，为了防止target被释放而导致的程序异常，timer会持有target，这个也是一处内存泄漏的隐患。</li>
-<li>非OBJC对象 ARC是自动检测objc对象的，如果不是objc对象就无能为力了，C语言使用malloc开辟，free释放 c++使用new开辟，delete释放，但是在ARC下，不会添加非objc对象释放语句，如果没有去释放，也会造成内存泄漏。</li>
-</ul>
-<p>每一个工程中都有一个main.m文件</p>
-<hr>
-<p>int main(int argc, char * argv[]) {</p>
-<p>  @autoreleasepool {</p>
-<p>  return  UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate  class]));</p>
-<p> }</p>
-<p>}</p>
-<hr>
-<p>autoreleasepool是用来做autorelease变量释放的，autorealease不会马上释放，当他到了最近的pool release时会检查retain count是不是为0，为0就会释放。</p>
-<p><strong>自动释放池的底层实现：</strong></p>
-<p>自动释放池以栈的形式实现： 当你创建一个新的自动释放池时，他将被添加到栈顶，当一个对象收到发送autorelease消息时，他被添加到当前线程的处于栈顶的自动释放池中，当自动释放池被回收时，他们从栈中被删除，并且会给池子里所有的对象都会做一次release操作。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2661,7 +2978,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
