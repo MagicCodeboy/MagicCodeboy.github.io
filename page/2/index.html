@@ -251,6 +251,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/关于cocoapods的简单使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/31/关于cocoapods的简单使用/" itemprop="url">cocoapods安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-31T14:16:41+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  943 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>引言</strong><br> 工欲善其事，必先利其器。昨天升级电脑系统，升级到一半电脑卡死，终于将使用了两年多的iMac搞报废了，所以今天喜提新的iMac之后，就是一顿的各种配置了。记录一下这个cocoapods的安装，方便在下一次喜提新的Mac后能够更加从容，哈哈。</p>
+<p><strong>一.cocoapods简介</strong></p>
+<p>Cocoapods是OS X 和iOS下的一个第三方类库的管理工具，通过它我们可以为我们的项目添加‘pods’依赖库，轻松的管理三方类库的版本。并且在引入第三方类库时他可以为我们帮助我们完成基本的配置，包括编译阶段、连接器选择，甚至是ARC环境下的-fno-objc-arc配置等等。我们也可以使用cocoapods查找最新的三方库的版本，只需要使用pod search “三方库名称”即可。</p>
+<p><strong>二.安装步骤</strong></p>
+<p>1.查看当前的Ruby环境，并且升级它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看当前的ruby版本</span><br><span class="line">ACA80137:~ liuyang$ ruby -v</span><br><span class="line">ruby 2.3.3p222 (2016-11-21 revision 56859) [universal.x86_64-darwin17]</span><br><span class="line">ACA80137:~ liuyang$ sudo gem update --system</span><br><span class="line">Password:</span><br></pre></td></tr></table></figure>
+<p>发现还是有错误的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR:  While executing gem ... (Errno::EPERM)</span><br><span class="line">    Operation not permitted @ rb_sysopen - /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/gem</span><br></pre></td></tr></table></figure></p>
+<p>但是这个地方有个是我的gem已经升级成功了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ACA80137:~ liuyang$ gem -v</span><br><span class="line">2.7.7</span><br></pre></td></tr></table></figure></p>
+<p>2.我直接开始执行下面的替换源（暂时跳过了上面的错误的步骤）</p>
+<p>之前使用的淘宝的源现在也不推荐使用了，所以这里使用的是ruby-china提供的镜像服务，执行命令<br>gem sources –add <a href="https://gems.ruby-china.org/" target="_blank" rel="noopener">https://gems.ruby-china.org/</a> –remove <a href="https://rubygems.org/" target="_blank" rel="noopener">https://rubygems.org/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/</span><br><span class="line"></span><br><span class="line">https://gems.ruby-china.org/ added to sources</span><br><span class="line">https://rubygems.org/ removed from sources</span><br></pre></td></tr></table></figure>
+<p>替换源成功，然后查看原路径是否替换成功<br>执行命令 gem sources -l</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ACA80137:~ liuyang$ gem sources -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">https://gems.ruby-china.org/</span><br></pre></td></tr></table></figure>
+<p>接下来开始安装Cocoapods 执行命令<br>sudo gem install cocoapods 然后不出意外 又报错了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ERROR:  While executing gem ... (Gem::FilePermissionError)</span><br><span class="line">    You don&apos;t have write permissions for the /usr/bin directory.</span><br><span class="line">ACA80137:~ liuyang$ sudo gem install -n /usr/local/bin cocoapods</span><br></pre></td></tr></table></figure>
+<p>如果出错的话，我们就需要执行另外一个终端命令行<br>sudo gem install -n /usr/local/bin cocoapods</p>
+<p>安装成功之后就要执行最为耗时的一步了<br>执行命令 pod setup  这个命令是设置仓库，把所有的上传到cocoapods的第三方框架下载每一个版本和网络地址以及其他信息到本地。</p>
+<p>这个过程有点长 提示到setup completed时 说明已经完成了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  Receiving objects: 100% (2182104/2182104), 541.93 MiB | 48.00 KiB/s, done.</span><br><span class="line">  Resolving deltas: 100% (1244107/1244107), done.</span><br><span class="line">  Checking connectivity... done.</span><br><span class="line">  Checking out files: 100% (241592/241592), done.</span><br><span class="line">Setup completed</span><br></pre></td></tr></table></figure></p>
+<p>这里也顺带提一下简单的使用<br>我们需要首先要打开终端 cd到我们的工程中 然后vim podfile 这个时候我们会进入到我么创建的文件中  然后修改文件的内容为 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, &apos;8.0&apos;</span><br><span class="line">#use_frameworks!</span><br><span class="line"></span><br><span class="line">target &apos;你的工程名称&apos; do</span><br><span class="line"></span><br><span class="line">    pod &apos;AFNetworking&apos;, &apos;~&gt; 3.0&apos;</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>然后执行 pod install 命令即可  之后打开 “你的工程名”.xcworkspace 就是我们使用cocoapods导入了第三方库的项目了</p>
+<p>关于podfile中的各个参数 这里简单介绍下<br>首先 platform 设置的是我们的平台和版本号<br>user_framework!要求的是我们生成的是framework而不是静态库</p>
+<p>暂时就简单介绍这么多 如果以后觉得有需要的 再次添加 如果文章内有不对的地方，欢迎各位大大指正，期待能和各位同行交流。</p>
+<p>在路上。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/RN初识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2026,184 +2222,11 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/苹果Edit the number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/04/苹果Edit the number/" itemprop="url">关于苹果Edit the number的问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-04T21:15:43+08:00">
-                2018-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  184 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>   最近登录开发者账号中心 都会有一个Edit the number的选项  如果不执行这步操作 就无法继续下面的操作 在尝试解决的过程中  需要填写自己账号的密保问题 但是这个问题已经不记得了 在尝试了各种操作方法之后 还是不行。<br>之后 我在自己的手机上登录了开发者账号 进入用户后 有一个编辑信息  里面添加了自己的新的手机号码之后 完美的解决了这个问题。<br>之后有很多人也写出了这个问题的解决办法 具体可参考下面的方法 <a href="https://blog.csdn.net/xuyang844175181/article/details/80144055" target="_blank" rel="noopener">https://blog.csdn.net/xuyang844175181/article/details/80144055</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2249,7 +2272,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
