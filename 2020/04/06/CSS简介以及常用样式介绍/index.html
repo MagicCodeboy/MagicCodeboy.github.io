@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh_Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="String_we_ask_for" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML基础知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CSS简介  CSS(层叠样式表)是一种网页制作技术，是网页设计比不可少的工具之一。网页最初是使用HTML标记来定义文档及格式，但这些标记不能满足更多的文档样式需求。为了解决这个问题，在1997年W3C在颁布HTML4的同时，也公布了有关样式表的第一个标准CSS1，在1998年又发布了CSS2版本，样式表得到了更多的充实。使用CSS能够简化网页的格式代码，加快加载显示的速度，也减少了需要上传的代">
+<meta name="keywords" content="HTML基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS简介以及常用样式介绍">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/CSS简介以及常用样式介绍/index.html">
+<meta property="og:site_name" content="Shanhu&#39;Blog">
+<meta property="og:description" content="CSS简介  CSS(层叠样式表)是一种网页制作技术，是网页设计比不可少的工具之一。网页最初是使用HTML标记来定义文档及格式，但这些标记不能满足更多的文档样式需求。为了解决这个问题，在1997年W3C在颁布HTML4的同时，也公布了有关样式表的第一个标准CSS1，在1998年又发布了CSS2版本，样式表得到了更多的充实。使用CSS能够简化网页的格式代码，加快加载显示的速度，也减少了需要上传的代">
+<meta property="og:locale" content="zh_Hans">
+<meta property="og:updated_time" content="2020-04-07T16:40:21.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS简介以及常用样式介绍">
+<meta name="twitter:description" content="CSS简介  CSS(层叠样式表)是一种网页制作技术，是网页设计比不可少的工具之一。网页最初是使用HTML标记来定义文档及格式，但这些标记不能满足更多的文档样式需求。为了解决这个问题，在1997年W3C在颁布HTML4的同时，也公布了有关样式表的第一个标准CSS1，在1998年又发布了CSS2版本，样式表得到了更多的充实。使用CSS能够简化网页的格式代码，加快加载显示的速度，也减少了需要上传的代">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/06/CSS简介以及常用样式介绍/"/>
+
+
+
+
+
+  <title>CSS简介以及常用样式介绍 | Shanhu'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shanhu'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天道酬勤 自强不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/CSS简介以及常用样式介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS简介以及常用样式介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-06T14:33:38+08:00">
+                2020-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  4,012 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>CSS简介</p>
+</blockquote>
+<p>CSS(层叠样式表)是一种网页制作技术，是网页设计比不可少的工具之一。网页最初是使用HTML标记来定义文档及格式，但这些标记不能满足更多的文档样式需求。为了解决这个问题，在1997年W3C在颁布HTML4的同时，也公布了有关样式表的第一个标准CSS1，在1998年又发布了CSS2版本，样式表得到了更多的充实。使用CSS能够简化网页的格式代码，加快加载显示的速度，也减少了需要上传的代码数量。它可以把网页上的内容结构和格式控制相分离。CSS可以更加精确地控制网页的内容形式，CSS的样式也是丰富多彩的，CSS的定义样式灵活多样，可以根据不同的情况，选用不同的定义方法。</p>
+<p><strong>CSS的基本语法</strong></p>
+<p>CSS的语法结构由三部分组成：选择符、样式属性和值。<br>选择符{样式属性：值；样式属性：值；…},添加CSS的方法有四种，分别是：<strong>链接外部样式表</strong>、<strong>内部样式表</strong>、<strong>导入外部样式表</strong>和<strong>内嵌样式</strong>。</p>
+<p>链接外部样式表方法：link rel=stylesheet type=text/css href=style.css</p>
+<p>内部样式表：内部样式表一般位于HTML文件的头部，在head标签内部 并且包含在style标签中</p>
+<p>导入外部样式表：导入外部样式表是指在内部样式表style里导入一个外部样式表，导入时使用@import，实质上它是相当于存在于内部样式表中。</p>
+<p><strong>字体的属性</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">font-family</td>
+<td style="text-align:right">字体 取值：如宋体，可以设置多个字体属性，如果不支持设置的第一个字体，则会往后查找可用的字体属性</td>
+</tr>
+<tr>
+<td style="text-align:right">font-size</td>
+<td style="text-align:right">字号 取值：xx-small 绝对字体尺寸 最小， x-small 绝对字体尺寸 较小，small 绝对字体尺寸 小，medium 绝对字体尺寸 正常默认值，large 绝对字体尺寸 大，x-large 绝对字体尺寸 较大，xx-large 绝对字体尺寸 最大 ，larger 相对字体尺寸 相对于父对象中字体尺寸进行相对增大，smaller 相对字体尺寸 相对于父对象中字体尺寸进行相对减小， length 可采用百分比或长度值，不可为负值，其百分比取值是基于父对象中的字体的尺寸。</td>
+</tr>
+<tr>
+<td style="text-align:right">font-style</td>
+<td style="text-align:right">字体风格 取值：normal 正常字体； italic 斜体显示文字；oblique 属于中间状态，以偏斜体显示。</td>
+</tr>
+<tr>
+<td style="text-align:right">font-weight</td>
+<td style="text-align:right">加粗字体 取值：normal 正常粗细；bold 表示粗体；bolder 表示特粗体；lighter 表示特细体；number 不是真正的取值，其范围是100~900，一般情况下都是整百的数字</td>
+</tr>
+<tr>
+<td style="text-align:right">font-variant</td>
+<td style="text-align:right">小写字母转大写 可以将小写的英文字母转化为大写。 取值：normal 正常显示；small-caps 将小写字母转化为大写字母并且字体较小。</td>
+</tr>
+<tr>
+<td style="text-align:right">复合属性font</td>
+<td style="text-align:right">设置font的复合属性， 各个值之间用空格相连。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>颜色和背景属性</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">color</td>
+<td style="text-align:right">用来指定元素的颜色，颜色值是一个关键字或者是一个十六进制的RGB值</td>
+</tr>
+<tr>
+<td style="text-align:right">background-color</td>
+<td style="text-align:right">不但可以设置网页的背景颜色，还可以设置字体的背景颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">background-image</td>
+<td style="text-align:right">设置元素的背景图像 图像可以使绝对地址，也可以是相对地址</td>
+</tr>
+<tr>
+<td style="text-align:right">background-repeat</td>
+<td style="text-align:right">设置背景图像是否平铺，并且可以设置如何平铺。取值：no-repeat 背景图像不平铺； repeat 背景图像平铺排满整个网页；repeat-x 背景图像只在水平方向上平铺；repeat-y 背景图像只在垂直方向上平铺</td>
+</tr>
+<tr>
+<td style="text-align:right">background-attachment</td>
+<td style="text-align:right">可以设置背景图像是随对象滚动还是固定不动。取值：scroll 表示背景图像随对象滚动而滚动，是默认选项；fixed 表示背景图像固定在页面上不动，只有其他的内容随滚动条滚动</td>
+</tr>
+<tr>
+<td style="text-align:right">background-position</td>
+<td style="text-align:right">设置背景图像的位置 只能应用于块级元素和替换元素 替换元素包括img、input、textarea、select和object 可以组合使用top left right bottom来进行位置设置或者使用百分比来进行设置 或者设置x 和 y值</td>
+</tr>
+<tr>
+<td style="text-align:right">复合属性background</td>
+<td style="text-align:right">设置background的复合属性， 各个值之间用空格相连。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>段落属性</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">word-spacing</td>
+<td style="text-align:right">单词间隔 可以使用normal也可以使用长度值 取值：normal 正常的间隔 是默认选项；长度是设置单词间隔的数值及单位，可以使用负值</td>
+</tr>
+<tr>
+<td style="text-align:right">letter-spacing</td>
+<td style="text-align:right">字符间隔 设置属性可以设置数值及单位</td>
+</tr>
+<tr>
+<td style="text-align:right">text-decoration</td>
+<td style="text-align:right">文字修饰 可以对文本进行修饰，如设置下划线、删除线等 取值：normal 表示不修饰 是默认值； underline 表示对文字添加下划线；overline 表示对文字添加上划线；linethrough 表示对文字添加删除线；blink 表示文字闪烁效果</td>
+</tr>
+<tr>
+<td style="text-align:right">vertical-align</td>
+<td style="text-align:right">垂直对齐方式 取值：baseline 浏览器默认的垂直对齐方式；sub 文字的下标；super 文字的上标；top 垂直靠上对齐；text-top 使元素和上级元素的字体向上对齐；middle 垂直居中对齐；text-bottom 使元素和上级元素的字体向下对齐</td>
+</tr>
+<tr>
+<td style="text-align:right">text-transform</td>
+<td style="text-align:right">文本转换属性 用来转换英文字母的大小写。取值：none 表示使用原始值；capitalize 表示每一个单词的第一个字母大写；uppercase 表示使每个单词的所有字母大写；lowercase 表示使每个单词的所有字母小写</td>
+</tr>
+<tr>
+<td style="text-align:right">text-align</td>
+<td style="text-align:right">水平对齐方式 取值left 左对齐；right 右对齐；center 居中对齐；justify 两端对齐</td>
+</tr>
+<tr>
+<td style="text-align:right">text-indent</td>
+<td style="text-align:right">文本缩进 在HTML中只能控制段落的整体向右缩进，如果不进行设置，则浏览器默认为不缩进，在CSS中可以控制段落的首行缩进以及缩进的距离。缩进值必须是一个长度值或者一个百分比。</td>
+</tr>
+<tr>
+<td style="text-align:right">line-height</td>
+<td style="text-align:right">控制段落中行与行之间的距离 行高值可以设置为长度、倍数或者百分比。</td>
+</tr>
+<tr>
+<td style="text-align:right">white-space</td>
+<td style="text-align:right">处理空白 用于设置页面内空白的处理方式。取值：normal 默认属性 将连续的多个空格合并；pre 会导致源代码中的空格和换行符被保留，单只有在IE6中才能正确显示；nowrap 强制在同一行内显示所有文本，直到文本结束或者遇到br标签</td>
+</tr>
+<tr>
+<td style="text-align:right">unicode-bidi</td>
+<td style="text-align:right">文本反排 与下面的direction属性经常一起使用 用来设置对象的阅读顺序。 取值：bidi-override 表示严格按照direction属性的值重排序；normal 表示为默认值；embed 表示对象打开附加的嵌入层，direction属性的值指定嵌入层，在对象内部进行隐式重排</td>
+</tr>
+<tr>
+<td style="text-align:right">direction</td>
+<td style="text-align:right">与上面的unicode-bidi经常一起使用，来设置文本反排。 取值： ltr表示从左到右的顺序阅读；rtl表示从右到左顺序阅读；inherit 表示文本流的值不可继承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>外边距、内边距以及其他边距</strong></p>
+<p>使用外边距可以设置元素周围的边界宽度，包括上下左右四个边界的距离；内边距属性用于设置边框和元素内容之间的间距，同样包括上下左右四个方向的边距值。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">padding</td>
+<td style="text-align:right">内边距 属性值包括padding-top、padding-bottom、padding-left、padding-right</td>
+</tr>
+<tr>
+<td style="text-align:right">margin</td>
+<td style="text-align:right">外边距 包括margin-top、margin-bottom、margin-left、margin-right</td>
+</tr>
+</tbody>
+</table>
+<p><strong>边框属性border</strong><br>border|边框 属性值有border-style、border-width和border-color</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">border-style</td>
+<td style="text-align:right">取值：none 默认值，无边框；dotted 点线边框；dashed 虚线边框；solid 实现边框；double 双实线边框；groove 边框具有立体感的沟槽；ridge 边框成脊形；inset 使整个边框凹陷，即在边框内嵌入一个立体边框；outset 使整个边框凸起 即在边框外嵌入一个立体边框</td>
+</tr>
+<tr>
+<td style="text-align:right">border-width</td>
+<td style="text-align:right">可以使用长度来设置边框的宽度 也可以使用属性有：medium 表示默认宽度；thin 表示小于默认宽度；thick 表示大于默认宽度</td>
+</tr>
+<tr>
+<td style="text-align:right">border-color</td>
+<td style="text-align:right">可以使用16中颜色或者RGB值来设置 也可以单独设置上下左右四个边框的颜色，如border-right-color：red</td>
+</tr>
+</tbody>
+</table>
+<p><strong>定位属性</strong></p>
+<p>使用定位属性可以控制元素的位置，包括相对定位和绝对定位两种方式。相对定位是指允许元素在相对于文档布局的原始位置上进行偏移，而绝对定位是指允许元素与原始的文档布局分离且任意定位。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">position</td>
+<td style="text-align:right">定位方式 取值：static 默认值；absolute 表示采用绝对定位，需要同时使用left、right、top、bottom等属性进行绝对定位；fixed 表示当页面滚动时，元素不随着滚动；relative 表示采用相对定位，对象不可层叠</td>
+</tr>
+<tr>
+<td style="text-align:right">top、left、right、bottom</td>
+<td style="text-align:right">元素位置 auto表示默认值；长度值包含数字和单位，也可以使用百分比来进行设置</td>
+</tr>
+<tr>
+<td style="text-align:right">z-index</td>
+<td style="text-align:right">层叠顺序 使用层叠顺序可以设置层的先后顺序和覆盖关系。默认情况下，z-index的值为1，表示该层位于最底层。</td>
+</tr>
+<tr>
+<td style="text-align:right">float</td>
+<td style="text-align:right">浮动属性 可以设置文字在某个元素的周围，它能应用于所有的元素 取值：none 表示对象浮动；left 表示文字浮动在元素的右边；right 表示文字浮动在元素的左边</td>
+</tr>
+<tr>
+<td style="text-align:right">clear</td>
+<td style="text-align:right">清除属性 用于指定一个元素是否允许有其他元素漂浮在它的周围。取值：none表示允许两边都可以有浮动对象，是默认值；left 表示不允许左边有浮动对象；right 表示不允许右边有浮动对象；both 表示不允许有浮动对象</td>
+</tr>
+<tr>
+<td style="text-align:right">clip</td>
+<td style="text-align:right">可视区域 可以吸纳定只显示裁切出的区域，裁切出的区域为矩形，只要设置两个点即可，一个是矩形左上角的顶点，有top和left两项设置完成，另一个是右下角的顶点，由bottom和right两项设置完成。 auto表示对象不裁切，是默认值。rect（数字）表示它依据上、右、下、左的顺序提供自对象左上角坐标计算的四个偏移数值，其中任一数值都可以用auto替换，即此边不裁切。</td>
+</tr>
+<tr>
+<td style="text-align:right">width、height</td>
+<td style="text-align:right">层的宽度和高度</td>
+</tr>
+<tr>
+<td style="text-align:right">overflow</td>
+<td style="text-align:right">超出范围 可以设置当层内的内容超出层所能容纳的范围时的显示方式，取值：visible 表示层的大小和内容都会自动显示出来；auto 表示只在内容超出层的范围时才会显示滚动条；hidden 表示会隐藏超出层范围的内容；scroll 表示总是显示滚动条</td>
+</tr>
+<tr>
+<td style="text-align:right">visibility</td>
+<td style="text-align:right">可见属性 是针对嵌套层的设置，嵌套层是插入在其它层中的层，分为嵌套的层和被嵌套的层，取值：inherit 表示继承父对象的可见性，是默认值；visible 表示无论父层对象是否可见，子层都是可见的；hidden 表示无论父层对象是否可见，子层都隐藏</td>
+</tr>
+</tbody>
+</table>
+<p><strong>列表属性</strong></p>
+<p>列表属性可以设置列表项的样式，包括符号、缩进等。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">list-sytle-type</td>
+<td style="text-align:right">取值：disc 默认值 实心圆；circle 空心圆；square 实心方块；decimal 阿拉伯数字；lower-roman 小写罗马数字；upper-roman 大写罗马数字；lower-alpha 小写英文字母；upper-alpha 大写英文字母；none 不适用任何项目符号或者编号。</td>
+</tr>
+<tr>
+<td style="text-align:right">list-style-image</td>
+<td style="text-align:right">图像符号属性 是指使用图像作为列表符号，以美化网页。none表示不指定图像，设置url属性可以使用绝对地址或者相对地址来指定符号的图像</td>
+</tr>
+<tr>
+<td style="text-align:right">list-style-position</td>
+<td style="text-align:right">列表缩进属性可以设置列表缩进的程度。 取值：outside 表示列表项目标记放置在文本以外，且环绕文本不根据标记对齐；inside 表示列表项目放置在文本以内，且环绕文本根据标记对齐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>光标属性</strong></p>
+<p>使用光标属性可以设置在对象上移动时鼠标指针采用的光标形状。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">取值</th>
+<th style="text-align:right">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">default</td>
+<td style="text-align:right">客户端平台的默认光标。通常是一个箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">hand</td>
+<td style="text-align:right">竖起一只手指的手型光标</td>
+</tr>
+<tr>
+<td style="text-align:right">crosshair</td>
+<td style="text-align:right">简单的十字形光标</td>
+</tr>
+<tr>
+<td style="text-align:right">text</td>
+<td style="text-align:right">大写字母I的形状</td>
+</tr>
+<tr>
+<td style="text-align:right">help</td>
+<td style="text-align:right">带有问号标记的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">wait</td>
+<td style="text-align:right">用于标示程序忙用户需要等待的光标</td>
+</tr>
+<tr>
+<td style="text-align:right">e-resize</td>
+<td style="text-align:right">向东的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">ne-resize</td>
+<td style="text-align:right">向东北的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">n-resize</td>
+<td style="text-align:right">向北的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">nw-resize</td>
+<td style="text-align:right">向西北的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">w-resize</td>
+<td style="text-align:right">向西的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">sw-resize</td>
+<td style="text-align:right">向西南的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">s-resize</td>
+<td style="text-align:right">向南的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">se-resize</td>
+<td style="text-align:right">向东南的箭头</td>
+</tr>
+<tr>
+<td style="text-align:right">auto</td>
+<td style="text-align:right">默认值。浏览器根据当前情况自动确定光标类型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>滤镜的属性</strong></p>
+<p>CSS 中的滤镜和Photoshop中的滤镜相似，它可以用很简单的方法对网页中的对象进行特效处理，使用滤镜属性可以把一些特殊效果添加到网页元素总，使页面更加美观。但是，filter滤镜是比较早的CSS1属性，IE10起已经不再支持。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">alpha</td>
+<td style="text-align:right">不透明度 取值：opacity 开始时的透明度，取值范围为0~100，默认值为0，即完全透明，100为完全不透明；finishopacity 结束时的透明度 取值范围为0~100；style 设置渐变的样式，其中0表示无渐变，1为直线渐变，2为圆形渐变，3为矩形渐变；startx 设置透明渐变开始点的水平坐标。其数值作为对象宽度的百分比处理，默认值为0；starty 设置透明渐变开始点的垂直坐标；finishx 设置透明渐变结束点的水平坐标；finishy 设置透明渐变结束点的垂直坐标</td>
+</tr>
+<tr>
+<td style="text-align:right">blur</td>
+<td style="text-align:right">用于设置对象的动态模糊效果 取值：add 设置是否显示原始图片；direction 设置动态模糊的方向，按顺时针的方向以45度为单位进行累积；strength 设置动态模糊的强度 只能使用整数来指定，默认是5个</td>
+</tr>
+<tr>
+<td style="text-align:right">chroma</td>
+<td style="text-align:right">对颜色进行透明处理 是将图片中的某种颜色转换为透明色，产生透明效果</td>
+</tr>
+<tr>
+<td style="text-align:right">dropShadow</td>
+<td style="text-align:right">用于设置在指定的方向和位置上产生阴影效果 color控制阴影的颜色 offX和offY分别设置阴影相对于原始图像移动的水平距离和垂直距离；positive属性设置阴影是否透明</td>
+</tr>
+<tr>
+<td style="text-align:right">flipH、flipV</td>
+<td style="text-align:right">用于设置沿水平方向翻转对象和沿垂直方向翻转对象</td>
+</tr>
+<tr>
+<td style="text-align:right">glow</td>
+<td style="text-align:right">用于设置在对象周围产生发光的效果 color用于设置发光的颜色；strength用于设置发光的强度，取值范围为1~255，默认值为5</td>
+</tr>
+<tr>
+<td style="text-align:right">gray</td>
+<td style="text-align:right">灰度处理 用于把彩色图片中的色彩去掉，转换为黑白图片</td>
+</tr>
+<tr>
+<td style="text-align:right">invert</td>
+<td style="text-align:right">反相 用于设置对象反相，可以将图片的颜色、饱和度和亮度完全反转过来</td>
+</tr>
+<tr>
+<td style="text-align:right">xray</td>
+<td style="text-align:right">X光片效果 用于制作类似X光片的效果</td>
+</tr>
+<tr>
+<td style="text-align:right">mark</td>
+<td style="text-align:right">用于为对象产生遮罩效果，可以做出像印章一样的效果 color可以设置外围遮盖的颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">wave</td>
+<td style="text-align:right">波形滤镜 用于为对象内容创建波纹扭曲效果 属性值设置add用于设置是否要把对象按照波形样式打乱；freq 用于设置图片上的波浪数目；lightstrength 用于设置波浪的光照强度，取值范围为0~100；phase 用于设置波浪的起始位置；strength用于设置波浪的强度大小。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML基础知识/" rel="tag"># HTML基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/05/HTML中的音视频元素介绍/" rel="next" title="HTML中的视频等元素具体参数介绍">
+                <i class="fa fa-chevron-left"></i> HTML中的视频等元素具体参数介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzgzMC8xNDM2MQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shanhu Lv</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MagicCodeboy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18668460187@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.itmotui.com/" title="莫颓的博客" target="_blank">莫颓的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shanhu Lv</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
