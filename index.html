@@ -251,6 +251,397 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/CSS样式补充/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/08/CSS样式补充/" itemprop="url">CSS样式补充</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-08T00:39:42+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,444 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>边框的样式补充</p>
+</blockquote>
+<p>通过CSS3，能够创建圆角边框，向矩形添加阴影，使用图片来绘制边框，并且不需要使用设计软件。</p>
+<p>在不同的浏览器中部分属性应该设置浏览器的前缀，Mozilla浏览器要加上-moz-，Webkit内核浏览器要加上-webkit-，Presto内核浏览器-o-，IE8浏览器加-ms-。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">border-radius</td>
+<td style="text-align:right">只有一个取值时，4个角具有相同的圆角设置，其效果是一致的。 设置两个值时，top-left等于bottom-right，并且它们取第一个值；top-right等于bottom-left，并且它们取第二个值，也就是元素左上角和右下角相同，右上角和左下角相同。 设置三个值时，top-left 取第一个值，top-right等于bottom-left，并且它们取第二个值，bottom-right取第三个值。设置四个值时，此时top-left取第一个值，top-right取第二个值，bottom-right取第三个值，bottom-left取第四个值。</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image</td>
+<td style="text-align:right">可以理解为边框图片 使用图片作为边框 ，可以设置下列部分属性</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image-source</td>
+<td style="text-align:right">该属性用于指定是否用图片定义边框样式或者图片来源路径</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image-slice</td>
+<td style="text-align:right">该属性用于指定图片边框向内便宜</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image-width</td>
+<td style="text-align:right">该属性用于指定图片边框的宽度</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image-outset</td>
+<td style="text-align:right">该属性用于指定边框图片区域超出边框的量</td>
+</tr>
+<tr>
+<td style="text-align:right">border-image-repeat</td>
+<td style="text-align:right">该属性用于指定图片边框是否应该平铺、铺满或者拉伸</td>
+</tr>
+<tr>
+<td style="text-align:right">box-shadow</td>
+<td style="text-align:right">边框阴影 该属性是由逗号分隔的阴影列表，每个阴影由2~4个长度值、可选的颜色值以及可选的inset关键词来规定。省略长度值时0. h-shadow 必需值，水平阴影的位置，允许负值； v-shadow 必需值 垂直阴影的位置，允许负值；blur 可选 模糊距离；spread 可选 阴影的尺寸；color 可选 阴影的颜色；inset 可选 将外部阴影（outset）改为内部阴影</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>背景</p>
+</blockquote>
+<p>新特性中添加了多个新的属性值，例如background-origin、background-clip和background-size。此外，还可以在一个元素上设置多个背景图片。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">background-size</td>
+<td style="text-align:right">属性值：length 用长度值指定背景图片大小，不允许负值；percentage 用百分比指定背景图片大小，不允许负值；cover 将背景图片等比缩放到完全覆盖容器，背景图片有可能超出容器；contain 将背景图片等比缩放到宽度或高度与容器的宽度或高度相等，背景图片始终被包含在容器内。</td>
+</tr>
+<tr>
+<td style="text-align:right">background-origin</td>
+<td style="text-align:right">规定背景图片的定位区域 取值：padding-box 背景图片相对于内边距框来定位；border-box 背景图片相对于边框盒来定位；content-box 背景图片相对于内容框来定位</td>
+</tr>
+<tr>
+<td style="text-align:right">background-clip</td>
+<td style="text-align:right">指定了背景哪些区域可以显示，但与背景开始绘制的位置无关。背景的绘制位置可以出现在不显示背景的区域，这时就相当于背景图片被不显示背景的区域裁剪了一部分一样。取值：border-box 背景被裁剪到边框盒；padding-box 背景被裁剪到内边距框；content-box 背景被裁剪到内容框</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>文本</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">text-shadow</td>
+<td style="text-align:right">文本阴影 可以向文本添加一个或者多个阴影，该属性是逗号分隔的阴影列表，每个阴影有两个或者三个长度值和一个可选的颜色值进行规定。h-shadow 必需 水平阴影的设置，允许负值；v-shadow 必需 垂直阴影的设置，允许负值；blur 可选 模糊的距离；color 可选 阴影的颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">word-wrap</td>
+<td style="text-align:right">强制换行 允许长单词或者URL地址换行到下一行。取值：normal 只在允许的断字点换行（浏览器保持默认处理）；break-word 在长单词或URL地址内部进行换行。</td>
+</tr>
+<tr>
+<td style="text-align:right">text-overflow</td>
+<td style="text-align:right">文本溢出 设置或检索是否使用一个省略标记（…）标示对象文本的溢出。取值：clip 当对象内文本溢出时不显示省略标记（…）而是将溢出的部分裁切掉；ellipsis 当对象内文本溢出时显示省略标记（…）</td>
+</tr>
+<tr>
+<td style="text-align:right">text-stroke</td>
+<td style="text-align:right">文字描边 既可以设置文字边框的宽度，也可以设置其颜色。取值：text-stroke-width 设置对象中的文字的描边厚度；text-stroke-color 设置对象中文字的描边颜色</td>
+</tr>
+<tr>
+<td style="text-align:right">text-fill-color</td>
+<td style="text-align:right">文本填充颜色，目前仅webkit核心浏览器支持此属性，某种程度上讲，其与color基本上的作用是一样的，取值：color 指定文字的填充颜色</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>多列</p>
+</blockquote>
+<p>通过CSS3，能够创建多个列来对文本进行布局。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">column-count</td>
+<td style="text-align:right">创建多列 规定元素应该被分隔的列数 取值：number 元素内容将被划分的最佳列数；auto 由其他属性决定列数，比如column-width</td>
+</tr>
+<tr>
+<td style="text-align:right">column-width</td>
+<td style="text-align:right">列的宽度 取值：length 用长度来定义列宽；auto 根据column-count自定分配宽度</td>
+</tr>
+<tr>
+<td style="text-align:right">column-gap</td>
+<td style="text-align:right">规定列之间的间隔 取值：length 把列间的间隔设置为指定的长度；normal 规定列间间隔为一个常规的间隔</td>
+</tr>
+<tr>
+<td style="text-align:right">column-rule</td>
+<td style="text-align:right">规定列之间的宽度、样式和颜色规则 取值：column-rule-width 设置列之间的宽度规则；column-rule-style 设置列之间的样式规则；column-rule-color 设置列之间的颜色规则</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>转换</p>
+</blockquote>
+<p>transform 主要包括以下几种：旋转、扭曲、缩放和移动。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">属性</th>
+<th style="text-align:right">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">translate()</td>
+<td style="text-align:right">移动 分为三种情况。1.translate(x,y)设置水平方向和垂直方向同时移动；translateX(X) 设置仅水平方向移动；translateY(Y) 设置仅垂直方向移动</td>
+</tr>
+<tr>
+<td style="text-align:right">rotate()</td>
+<td style="text-align:right">旋转 通过指定的角度参数对原元素设置一个2D旋转，如果设置的值为正数表示顺时针旋转，如果设置的值为负数表示逆时针旋转。例如rotate(30deg)把元素顺时针旋转30度</td>
+</tr>
+<tr>
+<td style="text-align:right">scale()</td>
+<td style="text-align:right">缩放 根据指定的宽度（x轴）和高度（y轴）参数，元素的尺寸会增加或减少，和移动类似也有三种情况：scale(x,y)使元素水平方向和垂直方向同时缩放；scaleX(x) 元素仅水平方向缩放；scaleY(y) 元素仅垂直方向缩放</td>
+</tr>
+<tr>
+<td style="text-align:right">skew()</td>
+<td style="text-align:right">扭曲 也具有三种情况：skew(30deg,40deg)元素在水平和垂直方向同时扭曲；skewX(x)元素仅在水平方向上扭曲；skewY(y) 元素仅在垂直方向上扭曲</td>
+</tr>
+<tr>
+<td style="text-align:right">matrix()</td>
+<td style="text-align:right">矩阵 其把所有2D转换方法组合在一起，matrix（）方法需要六个参数，包含数学函数，允许旋转、缩放、移动、镜像以及倾斜元素，相当于直接应用一个变换矩阵。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>过渡</p>
+</blockquote>
+<p>过渡特性（transition）用于在网页制作中实现一些简单的动画效果，让某些效果变的更加流畅、平滑。 取值：</p>
+<ul>
+<li><p>transition-property 规定设置过渡效果的CSS属性的名称</p>
+</li>
+<li><p>transition-duration 规定完成过渡效果需要多少秒或者毫秒</p>
+</li>
+<li><p>transition-timing-function 规定速度效果的速度曲线</p>
+</li>
+<li><p>transition-delay 规定过渡效果何时开始</p>
+</li>
+</ul>
+<p>例如：应用于宽度属性的过渡效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">	transition: width 2s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>动画</p>
+</blockquote>
+<p>@keyframes动画 规则，用于创建动画，在@keyframes中规定某项CSS样式，就能创建由当前样式逐渐改为新样式的动画效果。不同的浏览器要添加不同的前缀。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes myfirst&#123;</span><br><span class="line">	from &#123;background: red;&#125;</span><br><span class="line">	to &#123;background: yellow;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>animation动画，只应用在页面上已经存在的DOM元素上，使用animation动画可以省去复杂的代码，类似于transition属性，它们都是随着时间改变元素的属性值。主要区别在于transition需要触发一个事件（hover事件或click事件等）才会随时间改变其css属性；而animation在不触发任何事件的情况下也可以显式的随着时间的变化来改变元素css的属性值，从而实现一种动画的效果。 animation可以设置6个动画属性。</p>
+<ul>
+<li><p>animation-name 规定需要绑定到选择器的keyframe名称</p>
+</li>
+<li><p>animation-duration 规定完成动画所花费的时间，以秒或者毫秒计</p>
+</li>
+<li><p>animation-timing-function 规定动画的速度曲线</p>
+</li>
+<li><p>animation-delay 规定在动画开始之前的延迟</p>
+</li>
+<li><p>animation-iteration-count 规定动画应该播放的次数</p>
+</li>
+<li><p>animation-direction 规定是否应该轮流反向播放动画</p>
+</li>
+</ul>
+<blockquote>
+<p>用户界面</p>
+</blockquote>
+<p>新的用户界面特性包括重设元素尺寸、盒尺寸以及轮廓等。</p>
+<ul>
+<li><p>box-sizing shi box属性之一 它允许以确切的方式定义适应某个区域的具体内容。属性值：content-box 高度和宽度分别应用到元素的内容框，在宽度和高度之外绘制元素的内边距和边框；border-box 为元素设定的宽度和高度决定了元素的边框盒；inherit 规定应从父元素继承box-sizing属性的值 </p>
+</li>
+<li><p>resize 属性规定是否可由用户调整元素尺寸。 属性值： none 用户无法调整元素的尺寸；both 用户可调整元素的宽度和高度；horizontal 用户可调整元素的宽度；vertical 用户可调整元素的高度。</p>
+</li>
+<li><p>outline-offset 属性对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓。属性值：length 轮廓与边框边缘的距离；inherit 规定应从父元素继承outline-offset属性的值</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/CSS简介以及常用样式介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3174,187 +3565,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/iOS 音视频 文本到语音简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/iOS 音视频 文本到语音简介/" itemprop="url">iOS 音视频 文本到语音简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T22:35:13+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  314 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Mac OS X 一直都有一个NSSpeechSynthesizer类，使用这个类可以很方便的在Cocoa应用程序中添加“文本到语音的功能”，简单的播放一句语音“hello world”  可以由一段简单的代码来实现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];</span><br><span class="line">    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:@&quot;hello world&quot;];</span><br><span class="line">    [synthesizer speakUtterance:utterance];</span><br></pre></td></tr></table></figure>
-<p>这段代码使用默认的声音读出“hello world”,其中语音的内容都是通过AVSpeechUtterance 这个类的实例来设置的，我们还可以设置他的其他的属性来达到我们预期的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_voices = @[[AVSpeechSynthesisVoice voiceWithLanguage:@&quot;en-US&quot;],</span><br><span class="line">                    [AVSpeechSynthesisVoice voiceWithLanguage:@&quot;en-GB&quot;]];</span><br><span class="line">utterance.voice = self.voices[1];</span><br><span class="line">utterance.rate = 0.5f;</span><br><span class="line">utterance.pitchMultiplier = 0.8f;</span><br><span class="line">utterance.postUtteranceDelay = 0.1f;</span><br></pre></td></tr></table></figure>
-<p>其中设置的voices是我们设置的一个声音，1就是美式英语，2就是英式英语；</p>
-<p>设置rate确定我们要播放语音内容的速率为0.5f;</p>
-<p>设置pitchMultiplier指定在播放特定语句的时候改变声音的音调，他的允许值一般在0.5（低音调）到2.0（高音调）之间。</p>
-<p>postUtteranceDelay这个值是设置让语音合成器在播放下一句之前有段时间的暂停。</p>
-<p>本系列文章仅作为读书记录，以便查阅，欢迎交流。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3405,7 +3615,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3427,7 +3637,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
