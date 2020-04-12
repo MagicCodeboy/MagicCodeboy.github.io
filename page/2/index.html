@@ -251,6 +251,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/播放和录制音频/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/25/播放和录制音频/" itemprop="url">iOS 播放和录制音频</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T20:47:24+08:00">
+                2018-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  863 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>AV Foundation最开始是一个仅针对音频的框架，在iOS3.0中，增加了音频录制的功能，现在我们通过学习AVAudioPlayer和AVAudioRecoder类来实现应用程序中添加音频播放和音频录制的功能。</p>
+<p>#####理解和使用音频会话</p>
+<p>音频会话简单的理解就是可以在我们使用音乐播放的过程中，收到电话通知，这时候就需要有一个管理的处理来将音乐播放停止，开始播放来电铃声。</p>
+<p>所有的iOS应用程序都具有音频会话，无论其是否使用。AVFoundation定义了七种分类来描述应用程序锁使用的音频行为</p>
+<ul>
+<li>Ambient        游戏、效率应用程序</li>
+<li>Solo Ambient   游戏、效率应用程序</li>
+<li>Playback       音频和视频播放器</li>
+<li>Record         录音机、音频捕捉</li>
+<li>Play and Record  VoIP、语音聊天</li>
+<li>Audio Processing  离线会话和处理</li>
+<li>Multi-Route     使用外部硬件的高级A/V应用程序</li>
+</ul>
+<p>其中，来实现播放音频的方法很简单，将本地要播放的文件放入我们的项目中，新建一个播放器就可以轻松实现音频的播放的功能了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSURL *musicUrl = [[NSBundle mainBundle] URLForResource:@&quot;像我这样的人&quot; withExtension:@&quot;mp3&quot;];</span><br><span class="line">    self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicUrl error:nil];</span><br><span class="line">    if (self.musicPlayer) &#123;</span><br><span class="line">        [self.musicPlayer prepareToPlay];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我们也可以自己修改音乐播放器的音量，这个是独立于系统的音量，还有一个需要我们注意的就是当音频被打断的时候的处理，我们需要监听线路的变化，并作出相应的处理。相关的方法是AVAudioSessionRoute…相关的类，这里大家可以自行查询。</p>
+<p>#####使用AVAudioRecorder⏺音频</p>
+<p>下面我们看一下如何来录制音频，首先我们还是需要导入#import &lt;AVFoundation/AVFoundation.h&gt;框架，录制的代码很简单,主要使用到的类是AVAudioRecorder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir = NSTemporaryDirectory();</span><br><span class="line">       NSString *filePath = [tmpDir stringByAppendingPathComponent:@&quot;memo.caf&quot;];</span><br><span class="line">       NSURL *fileURL = [NSURL fileURLWithPath:filePath];</span><br><span class="line"></span><br><span class="line">       NSDictionary *settings = @&#123;</span><br><span class="line">                                  AVFormatIDKey : @(kAudioFormatAppleIMA4),</span><br><span class="line">                                  AVSampleRateKey : @44100.0f,</span><br><span class="line">                                  AVNumberOfChannelsKey : @1,</span><br><span class="line">                                  AVEncoderBitDepthHintKey : @16,</span><br><span class="line">                                  AVEncoderAudioQualityKey : @(AVAudioQualityMedium)</span><br><span class="line">                                  &#125;;</span><br><span class="line"></span><br><span class="line">       NSError *error;</span><br><span class="line">       self.recorder = [[AVAudioRecorder alloc] initWithURL:fileURL settings:settings error:&amp;error];</span><br><span class="line">       if (self.recorder) &#123;</span><br><span class="line">           self.recorder.delegate = self;</span><br><span class="line">           self.recorder.meteringEnabled = YES;</span><br><span class="line">           [self.recorder prepareToRecord];</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           NSLog(@&quot;Error: %@&quot;, [error localizedDescription]);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>AVFormatIDKey</strong>键定义了写入内容的音频格式，这里我们设置支持的格式是kAudioFormatAppleIMA4，这种格式的压缩格式会显著缩小文件，还能保证高质量的音频内容</li>
+<li><strong>AVSampleRateKey</strong>键定义了录音器的采样率。采样率定义了对输入的模拟音频信号每一秒内的采样率。使用低的采样率，回导致粗粒度、AM广播累心给的录制效果，不过文件会比较小，使用高的采样率文件就会较大。</li>
+<li><strong>AVNumberOfChannelsKey</strong>键用来定义记录音频通道内的通道数，指定默认值1意味着使用单声道录制，设置为2意味着立体声录制，如果不是使用外部硬件进行录制，通常使用单声道录制。当我们停止录音的时候，可以调用saveRecordingWithName:completionHandler:方法，这个方法通过唯一文件名将tmp目录中的录制文件复制到Documents目录，如果复制操作成功，会调用完成块，传递会一个新的包含名字和录制音频URL。</li>
+</ul>
+<p>这里就简单记录下播放音频和录制音频的方法，方便查询。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/iOS 音视频 文本到语音简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2037,189 +2234,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/Hexo配置tags等页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/Hexo配置tags等页面/" itemprop="url">hexo配置tags caterories等页面的方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T10:58:51+08:00">
-                2018-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Blog配置/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  189 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近又把blog重新配置了一个 把之前的东西重新整理了一下 在配置Blog的时候有一些主题等类型的时候都要重新配置一下 在这里记录一下hexo配置tags等页面的方法</p>
-<ul>
-<li><p>tags</p>
-<p><strong>进入Blog目录 执行hexo new page tags</strong></p>
-<p>在source/tags 打开index.md页面 修改页面的内容为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ---</span><br><span class="line">title: tags</span><br><span class="line">date: 2018-05-06 09:41:35</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>然后再主题配置文件_config.xml文件中打开相应的配置即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line"> home: / || home</span><br><span class="line"> #about: /about/ || user</span><br><span class="line"> tags: /tags/ || tags</span><br><span class="line"> categories: /categories/ || th</span><br><span class="line"> archives: /archives/ || archive</span><br></pre></td></tr></table></figure>
-<p>其他的关于about、categories等页面的时候重复上面的操作步骤即可<br>然后执行 hexo g -d即可</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2270,7 +2284,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2281,7 +2295,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2292,7 +2306,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
