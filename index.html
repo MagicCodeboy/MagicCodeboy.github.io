@@ -251,6 +251,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/Flutter中遇到的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/19/Flutter中遇到的问题/" itemprop="url">Flutter中遇到的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-19T17:15:26+08:00">
+                2020-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  266 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>问题1</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">flutter: ══╡ EXCEPTION CAUGHT BY GESTURE ╞═══════════════════════════════════════════════════════════════════</span><br><span class="line">flutter: The following assertion was thrown while handling a gesture:</span><br><span class="line">flutter: Could not find a generator for route RouteSettings(&quot;/formpage&quot;, null) in the _WidgetsAppState.</span><br><span class="line">flutter: Generators for routes are searched for in the following order:</span><br><span class="line">flutter:  1. For the &quot;/&quot; route, the &quot;home&quot; property, if non-null, is used.</span><br><span class="line">flutter:  2. Otherwise, the &quot;routes&quot; table is used, if it has an entry for the route.</span><br><span class="line">flutter:  3. Otherwise, onGenerateRoute is called. It should return a non-null value for any valid route not</span><br><span class="line">flutter: handled by &quot;home&quot; and &quot;routes&quot;.</span><br><span class="line">flutter:  4. Finally if all else fails onUnknownRoute is called.</span><br><span class="line">flutter: Unfortunately, onUnknownRoute was not set.</span><br></pre></td></tr></table></figure>
+<p>问题原因以及解决方法：</p>
+<p>这个问题是因为使用命名路由 设置的值跳转到不同的页面的时候 跳转的页面中存在多个MaterialApp 我们需要删除掉其他页面中（或跳转的子级页面中的MaterialApp）</p>
+<ul>
+<li>问题2</li>
+</ul>
+<p>flutter中设置超过三个BottomNavigationBar时的问题</p>
+<p>解决方法</p>
+<p> 一般我们设置Items里面包含的BottomNavigationBarItem超过三个的时候，就需要设置它的type：类型，如下：<br>        type: BottomNavigationBarType.fixed,//配置可以有多个按钮 一般超过三个按钮设置</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/JavaScript脚本基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3576,222 +3760,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/HTMLdetail/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/01/HTMLdetail/" itemprop="url">HTML基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T22:59:33+08:00">
-                2020-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  674 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##HTML的基本介绍</p>
-<blockquote>
-<p>HTML的简介</p>
-</blockquote>
-<p>这里用来记录一下学习HTML的过程，方便以后查阅。</p>
-<p>HTML作为一款标记语言，本身是不能够显示在浏览器中的。经过浏览器的解释和编译，才能正确的反映HTML标记语言的内容。他不是一款编程语言，而是一款描述性的标记语言，用于描述超文本内容中的内容的基本方式。</p>
-<blockquote>
-<p>HTML文件的基本结构</p>
-</blockquote>
-<p>完整的HTML文件包括标题、段落、列表、表格以及各种嵌入对象，这些对象统称为HTML元素。一个完整的HTML文件基本结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot; http-equiv=&quot;content-type&quot; content=&quot;text/html&quot;&gt;</span><br><span class="line">	&lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>基本标记</p>
-</blockquote>
-<p>1.头部标记head</p>
-<p>2.标题标记title</p>
-<p>3.元素标记meta</p>
-<p>在搜索引擎中，检索信息都是通过输入关键字来实现的。设置关键字是最近本也是最重要的一步，是进行网页优化的基础。关键字在浏览时是看不到的，它是针对搜索引擎的信息。当用关键字搜索网站时，如果网页中包含该关键字，就可以在搜索结果中列出来。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;输入具体的关键字&quot;&gt;</span><br><span class="line">name 是属性名称 也就是设置网页的关键字属性，content中包含的</span><br><span class="line">是定义的具体的关键字</span><br><span class="line">name 是也可以设置页面说明 也就是将元信息设置为页面说明，content</span><br><span class="line">中定义具体的描述语言</span><br><span class="line">或者设置编辑工具</span><br><span class="line">设置网页文字以及语言 charset 设置字符集类型一般设置为gb2312 简体中文</span><br><span class="line">设置网页定时跳转 这里要设置URL为跳转到的地址 content设置跳转的</span><br><span class="line">时间，以秒为单位</span><br><span class="line">添加作者信息等</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>标题</p>
-</blockquote>
-<p>由h1–h6 依次递减</p>
-<p>标题字对齐属性可以通过align属性来设置，包含</p>
-<p>1.left 左对齐</p>
-<p>2.center 居中对齐</p>
-<p>3.right 右对齐</p>
-<blockquote>
-<p>段落标记</p>
-</blockquote>
-<p>“p”是HTML中最常见的标记，用来起始一个段落</p>
-<blockquote>
-<p>换行标记</p>
-</blockquote>
-<p>“br”连续多个可以实现多次换行 也可以在文本中添加”nobr“标记，实现此行文本的不换行</p>
-<blockquote>
-<p>水平线标记hr</p>
-</blockquote>
-<p>hr标记代表水平分割模式，并会在浏览器中显示一条线</p>
-<blockquote>
-<p>空格标记</p>
-</blockquote>
-<p>“&amp; nbsp ;”代表一个半角空格，多个空格可以多次使用这一个符号</p>
-<p>其他特殊符号可以自行百度。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3842,7 +3810,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3853,7 +3821,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -3864,7 +3832,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

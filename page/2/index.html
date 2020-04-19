@@ -251,6 +251,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/HTMLdetail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shanhu Lv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shanhu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/01/HTMLdetail/" itemprop="url">HTML基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T22:59:33+08:00">
+                2020-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  674 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##HTML的基本介绍</p>
+<blockquote>
+<p>HTML的简介</p>
+</blockquote>
+<p>这里用来记录一下学习HTML的过程，方便以后查阅。</p>
+<p>HTML作为一款标记语言，本身是不能够显示在浏览器中的。经过浏览器的解释和编译，才能正确的反映HTML标记语言的内容。他不是一款编程语言，而是一款描述性的标记语言，用于描述超文本内容中的内容的基本方式。</p>
+<blockquote>
+<p>HTML文件的基本结构</p>
+</blockquote>
+<p>完整的HTML文件包括标题、段落、列表、表格以及各种嵌入对象，这些对象统称为HTML元素。一个完整的HTML文件基本结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot; http-equiv=&quot;content-type&quot; content=&quot;text/html&quot;&gt;</span><br><span class="line">	&lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>基本标记</p>
+</blockquote>
+<p>1.头部标记head</p>
+<p>2.标题标记title</p>
+<p>3.元素标记meta</p>
+<p>在搜索引擎中，检索信息都是通过输入关键字来实现的。设置关键字是最近本也是最重要的一步，是进行网页优化的基础。关键字在浏览时是看不到的，它是针对搜索引擎的信息。当用关键字搜索网站时，如果网页中包含该关键字，就可以在搜索结果中列出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;输入具体的关键字&quot;&gt;</span><br><span class="line">name 是属性名称 也就是设置网页的关键字属性，content中包含的</span><br><span class="line">是定义的具体的关键字</span><br><span class="line">name 是也可以设置页面说明 也就是将元信息设置为页面说明，content</span><br><span class="line">中定义具体的描述语言</span><br><span class="line">或者设置编辑工具</span><br><span class="line">设置网页文字以及语言 charset 设置字符集类型一般设置为gb2312 简体中文</span><br><span class="line">设置网页定时跳转 这里要设置URL为跳转到的地址 content设置跳转的</span><br><span class="line">时间，以秒为单位</span><br><span class="line">添加作者信息等</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>标题</p>
+</blockquote>
+<p>由h1–h6 依次递减</p>
+<p>标题字对齐属性可以通过align属性来设置，包含</p>
+<p>1.left 左对齐</p>
+<p>2.center 居中对齐</p>
+<p>3.right 右对齐</p>
+<blockquote>
+<p>段落标记</p>
+</blockquote>
+<p>“p”是HTML中最常见的标记，用来起始一个段落</p>
+<blockquote>
+<p>换行标记</p>
+</blockquote>
+<p>“br”连续多个可以实现多次换行 也可以在文本中添加”nobr“标记，实现此行文本的不换行</p>
+<blockquote>
+<p>水平线标记hr</p>
+</blockquote>
+<p>hr标记代表水平分割模式，并会在浏览器中显示一条线</p>
+<blockquote>
+<p>空格标记</p>
+</blockquote>
+<p>“&amp; nbsp ;”代表一个半角空格，多个空格可以多次使用这一个符号</p>
+<p>其他特殊符号可以自行百度。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/播放和录制音频/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2051,189 +2267,6 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/iOS小知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shanhu Lv">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shanhu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/16/iOS小知识点/" itemprop="url">小知识点总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:46:53+08:00">
-                2018-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1,059 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>1.为什么iOS开发中 IBOutlet的属性一般为weak而不是strong？</strong><br>这是因为IBOutlet的属性一般可以设置为weak是因为他已经被view引用了，除非view被释放，否则IBOutlet的属性也不会被释放，另外IBOutlet属性的声明周期和view是一致的，所以IBOutlet属性一般设置为weak。</p>
-<p><strong>2.在scrollview滚动没有停止的时候是获取不到屏幕上控件的！</strong><br>这个是在最近的项目中遇到的这个问题，之前对这一块的东西没有了解的很清晰，在排查了之后，是因为view正在滚动的时候是获取不到的，现在的解决办法是在下面的这个方法中获取 如果要进行view上的赋值或者操作的话，最好在这个方法中延时几百毫秒 来进行数据的处理。或者有什么更好的方法也可以告诉我，感激不尽。下面的这个方法是在scrollview滚动减速基本停止的时候执行的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;</span><br></pre></td></tr></table></figure></p>
-<p><strong>3.添加iOSATS的配置的代码块</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;</span><br><span class="line"></span><br><span class="line">&lt;dict&gt;</span><br><span class="line"></span><br><span class="line">&lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;</span><br><span class="line"></span><br><span class="line">&lt;true/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/dict&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>4.iOS程序中的线程的取消的问题</strong><br>这个问题是解决那些需要停止正在执行的任务的时候的<br>主要调用的方法是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[NSThread alloc]initWithTarget:self selector:@selector(animationLabel) object:nil];</span><br></pre></td></tr></table></figure></p>
-<p>在这里我使用这个方法实现了 文字的打字机效果 但是可能的需求是 正在执行这个效果的时候，我们点击了取消按钮，我们就需要停止正在执行的任务，线程的方法中给我提供了取消的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)cancel API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));</span><br><span class="line">- (void)start API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));</span><br></pre></td></tr></table></figure></p>
-<p>这里需要注意的是 这里的Cancel方法并不会立即停止当前正在执行的任务，而只是标记了正在执行的任务为取消的状态，我们需要在执行动画的方法中判断当前的是否是取消状态，然后如果是，退出这次的执行，动画中的方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ([NSThread currentThread].isCancelled) &#123;</span><br><span class="line">            return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>5.直播项目中基本的配置问题</strong><br>在做一个直播项目的时候，一般都会使用第三方的SDK，现在基本上所有的大厂都会这个SDK，我们使用的是金山的SDK。一般都要按照开发文档进行直播的参数配置，也是影响用户体验的一个很重要的因素，我们需要设置特定的码率，视频的分辨率、视频的编码器和音频的编码率等等参数，关于视频的编解码的问题，在iOS8.0以后，基本都会选择视频的硬编码，这里还有一个参数是视频的起始编码率，视频的编码率越高，视频的显示的效果就会越好，其他的参数配置也要按照SDK推荐的值来设置，这样至少初步的配置的直播的效果会稍微好一点。</p>
-<p>在直播中还有一个很重要的问题就是关于直播的首屏秒开的问题，一个直播打开的时间越短，用户的体验就会更优，我们解决这个方法主要是要用了CDN加速，但是效果不是很理想，如果有哪位大神有很好的方法，希望不吝赐教。其实直播的东西可以用一片完整的文章来记录了，因为其中涉及到的知识点是很多的，这个有机会，在另外完整的整理一下，这里先简单的记录一下吧。</p>
-<p><strong>6.Mac安装软件 提示软件已损坏，放入废纸篓解决办法</strong></p>
-<p>当我们安装从社交软件等途径获取到的软件时，经常会遇到提示软件已经损坏，请放入废纸篓，这个时候我们只需要打开终端，执行一段命令行，就可以完美的解决这个问题</p>
-<p>sudo spctl –master-disable。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2284,7 +2317,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2295,7 +2328,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2306,7 +2339,7 @@ RN通过components来进行组件化。他把UI分割成独立，可重用的部
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
